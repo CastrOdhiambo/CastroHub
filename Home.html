@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - My Multipurpose Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #007bff;
+      --primary-dark: #0056b3;
+      --bg-light: #f8f9fc;
+      --bg-dark: #121212;
+      --text-light: #333;
+      --text-dark: #eee;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin: 0;
+      padding: 15px;
+    }
+    nav a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -3px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to right, #007bff, #00c6ff);
+      color: white;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+    }
+    .hero .cta {
+      margin-top: 25px;
+    }
+    .hero .cta a {
+      display: inline-block;
+      margin: 5px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      background: white;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+    .hero .cta a:hover {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    /* Section */
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: var(--primary-dark);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s, background 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { margin-top: 0; color: var(--primary-dark); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      background: #f1f1f1;
+      margin-top: 40px;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    body.dark nav { background: #1f1f1f; }
+    body.dark nav a { color: #ddd; }
+    body.dark .card { background: #1f1f1f; border: 1px solid #333; }
+    body.dark footer { background: #1f1f1f; color: #ccc; }
+
+    #toggleTheme {
+      margin-top: 15px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      background: white;
+      color: var(--primary-dark);
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    #toggleTheme:hover {
+      background: var(--primary-dark);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="about.html">👤 About</a></li>
+      <li><a href="news.html">📰 News</a></li>
+      <li><a href="entertainment.html">🎬 Entertainment</a></li>
+      <li><a href="education.html">📚 Education</a></li>
+      <li><a href="projects.html">💼 Projects</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to My Multipurpose Hub</h1>
+    <p>A personal website built to share knowledge, ideas, entertainment, projects, and resources that benefit learners and the public at large.</p>
+    <div class="cta">
+      <a href="education.html">📚 Explore Resources</a>
+      <a href="projects.html">💼 See Projects</a>
+    </div>
+    <button id="toggleTheme">🌙 Toggle Dark Mode</button>
+  </section>
+
+  <!-- News Section -->
+  <section class="section">
+    <h2>📰 Latest News</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Education Policy Update</h3>
+        <p>Stay informed with the latest updates in the education sector that affect students and teachers alike.</p>
+        <a href="news.html">Read more →</a>
+      </div>
+      <div class="card">
+        <h3>Tech Trends</h3>
+        <p>Discover new technology trends and how they impact our learning, work, and entertainment.</p>
+        <a href="news.html">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entertainment Section -->
+  <section class="section">
+    <h2>🎬 Entertainment Picks</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Top Movie Reviews</h3>
+        <p>Catch up with trending movie reviews, trailers, and recommendations.</p>
+        <a href="entertainment.html">Explore →</a>
+      </div>
+      <div class="card">
+        <h3>Music Highlights</h3>
+        <p>Fresh playlists, new releases, and inspiring artists you should check out.</p>
+        <a href="entertainment.html">Explore →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section">
+    <h2>📚 Learn & Grow</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Notes & Documents</h3>
+        <p>Access curated notes and educational documents for self-study and revision.</p>
+        <a href="education.html">Go to Resources →</a>
+      </div>
+      <div class="card">
+        <h3>Exams & Assignments</h3>
+        <p>Practice with past papers, assignments, and sample questions.</p>
+        <a href="education.html">Go to Resources →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section">
+    <h2>💼 Featured Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Personal Website</h3>
+        <p>A responsive multipurpose website project (this one!) showcasing design and development skills.</p>
+        <a href="projects.html">See more →</a>
+      </div>
+      <div class="card">
+        <h3>Student Portal</h3>
+        <p>A demo portal built to help students access resources, announcements, and schedules.</p>
+        <a href="projects.html">See more →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name | Built with ❤️ to inspire, educate, and entertain
+  </footer>
+
+  <script>
+    const toggleTheme = document.getElementById('toggleTheme');
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleTheme.textContent =
+        document.body.classList.contains('dark') ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+  </script>
+</body>
+</html>
