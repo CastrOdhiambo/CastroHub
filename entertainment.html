@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entertainment - CastroHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+    .card:hover { transform: translateY(-5px); transition: all 0.3s; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 bg-white shadow">
+    <h1 class="text-2xl font-bold text-pink-600">CastroHub</h1>
+    <ul class="hidden md:flex gap-6 font-medium">
+      <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
+      <li><a href="about.html" class="hover:text-pink-500">About</a></li>
+      <li><a href="news.html" class="hover:text-pink-500">News</a></li>
+      <li><a href="entertainment.html" class="text-pink-600 font-bold">Entertainment</a></li>
+      <li><a href="education.html" class="hover:text-pink-500">Education</a></li>
+      <li><a href="projects.html" class="hover:text-pink-500">Projects</a></li>
+      <li><a href="mindspark.html" class="hover:text-pink-500">MindSpark TV</a></li>
+      <li><a href="contact.html" class="hover:text-pink-500">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg text-white text-center py-20 px-6">
+    <h2 class="text-5xl font-bold mb-4">Entertainment Hub</h2>
+    <p class="text-lg md:text-xl">Your one-stop destination for music, videos, memes, and pure fun 🎬🎶😂</p>
+  </section>
+
+  <!-- Category Filters -->
+  <section class="max-w-6xl mx-auto py-10 px-6 text-center">
+    <div class="flex flex-wrap justify-center gap-3">
+      <button class="filter-btn bg-pink-600 text-white px-4 py-2 rounded-lg" data-category="all">All</button>
+      <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Video">Videos</button>
+      <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Music">Music</button>
+      <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Meme">Memes</button>
+      <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Comedy">Comedy</button>
+    </div>
+  </section>
+
+  <!-- Trending Videos -->
+  <section class="max-w-6xl mx-auto px-6 mb-12">
+    <h3 class="text-2xl font-bold mb-6">🎥 Trending Videos</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Video">
+        <iframe class="w-full h-56" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <div class="p-4">
+          <h4 class="font-bold">CastroHub Comedy Highlight</h4>
+        </div>
+      </div>
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Video">
+        <iframe class="w-full h-56" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+        <div class="p-4">
+          <h4 class="font-bold">Trending Music Video</h4>
+        </div>
+      </div>
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Video">
+        <iframe class="w-full h-56" src="https://www.youtube.com/embed/L_jWHffIx5E" allowfullscreen></iframe>
+        <div class="p-4">
+          <h4 class="font-bold">Throwback Classic</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music & Podcasts -->
+  <section class="max-w-6xl mx-auto px-6 mb-12">
+    <h3 class="text-2xl font-bold mb-6">🎶 Music & Podcasts</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card bg-white rounded-lg shadow p-6" data-category="Music">
+        <h4 class="font-semibold mb-2">Afrobeat Vibes</h4>
+        <audio controls class="w-full">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="card bg-white rounded-lg shadow p-6" data-category="Music">
+        <h4 class="font-semibold mb-2">CastroHub Podcast</h4>
+        <audio controls class="w-full">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meme Wall -->
+  <section class="max-w-6xl mx-auto px-6 mb-12">
+    <h3 class="text-2xl font-bold mb-6">😂 Meme Wall</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Meme">
+        <img src="https://i.imgflip.com/7i5hjf.jpg" alt="Meme 1" class="w-full">
+      </div>
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Meme">
+        <img src="https://i.imgflip.com/30b1gx.jpg" alt="Meme 2" class="w-full">
+      </div>
+      <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="Meme">
+        <img src="https://i.imgflip.com/7lh3ao.jpg" alt="Meme 3" class="w-full">
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Recommendations -->
+  <section class="max-w-6xl mx-auto px-6 mb-16">
+    <h3 class="text-2xl font-bold mb-6">🤖 Suggested For You</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="aiSuggestions">
+      <!-- Will be populated dynamically -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
+    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-pink-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.bg-pink-600').classList.remove('bg-pink-600','text-white');
+        document.querySelector('.filter-btn.bg-pink-600').classList.add('bg-gray-200');
+        btn.classList.remove('bg-gray-200');
+        btn.classList.add('bg-pink-600','text-white');
+
+        const category = btn.dataset.category;
+        cards.forEach(card => {
+          card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // AI Suggested Section (simulated)
+    const suggestions = [
+      { title: "🔥 Stand-up Comedy Special", type: "Comedy", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" },
+      { title: "🎧 Chill Beats Playlist", type: "Music", img: "https://via.placeholder.com/400x250" },
+      { title: "🎬 Must-watch Movie Clip", type: "Video", img: "https://via.placeholder.com/400x250" }
+    ];
+
+    const aiContainer = document.getElementById("aiSuggestions");
+    suggestions.forEach(item => {
+      aiContainer.innerHTML += `
+        <div class="card bg-white rounded-lg shadow overflow-hidden">
+          <img src="${item.img}" alt="${item.type}" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">${item.type}</span>
+            <h4 class="font-bold mt-2">${item.title}</h4>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
