@@ -55,76 +55,14 @@
     </div>
   </section>
 
-  <!-- Featured News -->
-  <section class="max-w-6xl mx-auto px-6 mb-12">
-    <div class="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col md:flex-row">
-      <img src="https://via.placeholder.com/600x400" alt="Featured" class="w-full md:w-1/2 object-cover">
-      <div class="p-6 flex flex-col justify-center">
-        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">Tech</span>
-        <h3 class="text-2xl font-bold mb-3">AI Revolution: How CastroHub is Embracing Artificial Intelligence</h3>
-        <p class="text-gray-600 mb-4">Artificial Intelligence is reshaping the way we learn, interact, and create. CastroHub integrates AI to deliver smarter user experiences...</p>
-        <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- News Grid -->
   <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="newsGrid">
-
-    <!-- Sample News Card -->
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Education">
-      <img src="https://via.placeholder.com/400x250" alt="Education News" class="rounded-lg mb-4">
-      <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Education</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">Kenya’s New Curriculum: What It Means for Learners</h4>
-      <p class="text-gray-600 mb-3">An in-depth look into the new curriculum reforms and how they shape the future of education in Kenya.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Sports">
-      <img src="https://via.placeholder.com/400x250" alt="Sports News" class="rounded-lg mb-4">
-      <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Sports</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">Harambee Stars Qualify for AFCON</h4>
-      <p class="text-gray-600 mb-3">Celebrations across the nation as Harambee Stars secure a historic qualification for the Africa Cup of Nations.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Lifestyle">
-      <img src="https://via.placeholder.com/400x250" alt="Lifestyle News" class="rounded-lg mb-4">
-      <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">Lifestyle</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">Healthy Living: 10 Tips for a Balanced Life</h4>
-      <p class="text-gray-600 mb-3">Discover easy lifestyle changes you can adopt for better physical and mental health.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Entertainment">
-      <img src="https://via.placeholder.com/400x250" alt="Entertainment News" class="rounded-lg mb-4">
-      <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Entertainment</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">Kenyan Music Takes Over Africa</h4>
-      <p class="text-gray-600 mb-3">A new wave of Kenyan artists is making waves across Africa with unique sounds and styles.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Tech">
-      <img src="https://via.placeholder.com/400x250" alt="Tech News" class="rounded-lg mb-4">
-      <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">Tech</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">5G Rollout: Opportunities and Challenges</h4>
-      <p class="text-gray-600 mb-3">Kenya is preparing for a 5G future. Here’s what it means for businesses, education, and connectivity.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
-    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Global">
-      <img src="https://via.placeholder.com/400x250" alt="Global News" class="rounded-lg mb-4">
-      <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">Global</span>
-      <h4 class="text-xl font-bold mt-2 mb-2">Climate Action: A Global Call</h4>
-      <p class="text-gray-600 mb-3">World leaders unite to accelerate climate action initiatives at the latest UN summit.</p>
-      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-    </div>
-
+    <!-- News will load here from JSON -->
   </section>
 
   <!-- Load More -->
   <div class="text-center mb-16">
-    <button class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Load More</button>
+    <button id="loadMoreBtn" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Load More</button>
   </div>
 
   <!-- Footer -->
@@ -133,36 +71,87 @@
     <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
   </footer>
 
-  <!-- Search & Filter Script -->
+  <!-- Script -->
   <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const newsCards = document.querySelectorAll('.news-card');
+    let newsData = [];
+    let displayedCount = 0;
+    const perPage = 6;
+
+    const grid = document.getElementById('newsGrid');
     const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
 
+    // Fetch news from JSON
+    fetch('news.json')
+      .then(res => res.json())
+      .then(data => {
+        newsData = data;
+        renderNews();
+      });
+
+    function renderNews(filter = "all", searchQuery = "") {
+      grid.innerHTML = "";
+      let filtered = newsData.filter(item => 
+        (filter === "all" || item.category === filter) &&
+        (item.title.toLowerCase().includes(searchQuery) || item.content.toLowerCase().includes(searchQuery))
+      );
+
+      let slice = filtered.slice(0, displayedCount + perPage);
+      slice.forEach(item => {
+        grid.innerHTML += `
+          <div class="news-card bg-white rounded-lg shadow p-5" data-category="${item.category}">
+            <img src="${item.image}" alt="${item.title}" class="rounded-lg mb-4">
+            <span class="px-3 py-1 rounded-full text-sm font-semibold ${categoryColor(item.category)}">${item.category}</span>
+            <h4 class="text-xl font-bold mt-2 mb-2">${item.title}</h4>
+            <p class="text-gray-600 mb-3">${item.content}</p>
+            <a href="${item.link}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+          </div>
+        `;
+      });
+
+      displayedCount += perPage;
+      loadMoreBtn.style.display = (filtered.length > displayedCount) ? "inline-block" : "none";
+    }
+
+    function categoryColor(cat) {
+      const colors = {
+        "Tech": "bg-blue-100 text-blue-700",
+        "Education": "bg-green-100 text-green-700",
+        "Sports": "bg-red-100 text-red-700",
+        "Lifestyle": "bg-pink-100 text-pink-700",
+        "Entertainment": "bg-yellow-100 text-yellow-700",
+        "Global": "bg-purple-100 text-purple-700"
+      };
+      return colors[cat] || "bg-gray-100 text-gray-700";
+    }
+
+    // Search
+    searchInput.addEventListener("input", () => {
+      displayedCount = 0;
+      renderNews(currentFilter, searchInput.value.toLowerCase());
+    });
+
+    // Filters
+    let currentFilter = "all";
     filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelector('.filter-btn.bg-indigo-600').classList.remove('bg-indigo-600','text-white');
-        document.querySelector('.filter-btn.bg-indigo-600').classList.add('bg-gray-200');
+      btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.bg-indigo-600").classList.remove("bg-indigo-600","text-white");
+        document.querySelector(".filter-btn.bg-indigo-600").classList.add("bg-gray-200");
 
-        btn.classList.remove('bg-gray-200');
-        btn.classList.add('bg-indigo-600','text-white');
+        btn.classList.remove("bg-gray-200");
+        btn.classList.add("bg-indigo-600","text-white");
 
-        const category = btn.dataset.category;
-        newsCards.forEach(card => {
-          const cardCat = card.dataset.category;
-          card.style.display = (category === 'all' || cardCat === category) ? 'block' : 'none';
-        });
+        currentFilter = btn.dataset.category;
+        displayedCount = 0;
+        renderNews(currentFilter, searchInput.value.toLowerCase());
       });
     });
 
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      newsCards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(query) ? 'block' : 'none';
-      });
+    // Load More
+    loadMoreBtn.addEventListener("click", () => {
+      renderNews(currentFilter, searchInput.value.toLowerCase());
     });
   </script>
-
 </body>
 </html>
