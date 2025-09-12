@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindSpark TV | CastroHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .video-card iframe {
+      border-radius: 12px;
+      width: 100%;
+      height: 220px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-xl font-bold text-pink-600">CastroHub</a>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="index.html" class="hover:text-pink-600">Home</a>
+        <a href="about.html" class="hover:text-pink-600">About</a>
+        <a href="news.html" class="hover:text-pink-600">News</a>
+        <a href="entertainment.html" class="hover:text-pink-600">Entertainment</a>
+        <a href="education.html" class="hover:text-pink-600">Education</a>
+        <a href="projects.html" class="hover:text-pink-600">Projects</a>
+        <a href="mindspark.html" class="text-pink-600 font-semibold">MindSpark TV</a>
+        <a href="contact.html" class="hover:text-pink-600">Contact</a>
+      </nav>
+      <button class="md:hidden" onclick="toggleMenu()"><i data-feather="menu"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden flex-col px-6 pb-4 space-y-3 bg-white shadow md:hidden">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="news.html">News</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="education.html">Education</a>
+      <a href="projects.html">Projects</a>
+      <a href="mindspark.html" class="text-pink-600 font-semibold">MindSpark TV</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-pink-600 to-purple-700 text-white py-16 px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold">🎥 MindSpark TV</h1>
+    <p class="mt-4 text-lg max-w-2xl mx-auto">
+      Watch, learn, and get inspired with MindSpark TV – your home for education, entertainment, news, and innovation.
+    </p>
+  </section>
+
+  <!-- Featured Video -->
+  <section class="max-w-5xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-2xl font-bold mb-6">🔥 Featured Video</h2>
+    <div class="rounded-xl overflow-hidden shadow-lg">
+      <iframe src="https://www.youtube.com/embed/Oz1KfPkuWKQ" frameborder="0" allowfullscreen class="w-full h-80 md:h-[480px]"></iframe>
+    </div>
+  </section>
+
+  <!-- Search & Filters -->
+  <section class="max-w-6xl mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+      <input type="text" id="searchInput" placeholder="Search videos..." class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+      <div class="space-x-2">
+        <button class="filter-btn bg-pink-600 text-white px-4 py-2 rounded-lg" data-category="all">All</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Education">Education</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="News">News</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Projects">Projects</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Grid -->
+  <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16" id="videoList">
+
+    <!-- Example Video Card -->
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Education">
+      <iframe src="https://www.youtube.com/embed/Oz1KfPkuWKQ" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">Understanding Databases</h3>
+      <p class="text-sm text-gray-600">Educational | Computer Studies</p>
+    </div>
+
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="News">
+      <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">Global News Update</h3>
+      <p class="text-sm text-gray-600">News | Trending Topics</p>
+    </div>
+
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Entertainment">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">Music Vibes</h3>
+      <p class="text-sm text-gray-600">Entertainment | Music</p>
+    </div>
+
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Projects">
+      <iframe src="https://www.youtube.com/embed/ktjafK4SgWM" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">My Tech Project Demo</h3>
+      <p class="text-sm text-gray-600">Projects | Showcase</p>
+    </div>
+
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Education">
+      <iframe src="https://www.youtube.com/embed/2vjPBrBU-TM" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">Mathematics Tutorial</h3>
+      <p class="text-sm text-gray-600">Education | Math</p>
+    </div>
+
+    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Entertainment">
+      <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe>
+      <h3 class="mt-3 font-semibold">Fun Entertainment Clip</h3>
+      <p class="text-sm text-gray-600">Entertainment | Lifestyle</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-pink-600 text-white text-center py-12">
+    <h2 class="text-2xl font-bold mb-4">🚀 Don’t Miss Out!</h2>
+    <p class="mb-6">Subscribe to MindSpark TV and never miss the latest videos.</p>
+    <a href="https://www.youtube.com" target="_blank" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Subscribe Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <p>&copy; 2025 MindSpark TV | CastroHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const videoCards = document.querySelectorAll('.video-card');
+    const searchInput = document.getElementById('searchInput');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.bg-pink-600')?.classList.replace("bg-pink-600","bg-gray-200");
+        document.querySelector('.filter-btn.bg-gray-200.text-white')?.classList.remove("text-white");
+        btn.classList.replace("bg-gray-200","bg-pink-600");
+        btn.classList.add("text-white");
+
+        const category = btn.dataset.category;
+        videoCards.forEach(card => {
+          const match = category === 'all' || card.dataset.category.includes(category);
+          card.style.display = match ? 'block' : 'none';
+        });
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      videoCards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
