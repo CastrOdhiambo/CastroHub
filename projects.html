@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CastroHub | Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold tracking-wide">CastroHub</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
+          <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
+          <li><a href="news.html" class="hover:text-yellow-300">News</a></li>
+          <li><a href="entertainment.html" class="hover:text-yellow-300">Entertainment</a></li>
+          <li><a href="education.html" class="hover:text-yellow-300">Education</a></li>
+          <li><a href="projects.html" class="font-semibold text-yellow-300">Projects</a></li>
+          <li><a href="mindspark.html" class="hover:text-yellow-300">MindSpark TV</a></li>
+          <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-50 py-12 text-center">
+    <h2 class="text-4xl font-bold text-blue-700">My Projects</h2>
+    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
+      Explore some of the exciting projects I’ve built and contributed to — from web apps to AI experiments.
+    </p>
+  </section>
+
+  <!-- Filters & Search -->
+  <section class="container mx-auto px-6 mt-8">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center bg-white p-4 rounded-lg shadow">
+      <div class="flex space-x-4">
+        <select id="projectCategory" class="border rounded px-3 py-2">
+          <option value="all">All Categories</option>
+          <option value="web">Web Development</option>
+          <option value="ai">AI & Machine Learning</option>
+          <option value="education">Education</option>
+          <option value="design">Design</option>
+        </select>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <input id="projectSearch" type="text" placeholder="Search projects..." 
+               class="border rounded px-3 py-2 w-64">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Grid -->
+  <section class="container mx-auto px-6 mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" id="projectGrid">
+    <!-- Project Card -->
+    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="web">
+      <img src="https://source.unsplash.com/400x250/?website" alt="Web Project" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold">Personal Portfolio</h3>
+        <p class="text-sm text-gray-600 mb-2">A responsive website to showcase my skills and work.</p>
+        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Web</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="ai">
+      <img src="https://source.unsplash.com/400x250/?artificial-intelligence" alt="AI Project" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold">AI Tutor</h3>
+        <p class="text-sm text-gray-600 mb-2">An AI-powered chatbot to assist with learning.</p>
+        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">AI</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="education">
+      <img src="https://source.unsplash.com/400x250/?education" alt="Education Project" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold">E-Learning Platform</h3>
+        <p class="text-sm text-gray-600 mb-2">A platform for accessing educational materials and quizzes.</p>
+        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Education</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="design">
+      <img src="https://source.unsplash.com/400x250/?design" alt="Design Project" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold">UI Design Concepts</h3>
+        <p class="text-sm text-gray-600 mb-2">Creative UI/UX concepts for modern web and mobile apps.</p>
+        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded">Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2025 CastroHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const projectCategory = document.getElementById('projectCategory');
+    const projectSearch = document.getElementById('projectSearch');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    function filterProjects() {
+      const category = projectCategory.value;
+      const search = projectSearch.value.toLowerCase();
+      projectCards.forEach(card => {
+        const matchesCategory = category === "all" || card.dataset.category === category;
+        const matchesSearch = card.innerText.toLowerCase().includes(search);
+        card.style.display = matchesCategory && matchesSearch ? "block" : "none";
+      });
+    }
+
+    projectCategory.addEventListener("change", filterProjects);
+    projectSearch.addEventListener("input", filterProjects);
+  </script>
+</body>
+</html>
