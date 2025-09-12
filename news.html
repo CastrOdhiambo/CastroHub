@@ -10,6 +10,24 @@
     body { font-family: 'Poppins', sans-serif; }
     .hero-bg { background: linear-gradient(135deg, #2563eb, #9333ea); }
     .news-card:hover { transform: translateY(-5px); transition: all 0.3s; }
+    .filter-btn {
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+    }
+    .filter-btn:hover {
+      background: #e0e7ff;
+      color: #4338ca;
+      transform: translateY(-2px);
+    }
+    .active-filter {
+      background: linear-gradient(135deg, #2563eb, #9333ea);
+      color: white !important;
+      border: none;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -32,32 +50,35 @@
   <!-- Hero Section -->
   <section class="hero-bg text-white text-center py-20 px-6">
     <h2 class="text-5xl font-bold mb-4">CastroHub News</h2>
-    <p class="text-lg md:text-xl">Stay informed with updates across Tech, Education, Lifestyle, Sports, and more.</p>
+    <p class="text-lg md:text-xl">Stay informed with updates across Tech, Education, Lifestyle, Sports, Entertainment, and more.</p>
   </section>
 
   <!-- Search & Filters -->
   <section class="max-w-6xl mx-auto py-10 px-6">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
       <!-- Search -->
-      <input type="text" id="searchInput" placeholder="Search news..." 
-             class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+      <input type="text" id="searchInput" placeholder="🔍 Search news..." 
+             class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm">
 
       <!-- Filters -->
-      <div class="flex flex-wrap gap-2">
-        <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg" data-category="all">All</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Tech">Tech</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Education">Education</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Sports">Sports</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Lifestyle">Lifestyle</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Global">Global</button>
+      <div class="flex flex-wrap gap-2" id="filterContainer">
+        <button class="filter-btn active-filter px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Tech">Tech</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Education">Education</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Sports">Sports</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Lifestyle">Lifestyle</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn px-4 py-2 rounded-full transition-all duration-300 shadow-sm" data-category="Global">Global</button>
       </div>
     </div>
   </section>
 
+  <!-- Featured News -->
+  <section class="max-w-6xl mx-auto px-6 mb-12" id="featuredNews"></section>
+
   <!-- News Grid -->
   <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="newsGrid">
-    <!-- News will load here from JSON -->
+    <!-- News will be injected here -->
   </section>
 
   <!-- Load More -->
@@ -71,87 +92,102 @@
     <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
   </footer>
 
-  <!-- Script -->
+  <!-- Scripts -->
   <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsGrid = document.getElementById('newsGrid');
+    const featuredNews = document.getElementById('featuredNews');
+    const searchInput = document.getElementById('searchInput');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
     let newsData = [];
     let displayedCount = 0;
     const perPage = 6;
 
-    const grid = document.getElementById('newsGrid');
-    const searchInput = document.getElementById('searchInput');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-
     // Fetch news from JSON
-    fetch('news.json')
-      .then(res => res.json())
-      .then(data => {
-        newsData = data;
+    async function fetchNews() {
+      try {
+        const response = await fetch('news.json');
+        newsData = await response.json();
+        renderFeatured();
         renderNews();
-      });
+      } catch (err) {
+        console.error('Error loading news.json', err);
+      }
+    }
 
-    function renderNews(filter = "all", searchQuery = "") {
-      grid.innerHTML = "";
-      let filtered = newsData.filter(item => 
-        (filter === "all" || item.category === filter) &&
-        (item.title.toLowerCase().includes(searchQuery) || item.content.toLowerCase().includes(searchQuery))
-      );
+    function renderFeatured() {
+      if(newsData.length > 0) {
+        const item = newsData[0];
+        featuredNews.innerHTML = `
+          <div class="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col md:flex-row">
+            <img src="${item.image}" alt="${item.title}" class="w-full md:w-1/2 object-cover">
+            <div class="p-6 flex flex-col justify-center">
+              <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">${item.category}</span>
+              <h3 class="text-2xl font-bold mb-3">${item.title}</h3>
+              <p class="text-gray-600 mb-4">${item.description}</p>
+              <a href="${item.link}" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+            </div>
+          </div>`;
+      }
+    }
 
-      let slice = filtered.slice(0, displayedCount + perPage);
+    function renderNews(filter = "all", query = "") {
+      newsGrid.innerHTML = "";
+      let filtered = newsData.slice(1); // exclude featured
+
+      if (filter !== "all") {
+        filtered = filtered.filter(n => n.category === filter);
+      }
+
+      if (query) {
+        filtered = filtered.filter(n => n.title.toLowerCase().includes(query) || n.description.toLowerCase().includes(query));
+      }
+
+      const slice = filtered.slice(displayedCount, displayedCount + perPage);
       slice.forEach(item => {
-        grid.innerHTML += `
+        newsGrid.innerHTML += `
           <div class="news-card bg-white rounded-lg shadow p-5" data-category="${item.category}">
             <img src="${item.image}" alt="${item.title}" class="rounded-lg mb-4">
-            <span class="px-3 py-1 rounded-full text-sm font-semibold ${categoryColor(item.category)}">${item.category}</span>
+            <span class="px-3 py-1 rounded-full text-sm font-semibold 
+              ${item.category === 'Tech' ? 'bg-blue-100 text-blue-700' :
+                item.category === 'Education' ? 'bg-green-100 text-green-700' :
+                item.category === 'Sports' ? 'bg-red-100 text-red-700' :
+                item.category === 'Lifestyle' ? 'bg-pink-100 text-pink-700' :
+                item.category === 'Entertainment' ? 'bg-yellow-100 text-yellow-700' :
+                'bg-purple-100 text-purple-700'}">${item.category}</span>
             <h4 class="text-xl font-bold mt-2 mb-2">${item.title}</h4>
-            <p class="text-gray-600 mb-3">${item.content}</p>
-            <a href="${item.link}" target="_blank" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-          </div>
-        `;
+            <p class="text-gray-600 mb-3">${item.description}</p>
+            <a href="${item.link}" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+          </div>`;
       });
 
-      displayedCount += perPage;
-      loadMoreBtn.style.display = (filtered.length > displayedCount) ? "inline-block" : "none";
+      displayedCount += slice.length;
+      loadMoreBtn.style.display = displayedCount >= filtered.length ? "none" : "inline-block";
     }
 
-    function categoryColor(cat) {
-      const colors = {
-        "Tech": "bg-blue-100 text-blue-700",
-        "Education": "bg-green-100 text-green-700",
-        "Sports": "bg-red-100 text-red-700",
-        "Lifestyle": "bg-pink-100 text-pink-700",
-        "Entertainment": "bg-yellow-100 text-yellow-700",
-        "Global": "bg-purple-100 text-purple-700"
-      };
-      return colors[cat] || "bg-gray-100 text-gray-700";
-    }
-
-    // Search
-    searchInput.addEventListener("input", () => {
-      displayedCount = 0;
-      renderNews(currentFilter, searchInput.value.toLowerCase());
+    // Filter buttons
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove("active-filter"));
+        btn.classList.add("active-filter");
+        displayedCount = 0;
+        renderNews(btn.dataset.category, searchInput.value.toLowerCase());
+      });
     });
 
-    // Filters
-    let currentFilter = "all";
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelector(".filter-btn.bg-indigo-600").classList.remove("bg-indigo-600","text-white");
-        document.querySelector(".filter-btn.bg-indigo-600").classList.add("bg-gray-200");
-
-        btn.classList.remove("bg-gray-200");
-        btn.classList.add("bg-indigo-600","text-white");
-
-        currentFilter = btn.dataset.category;
-        displayedCount = 0;
-        renderNews(currentFilter, searchInput.value.toLowerCase());
-      });
+    // Search
+    searchInput.addEventListener('input', () => {
+      displayedCount = 0;
+      renderNews(document.querySelector('.active-filter').dataset.category, searchInput.value.toLowerCase());
     });
 
     // Load More
-    loadMoreBtn.addEventListener("click", () => {
-      renderNews(currentFilter, searchInput.value.toLowerCase());
+    loadMoreBtn.addEventListener('click', () => {
+      renderNews(document.querySelector('.active-filter').dataset.category, searchInput.value.toLowerCase());
     });
+
+    fetchNews();
   </script>
 </body>
 </html>
