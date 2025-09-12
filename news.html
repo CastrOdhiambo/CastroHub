@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News - CastroHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #2563eb, #9333ea); }
+    .news-card:hover { transform: translateY(-5px); transition: all 0.3s; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 bg-white shadow">
+    <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
+    <ul class="hidden md:flex gap-6 font-medium">
+      <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
+      <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
+      <li><a href="news.html" class="text-indigo-600 font-bold">News</a></li>
+      <li><a href="entertainment.html" class="hover:text-indigo-600">Entertainment</a></li>
+      <li><a href="education.html" class="hover:text-indigo-600">Education</a></li>
+      <li><a href="projects.html" class="hover:text-indigo-600">Projects</a></li>
+      <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
+      <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg text-white text-center py-20 px-6">
+    <h2 class="text-5xl font-bold mb-4">CastroHub News</h2>
+    <p class="text-lg md:text-xl">Stay informed with updates across Tech, Education, Lifestyle, Sports, and more.</p>
+  </section>
+
+  <!-- Search & Filters -->
+  <section class="max-w-6xl mx-auto py-10 px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+      <!-- Search -->
+      <input type="text" id="searchInput" placeholder="Search news..." 
+             class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-btn bg-indigo-600 text-white px-4 py-2 rounded-lg" data-category="all">All</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Tech">Tech</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Education">Education</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Sports">Sports</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Lifestyle">Lifestyle</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Global">Global</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured News -->
+  <section class="max-w-6xl mx-auto px-6 mb-12">
+    <div class="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col md:flex-row">
+      <img src="https://via.placeholder.com/600x400" alt="Featured" class="w-full md:w-1/2 object-cover">
+      <div class="p-6 flex flex-col justify-center">
+        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">Tech</span>
+        <h3 class="text-2xl font-bold mb-3">AI Revolution: How CastroHub is Embracing Artificial Intelligence</h3>
+        <p class="text-gray-600 mb-4">Artificial Intelligence is reshaping the way we learn, interact, and create. CastroHub integrates AI to deliver smarter user experiences...</p>
+        <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Grid -->
+  <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="newsGrid">
+
+    <!-- Sample News Card -->
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Education">
+      <img src="https://via.placeholder.com/400x250" alt="Education News" class="rounded-lg mb-4">
+      <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Education</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">Kenya’s New Curriculum: What It Means for Learners</h4>
+      <p class="text-gray-600 mb-3">An in-depth look into the new curriculum reforms and how they shape the future of education in Kenya.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Sports">
+      <img src="https://via.placeholder.com/400x250" alt="Sports News" class="rounded-lg mb-4">
+      <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Sports</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">Harambee Stars Qualify for AFCON</h4>
+      <p class="text-gray-600 mb-3">Celebrations across the nation as Harambee Stars secure a historic qualification for the Africa Cup of Nations.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Lifestyle">
+      <img src="https://via.placeholder.com/400x250" alt="Lifestyle News" class="rounded-lg mb-4">
+      <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">Lifestyle</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">Healthy Living: 10 Tips for a Balanced Life</h4>
+      <p class="text-gray-600 mb-3">Discover easy lifestyle changes you can adopt for better physical and mental health.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Entertainment">
+      <img src="https://via.placeholder.com/400x250" alt="Entertainment News" class="rounded-lg mb-4">
+      <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Entertainment</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">Kenyan Music Takes Over Africa</h4>
+      <p class="text-gray-600 mb-3">A new wave of Kenyan artists is making waves across Africa with unique sounds and styles.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Tech">
+      <img src="https://via.placeholder.com/400x250" alt="Tech News" class="rounded-lg mb-4">
+      <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">Tech</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">5G Rollout: Opportunities and Challenges</h4>
+      <p class="text-gray-600 mb-3">Kenya is preparing for a 5G future. Here’s what it means for businesses, education, and connectivity.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+    <div class="news-card bg-white rounded-lg shadow p-5" data-category="Global">
+      <img src="https://via.placeholder.com/400x250" alt="Global News" class="rounded-lg mb-4">
+      <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">Global</span>
+      <h4 class="text-xl font-bold mt-2 mb-2">Climate Action: A Global Call</h4>
+      <p class="text-gray-600 mb-3">World leaders unite to accelerate climate action initiatives at the latest UN summit.</p>
+      <a href="#" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+    </div>
+
+  </section>
+
+  <!-- Load More -->
+  <div class="text-center mb-16">
+    <button class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Load More</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
+    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  </footer>
+
+  <!-- Search & Filter Script -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+    const searchInput = document.getElementById('searchInput');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.bg-indigo-600').classList.remove('bg-indigo-600','text-white');
+        document.querySelector('.filter-btn.bg-indigo-600').classList.add('bg-gray-200');
+
+        btn.classList.remove('bg-gray-200');
+        btn.classList.add('bg-indigo-600','text-white');
+
+        const category = btn.dataset.category;
+        newsCards.forEach(card => {
+          const cardCat = card.dataset.category;
+          card.style.display = (category === 'all' || cardCat === category) ? 'block' : 'none';
+        });
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      newsCards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
