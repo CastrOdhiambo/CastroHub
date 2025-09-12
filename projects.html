@@ -57,43 +57,21 @@
 
   <!-- Project Grid -->
   <section class="container mx-auto px-6 mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" id="projectGrid">
-    <!-- Project Card -->
-    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="web">
-      <img src="https://source.unsplash.com/400x250/?website" alt="Web Project" class="w-full h-40 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold">Personal Portfolio</h3>
-        <p class="text-sm text-gray-600 mb-2">A responsive website to showcase my skills and work.</p>
-        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Web</span>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="ai">
-      <img src="https://source.unsplash.com/400x250/?artificial-intelligence" alt="AI Project" class="w-full h-40 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold">AI Tutor</h3>
-        <p class="text-sm text-gray-600 mb-2">An AI-powered chatbot to assist with learning.</p>
-        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">AI</span>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="education">
-      <img src="https://source.unsplash.com/400x250/?education" alt="Education Project" class="w-full h-40 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold">E-Learning Platform</h3>
-        <p class="text-sm text-gray-600 mb-2">A platform for accessing educational materials and quizzes.</p>
-        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Education</span>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow overflow-hidden project-card" data-category="design">
-      <img src="https://source.unsplash.com/400x250/?design" alt="Design Project" class="w-full h-40 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold">UI Design Concepts</h3>
-        <p class="text-sm text-gray-600 mb-2">Creative UI/UX concepts for modern web and mobile apps.</p>
-        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded">Design</span>
-      </div>
-    </div>
+    <!-- Projects will load here from JSON -->
   </section>
+
+  <!-- Modal -->
+  <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+      <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <img id="modalImage" src="" alt="Project Image" class="w-full h-48 object-cover rounded">
+      <h3 id="modalTitle" class="text-2xl font-bold mt-4"></h3>
+      <p id="modalDescription" class="text-gray-700 mt-2"></p>
+      <a id="modalLink" href="#" target="_blank" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 hidden">View Project</a>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-300 py-6 mt-auto">
@@ -102,24 +80,84 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
     const projectCategory = document.getElementById('projectCategory');
     const projectSearch = document.getElementById('projectSearch');
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectGrid = document.getElementById('projectGrid');
+    let projects = [];
 
+    // Modal elements
+    const modal = document.getElementById("projectModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalLink = document.getElementById("modalLink");
+    const closeModal = document.getElementById("closeModal");
+
+    // Fetch projects from JSON
+    async function loadProjects() {
+      const response = await fetch('projects.json');
+      projects = await response.json();
+      displayProjects(projects);
+    }
+
+    // Render projects dynamically
+    function displayProjects(projectsToShow) {
+      projectGrid.innerHTML = "";
+      projectsToShow.forEach(project => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-lg shadow overflow-hidden project-card cursor-pointer hover:scale-105 transform transition";
+        card.dataset.category = project.category;
+        card.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">${project.title}</h3>
+            <p class="text-sm text-gray-600 mb-2">${project.description}</p>
+            <span class="text-xs px-2 py-1 rounded ${
+              project.category === "web" ? "bg-blue-100 text-blue-700" :
+              project.category === "ai" ? "bg-purple-100 text-purple-700" :
+              project.category === "education" ? "bg-green-100 text-green-700" :
+              "bg-pink-100 text-pink-700"
+            }">${project.tag}</span>
+          </div>
+        `;
+
+        // Open modal on click
+        card.addEventListener("click", () => {
+          modalImage.src = project.image;
+          modalTitle.textContent = project.title;
+          modalDescription.textContent = project.description;
+          if (project.link) {
+            modalLink.href = project.link;
+            modalLink.classList.remove("hidden");
+          } else {
+            modalLink.classList.add("hidden");
+          }
+          modal.classList.remove("hidden");
+        });
+
+        projectGrid.appendChild(card);
+      });
+    }
+
+    // Filter projects
     function filterProjects() {
       const category = projectCategory.value;
       const search = projectSearch.value.toLowerCase();
-      projectCards.forEach(card => {
-        const matchesCategory = category === "all" || card.dataset.category === category;
-        const matchesSearch = card.innerText.toLowerCase().includes(search);
-        card.style.display = matchesCategory && matchesSearch ? "block" : "none";
-      });
+      const filtered = projects.filter(p =>
+        (category === "all" || p.category === category) &&
+        (p.title.toLowerCase().includes(search) || p.description.toLowerCase().includes(search))
+      );
+      displayProjects(filtered);
     }
 
     projectCategory.addEventListener("change", filterProjects);
     projectSearch.addEventListener("input", filterProjects);
+    closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+    modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.add("hidden"); });
+
+    loadProjects();
   </script>
 </body>
 </html>
