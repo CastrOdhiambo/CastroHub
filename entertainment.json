@@ -1,0 +1,10 @@
+[
+  { "title": "CastroHub Comedy Highlight", "type": "video", "category": "Video", "src": "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { "title": "Trending Music Video", "type": "video", "category": "Video", "src": "https://www.youtube.com/embed/3JZ_D3ELwOQ" },
+  { "title": "Throwback Classic", "type": "video", "category": "Video", "src": "https://www.youtube.com/embed/L_jWHffIx5E" },
+  { "title": "Afrobeat Vibes", "type": "audio", "category": "Music", "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+  { "title": "CastroHub Podcast", "type": "audio", "category": "Music", "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+  { "title": "Meme 1", "type": "image", "category": "Meme", "src": "https://i.imgflip.com/7i5hjf.jpg" },
+  { "title": "Meme 2", "type": "image", "category": "Meme", "src": "https://i.imgflip.com/30b1gx.jpg" },
+  { "title": "Meme 3", "type": "image", "category": "Meme", "src": "https://i.imgflip.com/7lh3ao.jpg" }
+]
