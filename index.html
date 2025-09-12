@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CastroHub - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide-react@latest"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #1e3a8a, #9333ea); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 bg-white shadow">
+    <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
+    <ul class="hidden md:flex gap-6 font-medium">
+      <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
+      <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
+      <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
+      <li><a href="entertainment.html" class="hover:text-indigo-600">Entertainment</a></li>
+      <li><a href="education.html" class="hover:text-indigo-600">Education</a></li>
+      <li><a href="projects.html" class="hover:text-indigo-600">Projects</a></li>
+      <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
+      <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg text-white text-center py-20 px-6">
+    <h2 class="text-4xl md:text-6xl font-bold mb-4">Welcome to CastroHub</h2>
+    <p class="text-lg md:text-xl mb-6">Your all-in-one hub for News, Entertainment, Education, Projects & MindSpark TV</p>
+    <a href="about.html" class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-200">Get Started</a>
+  </section>
+
+  <!-- AI Search -->
+  <section class="max-w-4xl mx-auto py-12 px-6">
+    <h3 class="text-2xl font-bold text-center mb-4">Explore CastroHub with AI Search</h3>
+    <p class="text-center mb-6 text-gray-600">Search across news, entertainment, education and more.</p>
+    <div class="flex items-center gap-2 bg-white shadow rounded-lg p-3">
+      <input type="text" placeholder="Ask CastroHub anything..." class="flex-1 px-4 py-2 outline-none"/>
+      <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Search</button>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="bg-white p-6 shadow rounded-lg hover:shadow-lg transition">
+      <h4 class="text-xl font-bold mb-2 text-indigo-700">News</h4>
+      <p class="text-gray-600">Stay updated with the latest stories cutting across niches.</p>
+      <a href="news.html" class="text-indigo-600 font-semibold mt-3 inline-block">Explore →</a>
+    </div>
+    <div class="bg-white p-6 shadow rounded-lg hover:shadow-lg transition">
+      <h4 class="text-xl font-bold mb-2 text-indigo-700">Entertainment</h4>
+      <p class="text-gray-600">Enjoy trending entertainment, music, and fun stories.</p>
+      <a href="entertainment.html" class="text-indigo-600 font-semibold mt-3 inline-block">Explore →</a>
+    </div>
+    <div class="bg-white p-6 shadow rounded-lg hover:shadow-lg transition">
+      <h4 class="text-xl font-bold mb-2 text-indigo-700">Education</h4>
+      <p class="text-gray-600">Learn through resources, tutorials, and knowledge sharing.</p>
+      <a href="education.html" class="text-indigo-600 font-semibold mt-3 inline-block">Explore →</a>
+    </div>
+    <div class="bg-white p-6 shadow rounded-lg hover:shadow-lg transition">
+      <h4 class="text-xl font-bold mb-2 text-indigo-700">Projects</h4>
+      <p class="text-gray-600">Check out Castro’s innovative personal and tech projects.</p>
+      <a href="projects.html" class="text-indigo-600 font-semibold mt-3 inline-block">Explore →</a>
+    </div>
+  </section>
+
+  <!-- MindSpark Spotlight -->
+  <section class="bg-gray-100 py-12 px-6 text-center">
+    <h3 class="text-3xl font-bold mb-6 text-indigo-700">MindSpark TV Spotlight</h3>
+    <div class="max-w-3xl mx-auto">
+      <iframe class="w-full aspect-video rounded-lg shadow" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="MindSpark TV" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <a href="mindspark.html" class="mt-6 inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Watch More</a>
+  </section>
+
+  <!-- About Preview -->
+  <section class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-8 items-center">
+    <img src="https://via.placeholder.com/400x300" alt="Castro" class="rounded-lg shadow">
+    <div>
+      <h3 class="text-3xl font-bold text-indigo-700 mb-4">About CastroHub</h3>
+      <p class="text-gray-700 mb-4">Hi, I’m Castro Odhiambo, the creator of CastroHub. This platform is designed to inform, educate, entertain, and inspire. Whether you’re here for learning, updates, or projects, CastroHub is your go-to hub.</p>
+      <a href="about.html" class="bg-indigo-600 text-white px-5 py-3 rounded-lg hover:bg-indigo-700">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-indigo-700 text-white py-12 text-center px-6">
+    <h3 class="text-2xl font-bold mb-4">Stay Connected with CastroHub</h3>
+    <p class="mb-6">Subscribe to get updates on news, entertainment, and education.</p>
+    <form class="max-w-md mx-auto flex">
+      <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-lg outline-none text-gray-900"/>
+      <button type="submit" class="bg-white text-indigo-700 px-4 py-2 font-semibold rounded-r-lg">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
+    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  </footer>
+
+</body>
+</html>
