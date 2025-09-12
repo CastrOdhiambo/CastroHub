@@ -27,6 +27,13 @@
       "description": "best revision book for KCSE",
       "link": "notes/biology.pdf",
       "tags": ["science", "education", "learn"]
+    },
+    {
+      "title": "Mathematics Topical Revision Questions",
+      "category": "Educational",
+      "description": "Contantaina alot of  KCSE revsion Questions Organised Per topic",
+      "link": "Assets/maths topical revisions.pdf",
+      "tags": ["Maths", "education", "learn"]
     }
   ]
 }
