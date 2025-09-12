@@ -29,6 +29,16 @@
           "videoUrl": "https://www.youtube.com/embed/ijkl9012"
         }
       ]
+    },
+    {
+      "name": "Videos",
+      "videos": [
+        {
+          "title": "Getting Started with Microsft Access| Computer Studies | Learning",
+          "thumbnail": "images/ent1.jpg",
+          "videoUrl": "https://www.youtube.com/embed/ijkl9012"
+        }
+      ]
     }
   ]
 }
