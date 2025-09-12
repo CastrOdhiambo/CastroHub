@@ -1,0 +1,25 @@
+{
+  "resources": [
+    {
+      "title": "Mathematics Revision Notes",
+      "category": "Notes",
+      "description": "Complete notes for Algebra, Geometry, and Calculus.",
+      "link": "notes/math.pdf",
+      "tags": ["math", "revision", "education"]
+    },
+    {
+      "title": "Computer Studies Past Paper 2022",
+      "category": "Exams",
+      "description": "Final year exam paper with marking scheme.",
+      "link": "exams/computer2022.pdf",
+      "tags": ["computer", "exams", "education"]
+    },
+    {
+      "title": "Science Project: Solar Energy",
+      "category": "Projects",
+      "description": "A detailed project exploring solar energy for sustainable schools.",
+      "link": "projects/solar.html",
+      "tags": ["science", "projects", "energy"]
+    }
+  ]
+}
