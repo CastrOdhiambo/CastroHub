@@ -1,165 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MindSpark TV | CastroHub</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    .video-card iframe {
-      border-radius: 12px;
-      width: 100%;
-      height: 220px;
-    }
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: linear-gradient(90deg,#ff5722,#ff9800); padding:20px; text-align:center; color:white; }
+    nav ul { list-style:none; display:flex; justify-content:center; gap:25px; padding:0; margin:10px 0 0; }
+    nav a { color:white; text-decoration:none; font-weight:600; }
+    nav a:hover { text-decoration:underline; }
+    .container { max-width:1200px; margin:20px auto; padding:20px; }
+    .player { text-align:center; margin-bottom:30px; }
+    .player iframe { width:100%; max-width:800px; height:450px; border-radius:12px; border:none; box-shadow:0 3px 8px rgba(0,0,0,0.2); }
+    h2 { margin:20px 0; color:#333; }
+    .search-bar { margin:20px 0; text-align:center; }
+    .search-bar input { width:70%; padding:10px; border-radius:8px; border:1px solid #ccc; }
+    .videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background:white; border-radius:12px; padding:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s; }
+    .card:hover { transform:translateY(-5px); }
+    .card img { width:100%; border-radius:8px; margin-bottom:10px; }
+    footer { text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; color:#777; background:#f1f1f1; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-  <!-- Navbar -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <a href="index.html" class="text-xl font-bold text-pink-600">CastroHub</a>
-      <nav class="space-x-6 hidden md:flex">
-        <a href="index.html" class="hover:text-pink-600">Home</a>
-        <a href="about.html" class="hover:text-pink-600">About</a>
-        <a href="news.html" class="hover:text-pink-600">News</a>
-        <a href="entertainment.html" class="hover:text-pink-600">Entertainment</a>
-        <a href="education.html" class="hover:text-pink-600">Education</a>
-        <a href="projects.html" class="hover:text-pink-600">Projects</a>
-        <a href="mindspark.html" class="text-pink-600 font-semibold">MindSpark TV</a>
-        <a href="contact.html" class="hover:text-pink-600">Contact</a>
-      </nav>
-      <button class="md:hidden" onclick="toggleMenu()"><i data-feather="menu"></i></button>
-    </div>
-    <div id="mobileMenu" class="hidden flex-col px-6 pb-4 space-y-3 bg-white shadow md:hidden">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="news.html">News</a>
-      <a href="entertainment.html">Entertainment</a>
-      <a href="education.html">Education</a>
-      <a href="projects.html">Projects</a>
-      <a href="mindspark.html" class="text-pink-600 font-semibold">MindSpark TV</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </header>
+<header>
+  <h2>📺 MindSpark TV on CastroHub</h2>
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="about.html">👤 About</a></li>
+      <li><a href="news.html">📰 News</a></li>
+      <li><a href="entertainment.html">🎬 Entertainment</a></li>
+      <li><a href="education.html">📚 Education</a></li>
+      <li><a href="projects.html">💼 Projects</a></li>
+      <li><a href="mindspark.html">📺 MindSpark TV</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-r from-pink-600 to-purple-700 text-white py-16 px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-extrabold">🎥 MindSpark TV</h1>
-    <p class="mt-4 text-lg max-w-2xl mx-auto">
-      Watch, learn, and get inspired with MindSpark TV – your home for education, entertainment, news, and innovation.
-    </p>
-  </section>
+<div class="container">
+  <!-- Featured Player -->
+  <div class="player" id="video-player">
+    <iframe src="" allowfullscreen></iframe>
+    <h3 id="video-title"></h3>
+    <p id="video-description"></p>
+  </div>
 
-  <!-- Featured Video -->
-  <section class="max-w-5xl mx-auto px-6 py-12 text-center">
-    <h2 class="text-2xl font-bold mb-6">🔥 Featured Video</h2>
-    <div class="rounded-xl overflow-hidden shadow-lg">
-      <iframe src="https://www.youtube.com/embed/Oz1KfPkuWKQ" frameborder="0" allowfullscreen class="w-full h-80 md:h-[480px]"></iframe>
-    </div>
-  </section>
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="🔍 Search videos by title...">
+  </div>
 
-  <!-- Search & Filters -->
-  <section class="max-w-6xl mx-auto px-6 py-6">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-      <input type="text" id="searchInput" placeholder="Search videos..." class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
-      <div class="space-x-2">
-        <button class="filter-btn bg-pink-600 text-white px-4 py-2 rounded-lg" data-category="all">All</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Education">Education</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="News">News</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
-        <button class="filter-btn bg-gray-200 px-4 py-2 rounded-lg" data-category="Projects">Projects</button>
-      </div>
-    </div>
-  </section>
+  <!-- Video Sections -->
+  <div id="video-sections"></div>
+</div>
 
-  <!-- Video Grid -->
-  <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16" id="videoList">
+<footer>
+  &copy; 2025 CastroHub | Powered by MindSpark TV
+</footer>
 
-    <!-- Example Video Card -->
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Education">
-      <iframe src="https://www.youtube.com/embed/Oz1KfPkuWKQ" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">Understanding Databases</h3>
-      <p class="text-sm text-gray-600">Educational | Computer Studies</p>
-    </div>
+<script>
+  async function loadMindspark() {
+    const res = await fetch("mindspark.json");
+    const data = await res.json();
 
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="News">
-      <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">Global News Update</h3>
-      <p class="text-sm text-gray-600">News | Trending Topics</p>
-    </div>
+    // Load featured video
+    const player = document.querySelector("#video-player iframe");
+    document.getElementById("video-title").innerText = data.featured.title;
+    document.getElementById("video-description").innerText = data.featured.description;
+    player.src = data.featured.videoUrl;
 
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Entertainment">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">Music Vibes</h3>
-      <p class="text-sm text-gray-600">Entertainment | Music</p>
-    </div>
+    // Render categories
+    const sections = document.getElementById("video-sections");
+    data.categories.forEach(category => {
+      const section = document.createElement("div");
+      section.innerHTML = `<h2>${category.name}</h2><div class="videos"></div>`;
+      const videoGrid = section.querySelector(".videos");
 
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Projects">
-      <iframe src="https://www.youtube.com/embed/ktjafK4SgWM" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">My Tech Project Demo</h3>
-      <p class="text-sm text-gray-600">Projects | Showcase</p>
-    </div>
-
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Education">
-      <iframe src="https://www.youtube.com/embed/2vjPBrBU-TM" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">Mathematics Tutorial</h3>
-      <p class="text-sm text-gray-600">Education | Math</p>
-    </div>
-
-    <div class="video-card bg-white p-4 rounded-xl shadow hover:shadow-xl transition" data-category="Entertainment">
-      <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe>
-      <h3 class="mt-3 font-semibold">Fun Entertainment Clip</h3>
-      <p class="text-sm text-gray-600">Entertainment | Lifestyle</p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-pink-600 text-white text-center py-12">
-    <h2 class="text-2xl font-bold mb-4">🚀 Don’t Miss Out!</h2>
-    <p class="mb-6">Subscribe to MindSpark TV and never miss the latest videos.</p>
-    <a href="https://www.youtube.com" target="_blank" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Subscribe Now</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
-    <p>&copy; 2025 MindSpark TV | CastroHub. All rights reserved.</p>
-  </footer>
-
-  <script>
-    feather.replace();
-
-    function toggleMenu() {
-      document.getElementById("mobileMenu").classList.toggle("hidden");
-    }
-
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const videoCards = document.querySelectorAll('.video-card');
-    const searchInput = document.getElementById('searchInput');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelector('.filter-btn.bg-pink-600')?.classList.replace("bg-pink-600","bg-gray-200");
-        document.querySelector('.filter-btn.bg-gray-200.text-white')?.classList.remove("text-white");
-        btn.classList.replace("bg-gray-200","bg-pink-600");
-        btn.classList.add("text-white");
-
-        const category = btn.dataset.category;
-        videoCards.forEach(card => {
-          const match = category === 'all' || card.dataset.category.includes(category);
-          card.style.display = match ? 'block' : 'none';
+      category.videos.forEach(video => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <img src="${video.thumbnail}" alt="${video.title}">
+          <h4>${video.title}</h4>
+        `;
+        card.addEventListener("click", () => {
+          player.src = video.videoUrl;
+          document.getElementById("video-title").innerText = video.title;
+          document.getElementById("video-description").innerText = category.name;
+          window.scrollTo({ top: 0, behavior: "smooth" });
         });
+        videoGrid.appendChild(card);
       });
+
+      sections.appendChild(section);
     });
 
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      videoCards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(query) ? 'block' : 'none';
+    // Search functionality
+    document.getElementById("search").addEventListener("input", e => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll(".card").forEach(card => {
+        const title = card.querySelector("h4").innerText.toLowerCase();
+        card.style.display = title.includes(term) ? "block" : "none";
       });
     });
-  </script>
+  }
+
+  loadMindspark();
+</script>
+
 </body>
 </html>
