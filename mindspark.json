@@ -1,0 +1,34 @@
+{
+  "featured": {
+    "title": "AI in Education",
+    "description": "Exploring how AI is transforming the classroom experience.",
+    "videoUrl": "https://www.youtube.com/embed/zL9Qf_nW2cY"
+  },
+  "categories": [
+    {
+      "name": "Education",
+      "videos": [
+        {
+          "title": "Top 10 Study Hacks",
+          "thumbnail": "images/edu1.jpg",
+          "videoUrl": "https://www.youtube.com/embed/abcd1234"
+        },
+        {
+          "title": "Learn Coding Fast",
+          "thumbnail": "images/edu2.jpg",
+          "videoUrl": "https://www.youtube.com/embed/efgh5678"
+        }
+      ]
+    },
+    {
+      "name": "Entertainment",
+      "videos": [
+        {
+          "title": "Comedy Night Highlights",
+          "thumbnail": "images/ent1.jpg",
+          "videoUrl": "https://www.youtube.com/embed/ijkl9012"
+        }
+      ]
+    }
+  ]
+}
