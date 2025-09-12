@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | CastroHub</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -138,13 +139,13 @@
   <div class="contact-form">
     <form id="contactForm">
       <label for="name">Your Name</label>
-      <input type="text" id="name" placeholder="Enter your name" required />
+      <input type="text" id="name" name="from_name" placeholder="Enter your name" required />
 
       <label for="email">Your Email</label>
-      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="email" id="email" name="from_email" placeholder="Enter your email" required />
 
       <label for="message">Your Message</label>
-      <textarea id="message" placeholder="Type your message..." required></textarea>
+      <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
@@ -156,10 +157,21 @@
 </footer>
 
 <script>
+  // ✅ Initialize EmailJS with your Public Key
+  (function(){
+    emailjs.init("IrLDOq2vTrXu-FQWJ");
+  })();
+
   document.getElementById("contactForm").addEventListener("submit", function(event) {
     event.preventDefault();
-    alert("✅ Thank you! Your message has been recorded. (Integration with EmailJS or backend can be added here.)");
-    this.reset();
+
+    emailjs.sendForm("service_elyahvn", "template_ulqzd2l", this)
+      .then(function() {
+        alert("✅ Message sent successfully!");
+        document.getElementById("contactForm").reset();
+      }, function(error) {
+        alert("❌ Failed to send message: " + JSON.stringify(error));
+      });
   });
 </script>
 
