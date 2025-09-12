@@ -20,6 +20,13 @@
       "description": "A detailed project exploring solar energy for sustainable schools.",
       "link": "projects/solar.html",
       "tags": ["science", "projects", "energy"]
+    },
+     {
+      "title": "Biology Revision",
+      "category": "Educational",
+      "description": "best revision book for KCSE",
+      "link": "notes/biology.pdf",
+      "tags": ["science", "education", "learn"]
     }
   ]
 }
