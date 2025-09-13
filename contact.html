@@ -1,179 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact | CastroHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - CastroHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background-color: #f9fafc;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      padding: 20px;
-      text-align: center;
-      color: white;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding: 0;
-      margin: 10px 0 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 2.2rem;
-      color: #007bff;
-    }
-    .contact-info {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .contact-info p {
-      margin: 10px 0;
-      font-size: 1.1rem;
-    }
-    .contact-info a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-    .contact-form {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .contact-form label {
-      display: block;
-      margin: 12px 0 6px;
-      font-weight: 600;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .contact-form textarea {
-      resize: vertical;
-      height: 120px;
-    }
-    .contact-form button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      color: white;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-    }
-    .contact-form button:hover {
-      opacity: 0.9;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #777;
-      background: #f1f1f1;
-    }
+    body { font-family: 'Poppins', sans-serif; }
+    .social-icon:hover { color: #f59e0b; }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
-<header>
-  <h2>CastroHub</h2>
-  <nav>
-    <ul>
-      <li><a href="index.html">🏠 Home</a></li>
-      <li><a href="about.html">👤 About</a></li>
-      <li><a href="news.html">📰 News</a></li>
-      <li><a href="entertainment.html">🎬 Entertainment</a></li>
-      <li><a href="education.html">📚 Education</a></li>
-      <li><a href="projects.html">💼 Projects</a></li>
-      <li><a href="mindspark.html">📺 MindSpark TV</a></li>
-      <li><a href="contact.html">✉️ Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- Navbar -->
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
+      <h1 class="text-2xl font-bold tracking-wide">CastroHub</h1>
+      <button id="menuToggle" class="block md:hidden text-white text-2xl focus:outline-none">&#9776;</button>
+      <nav id="navMenu" class="hidden md:flex flex-wrap w-full md:w-auto mt-4 md:mt-0">
+        <ul class="flex flex-col md:flex-row md:space-x-6 gap-2 md:gap-0">
+          <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
+          <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
+          <li><a href="news.html" class="hover:text-yellow-300">News</a></li>
+          <li><a href="entertainment.html" class="hover:text-yellow-300">Entertainment</a></li>
+          <li><a href="education.html" class="hover:text-yellow-300">Education</a></li>
+          <li><a href="projects.html" class="hover:text-yellow-300">Projects</a></li>
+          <li><a href="mindspark.html" class="hover:text-yellow-300">MindSpark TV</a></li>
+          <li><a href="contact.html" class="font-semibold text-yellow-300">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<div class="container">
-  <h1>Get in Touch</h1>
+  <!-- Hero -->
+  <section class="bg-indigo-100 py-16 text-center">
+    <h2 class="text-4xl font-bold text-indigo-700 mb-4">Get in Touch</h2>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-700">Have questions or ideas? Reach out via the form, WhatsApp, email, or follow us on social media!</p>
+  </section>
 
-  <div class="contact-info">
-    <p>📱 WhatsApp: <a href="https://wa.me/254759130506" target="_blank">0759130506</a></p>
-    <p>📧 Email: <a href="mailto:castrodhiambo3@gmail.com">castrodhiambo3@gmail.com</a></p>
-    <p>💬 Or send me a direct message below:</p>
-  </div>
+  <!-- Contact Section -->
+  <section class="container mx-auto px-6 mt-10 grid md:grid-cols-2 gap-10">
+    
+    <!-- Contact Form -->
+    <div class="bg-white shadow-lg rounded-lg p-8">
+      <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+      <form id="contactForm" class="flex flex-col gap-4">
+        <input type="text" name="from_name" placeholder="Your Name" required class="border rounded px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+        <input type="email" name="reply_to" placeholder="Your Email" required class="border rounded px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+        <textarea name="message" placeholder="Your Message" required rows="5" class="border rounded px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700">Send Message</button>
+      </form>
+      <p id="formStatus" class="mt-4 text-sm text-green-600 hidden">Message sent successfully!</p>
+    </div>
 
-  <div class="contact-form">
-    <form id="contactForm">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="from_name" placeholder="Enter your name" required />
+    <!-- Contact Info & Socials -->
+    <div class="bg-white shadow-lg rounded-lg p-8 flex flex-col gap-6 justify-center">
+      <h3 class="text-2xl font-bold mb-4">Contact Info</h3>
+      <div class="flex items-center gap-3">
+        <i class="fas fa-envelope text-indigo-600"></i>
+        <a href="mailto:castrodhiambo3@gmail.com" class="text-gray-700 hover:text-indigo-600">castrodhiambo3@gmail.com</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <i class="fab fa-whatsapp text-green-500"></i>
+        <a href="https://wa.me/254759130506" target="_blank" class="text-gray-700 hover:text-green-500">+254 759 130506</a>
+      </div>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="from_email" placeholder="Enter your email" required />
+      <h4 class="text-xl font-semibold mt-6 mb-2">Follow Us</h4>
+      <div class="flex gap-4">
+        <a href="#" class="social-icon text-gray-600 text-2xl"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon text-gray-600 text-2xl"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon text-gray-600 text-2xl"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon text-gray-600 text-2xl"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-icon text-gray-600 text-2xl"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
 
-      <label for="message">Your Message</label>
-      <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
+  </section>
 
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</div>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto text-center">
+    <p>&copy; 2025 CastroHub. All rights reserved.</p>
+  </footer>
 
-<footer>
-  &copy; 2025 CastroHub | Built with ❤️ by Castro Odhiambo
-</footer>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("IrLDOq2vTrXu-FQWJ"); // Your EmailJS key
 
-<script>
-  // ✅ Initialize EmailJS with your Public Key
-  (function(){
-    emailjs.init("IrLDOq2vTrXu-FQWJ");
-  })();
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
 
-  document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    emailjs.sendForm("service_elyahvn", "template_ulqzd2l", this)
-      .then(function() {
-        alert("✅ Message sent successfully!");
-        document.getElementById("contactForm").reset();
-      }, function(error) {
-        alert("❌ Failed to send message: " + JSON.stringify(error));
-      });
-  });
-</script>
-
+    // Form submission
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      emailjs.sendForm('service_elyahvn', 'template_ulqzd2l', form)
+        .then(() => {
+          formStatus.classList.remove('hidden');
+          form.reset();
+        }).catch(err => alert('Failed to send message: ' + err.text));
+    });
+  </script>
 </body>
 </html>
