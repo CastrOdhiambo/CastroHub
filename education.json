@@ -1,10 +1,10 @@
 {
   "resources": [
     {
-      "title": "Mathematics Revision Notes",
-      "category": "Notes",
-      "description": "Complete notes covering Algebra, Geometry, and Calculus.",
-      "link": "notes/math.pdf",
+      "title": "| Form Two mid term Exams-Mathematics | Mathematics Past Examination Papers",
+      "category": "exam",
+      "description": "Mathematics Revision.",
+      "link": "Assets/form 2 maths midterm.docx",
       "tags": ["math", "revision", "education"]
     },
     {
