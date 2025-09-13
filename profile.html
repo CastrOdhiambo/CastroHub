@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CastroHub | My Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d9d6a52a.js" crossorigin="anonymous"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: #f97316;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-orange-700">CastroHub</h1>
+    <ul class="hidden md:flex gap-6 font-medium">
+      <li><a href="index.html" class="hover:text-orange-600">Home</a></li>
+      <li><a href="about.html" class="hover:text-orange-600">About</a></li>
+      <li><a href="profile.html" class="text-orange-600 font-bold">Profile</a></li>
+      <li><a href="projects.html" class="hover:text-orange-600">Projects</a></li>
+      <li><a href="education.html" class="hover:text-orange-600">Education</a></li>
+      <li><a href="contact.html" class="hover:text-orange-600">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="text-center py-16 bg-gradient-to-r from-orange-500 to-yellow-400 text-white" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-4">Castro Odhiambo</h2>
+    <p class="text-lg">Dreamer | Builder | Lifelong Learner</p>
+  </section>
+
+  <!-- About Me -->
+  <section class="max-w-4xl mx-auto px-6 py-12 text-center" data-aos="fade-right">
+    <h3 class="text-3xl font-bold text-orange-600 mb-6">About Me</h3>
+    <p class="text-gray-700 leading-relaxed">
+      I’m Castro Odhiambo, passionate about technology, education, and creativity. 
+      CastroHub is my platform to share knowledge, ideas, and projects that inspire 
+      positive change. I believe in continuous learning and building tools that benefit 
+      both myself and the wider community.
+    </p>
+  </section>
+
+  <!-- Timeline -->
+  <section class="relative max-w-5xl mx-auto px-6 py-12" data-aos="zoom-in">
+    <h3 class="text-3xl font-bold text-orange-600 mb-10 text-center">My Journey</h3>
+    <div class="timeline relative">
+      <div class="mb-10 flex justify-between items-center w-full">
+        <div class="order-1 w-5/12"></div>
+        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
+        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
+          <h4 class="font-bold text-orange-600">2022</h4>
+          <p>Started Bachelor of Education (Science) in Mathematics & Computer Studies at MMUST.</p>
+        </div>
+      </div>
+      <div class="mb-10 flex justify-between items-center w-full flex-row-reverse">
+        <div class="order-1 w-5/12"></div>
+        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
+        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
+          <h4 class="font-bold text-orange-600">2024</h4>
+          <p>Conducted field research at St. Peter’s Mumias Boys High School on education challenges.</p>
+        </div>
+      </div>
+      <div class="mb-10 flex justify-between items-center w-full">
+        <div class="order-1 w-5/12"></div>
+        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
+        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
+          <h4 class="font-bold text-orange-600">2025</h4>
+          <p>Launched CastroHub – a multi-purpose platform for news, education, entertainment, and projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="max-w-6xl mx-auto px-6 py-12" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-orange-600 mb-8 text-center">Achievements</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
+        <i class="fas fa-graduation-cap text-3xl text-orange-500 mb-4"></i>
+        <h4 class="font-semibold">Academic Excellence</h4>
+        <p class="text-sm text-gray-600">Recognition for excellence in Mathematics & Computer Studies.</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
+        <i class="fas fa-laptop-code text-3xl text-orange-500 mb-4"></i>
+        <h4 class="font-semibold">Tech Innovator</h4>
+        <p class="text-sm text-gray-600">Created AI/web-based projects showcased at university exhibitions.</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
+        <i class="fas fa-users text-3xl text-orange-500 mb-4"></i>
+        <h4 class="font-semibold">Community Leader</h4>
+        <p class="text-sm text-gray-600">Mentored students in coding and academic development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="bg-orange-50 py-12" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center text-orange-600 mb-8">Skills</h3>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 px-6">
+      <div>
+        <h4 class="font-semibold">Mathematics</h4>
+        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
+          <div class="bg-orange-600 h-3 rounded-full animate-[grow_2s_ease-in-out]" style="width: 90%"></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold">Web Development</h4>
+        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
+          <div class="bg-orange-600 h-3 rounded-full" style="width: 85%"></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold">AI & Machine Learning</h4>
+        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
+          <div class="bg-orange-600 h-3 rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold">Leadership</h4>
+        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
+          <div class="bg-orange-600 h-3 rounded-full" style="width: 80%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Journal -->
+  <section class="max-w-5xl mx-auto px-6 py-12" data-aos="fade-right">
+    <h3 class="text-3xl font-bold text-orange-600 mb-8 text-center">My Journal</h3>
+    <div id="journal-entries" class="grid gap-6 md:grid-cols-2"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+
+  <!-- Journal Loader -->
+  <script>
+    fetch("journal.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("journal-entries");
+        data.forEach(entry => {
+          container.innerHTML += `
+            <div class="bg-white p-6 rounded shadow hover:shadow-lg transition" data-aos="fade-up">
+              <h4 class="font-bold text-orange-600 mb-2">${entry.title}</h4>
+              <p class="text-sm text-gray-500 mb-4">${entry.date}</p>
+              <p class="text-gray-700">${entry.content}</p>
+            </div>
+          `;
+        });
+      });
+  </script>
+</body>
+</html>
