@@ -1,30 +1,32 @@
-[
-  {
-    "title": "Personal Portfolio",
-    "description": "A responsive website to showcase my skills and work.",
-    "category": "web",
-    "image": "https://source.unsplash.com/400x250/?website",
-    "tag": "Web"
-  },
-  {
-    "title": "AI Tutor",
-    "description": "An AI-powered chatbot to assist with learning.",
-    "category": "ai",
-    "image": "https://source.unsplash.com/400x250/?artificial-intelligence",
-    "tag": "AI"
-  },
-  {
-    "title": "E-Learning Platform",
-    "description": "A platform for accessing educational materials and quizzes.",
-    "category": "education",
-    "image": "https://source.unsplash.com/400x250/?education",
-    "tag": "Education"
-  },
-  {
-    "title": "UI Design Concepts",
-    "description": "Creative UI/UX concepts for modern web and mobile apps.",
-    "category": "design",
-    "image": "https://source.unsplash.com/400x250/?design",
-    "tag": "Design"
-  }
-]
+{
+  "projects": [
+    {
+      "title": "Personal Portfolio",
+      "category": "Web",
+      "description": "Responsive website showcasing skills and work.",
+      "image": "https://source.unsplash.com/400x250/?website",
+      "link": "#"
+    },
+    {
+      "title": "AI Tutor",
+      "category": "AI",
+      "description": "AI-powered chatbot assisting learning in various subjects.",
+      "image": "https://source.unsplash.com/400x250/?artificial-intelligence",
+      "link": "#"
+    },
+    {
+      "title": "E-Learning Platform",
+      "category": "Education",
+      "description": "Platform for accessing educational materials and quizzes.",
+      "image": "https://source.unsplash.com/400x250/?education",
+      "link": "#"
+    },
+    {
+      "title": "UI Design Concepts",
+      "category": "Design",
+      "description": "Creative UI/UX concepts for modern web and mobile apps.",
+      "image": "https://source.unsplash.com/400x250/?design",
+      "link": "#"
+    }
+  ]
+}
