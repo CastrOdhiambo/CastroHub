@@ -1,101 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - CastroHub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CastroHub | About</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #9333ea, #1e3a8a); }
+    .hero-bg { background: linear-gradient(135deg, #2563eb, #9333ea); }
+    .team-card:hover { transform: translateY(-5px); transition: all 0.3s; }
+    .nav-link:hover { color: #6366f1; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 flex flex-col min-h-screen text-gray-900">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 bg-white shadow">
-    <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
-    <ul class="hidden md:flex gap-6 font-medium">
-      <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
-      <li><a href="about.html" class="text-indigo-600 font-bold">About</a></li>
-      <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
-      <li><a href="entertainment.html" class="hover:text-indigo-600">Entertainment</a></li>
-      <li><a href="education.html" class="hover:text-indigo-600">Education</a></li>
-      <li><a href="projects.html" class="hover:text-indigo-600">Projects</a></li>
-      <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
-      <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-700 tracking-wide">CastroHub</h1>
+
+      <!-- Hamburger -->
+      <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+        ☰
+      </button>
+
+      <!-- Menu Links -->
+      <ul id="nav-links" class="hidden md:flex gap-6 font-medium">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="text-indigo-700 font-bold">About</a></li>
+        <li><a href="news.html" class="nav-link">News</a></li>
+        <li><a href="entertainment.html" class="nav-link">Entertainment</a></li>
+        <li><a href="education.html" class="nav-link">Education</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="mindspark.html" class="nav-link">MindSpark TV</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg text-white text-center py-20 px-6">
+  <section class="hero-bg text-white text-center py-24 px-6">
     <h2 class="text-5xl font-bold mb-4">About CastroHub</h2>
-    <p class="text-lg md:text-xl">The story behind CastroHub and the vision driving it forward.</p>
+    <p class="text-lg md:text-xl max-w-3xl mx-auto">
+      CastroHub is a modern online hub connecting you to News, Entertainment, Education, Projects, and AI-powered experiences.
+      We aim to make learning, entertainment, and information more interactive and accessible to everyone.
+    </p>
   </section>
 
-  <!-- Bio Section -->
-  <section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-10 items-center">
-    <img src="https://github.com/CastrOdhiambo/updated-web/blob/main/profile%20photo.jpg?raw=true" alt="Castro Odhiambo" class="rounded-xl shadow-lg">
-    <div>
-      <h3 class="text-3xl font-bold text-indigo-700 mb-4">Meet Castro Odhiambo</h3>
-      <p class="text-gray-700 mb-4">I’m Castro Odhiambo, a passionate creator, learner, and innovator. CastroHub was born from my desire to build a platform that not only reflects my personal journey but also benefits the wider community. It’s more than a personal site — it’s a hub of knowledge, creativity, and entertainment for everyone who visits.</p>
-      <p class="text-gray-700">Through CastroHub, I aim to empower, inform, and inspire. Whether you’re here to learn, catch up on the latest updates, enjoy entertainment, or explore new ideas, there’s something here for you.</p>
+  <!-- Our Mission -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-center mb-8">Our Mission</h3>
+    <p class="text-gray-700 text-center max-w-3xl mx-auto text-lg leading-relaxed">
+      At CastroHub, our mission is to provide an engaging platform that empowers users with knowledge, creativity, and entertainment.
+      We combine technology, AI, and intuitive design to deliver a unique and enjoyable experience.
+    </p>
+  </section>
+
+  <!-- Core Values -->
+  <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-8 text-center">
+    <div class="card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+      <i class="fas fa-lightbulb text-4xl text-indigo-600 mb-4"></i>
+      <h4 class="text-xl font-bold mb-2">Innovation</h4>
+      <p class="text-gray-600">We embrace cutting-edge technology and AI to provide creative solutions and interactive experiences.</p>
+    </div>
+    <div class="card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+      <i class="fas fa-users text-4xl text-green-600 mb-4"></i>
+      <h4 class="text-xl font-bold mb-2">Community</h4>
+      <p class="text-gray-600">We value our users and strive to build a connected community that shares knowledge and entertainment.</p>
+    </div>
+    <div class="card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+      <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
+      <h4 class="text-xl font-bold mb-2">Integrity</h4>
+      <p class="text-gray-600">We are committed to providing trustworthy content and a safe, ethical platform for all users.</p>
     </div>
   </section>
 
-  <!-- Mission & Values -->
-  <section class="bg-gray-100 py-16 px-6 text-center">
-    <h3 class="text-3xl font-bold text-indigo-700 mb-6">Our Mission & Values</h3>
-    <div class="max-w-4xl mx-auto text-gray-700 space-y-4">
-      <p><strong>Mission:</strong> To create a digital hub that combines knowledge, entertainment, creativity, and technology — making a difference in the lives of individuals and communities.</p>
-      <p><strong>Values:</strong> Innovation, Integrity, Empowerment, Accessibility, and Growth.</p>
-    </div>
-  </section>
-
-  <!-- What We Offer -->
-  <section class="max-w-6xl mx-auto py-16 px-6">
-    <h3 class="text-3xl font-bold text-center text-indigo-700 mb-10">What CastroHub Offers</h3>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">News</h4>
-        <p class="text-gray-600">Stay informed with stories and insights that matter across different niches.</p>
+  <!-- Team Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-center mb-8">Meet the Team</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
+        <img src="https://github.com/CastrOdhiambo/updated-web/blob/main/profile%20photo.jpg?raw=true" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-bold mb-1">Am Castro Odhiambo</h4>
+        <p class="text-gray-600 mb-2">Founder & Developer</p>
+        <div class="flex justify-center gap-4 text-indigo-600 text-lg">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">Entertainment</h4>
-        <p class="text-gray-600">Relax, laugh, and vibe with fresh entertainment content curated for you.</p>
+      <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
+        <img src="https://source.unsplash.com/200x200/?woman" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-bold mb-1">Jane Doe</h4>
+        <p class="text-gray-600 mb-2">Content & Media Lead</p>
+        <div class="flex justify-center gap-4 text-indigo-600 text-lg">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">Education</h4>
-        <p class="text-gray-600">Learn through tutorials, resources, and articles that empower growth.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">Projects</h4>
-        <p class="text-gray-600">Explore my personal and tech projects that bring ideas to life.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">MindSpark TV</h4>
-        <p class="text-gray-600">Watch and engage with inspiring video content on MindSpark TV.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-bold text-indigo-600 mb-2">Community</h4>
-        <p class="text-gray-600">CastroHub is not just a website — it’s a community built on sharing and collaboration.</p>
+      <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
+        <img src="https://source.unsplash.com/200x200/?man" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-bold mb-1">John Smith</h4>
+        <p class="text-gray-600 mb-2">AI & Tech Specialist</p>
+        <div class="flex justify-center gap-4 text-indigo-600 text-lg">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-indigo-700 text-white text-center py-16 px-6">
-    <h3 class="text-3xl font-bold mb-4">Join the CastroHub Journey</h3>
-    <p class="mb-6 max-w-2xl mx-auto">CastroHub is constantly evolving. Be part of this journey — explore, learn, get inspired, and share. Together, we can make knowledge, entertainment, and creativity more accessible.</p>
-    <a href="contact.html" class="bg-white text-indigo-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">Connect with Me</a>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center mt-auto">
     <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
     <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("hidden");
+    });
+  </script>
 
 </body>
 </html>
