@@ -10,32 +10,15 @@
     body { font-family: 'Poppins', sans-serif; }
     .hero-bg { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
     .card:hover { transform: translateY(-5px); transition: all 0.3s; }
-    .filter-btn {
-      background: #f3f4f6;
-      color: #374151;
-      border: 1px solid #e5e7eb;
-      cursor: pointer;
-    }
-    .filter-btn:hover {
-      background: #fce7f3;
-      color: #be185d;
-      transform: translateY(-2px);
-    }
-    .active-filter {
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      color: white !important;
-      border: none;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
+    .active-filter { background-color: #ec4899; color: white; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 bg-white shadow">
+  <nav class="flex justify-between items-center p-6 bg-white shadow flex-wrap">
     <h1 class="text-2xl font-bold text-pink-600">CastroHub</h1>
-    <ul class="hidden md:flex gap-6 font-medium">
+    <ul class="hidden md:flex gap-6 font-medium flex-wrap">
       <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
       <li><a href="about.html" class="hover:text-pink-500">About</a></li>
       <li><a href="news.html" class="hover:text-pink-500">News</a></li>
@@ -53,106 +36,95 @@
     <p class="text-lg md:text-xl">Your one-stop destination for music, videos, memes, and pure fun 🎬🎶😂</p>
   </section>
 
-  <!-- Category Filters -->
+  <!-- Filters & Search -->
   <section class="max-w-6xl mx-auto py-10 px-6 text-center">
-    <div class="flex flex-wrap justify-center gap-3" id="filterContainer">
-      <button class="filter-btn active-filter px-4 py-2 rounded-full" data-category="all">All</button>
-      <button class="filter-btn px-4 py-2 rounded-full" data-category="Video">Videos</button>
-      <button class="filter-btn px-4 py-2 rounded-full" data-category="Music">Music</button>
-      <button class="filter-btn px-4 py-2 rounded-full" data-category="Meme">Memes</button>
-      <button class="filter-btn px-4 py-2 rounded-full" data-category="Comedy">Comedy</button>
+    <div class="flex flex-wrap justify-center gap-3">
+      <button class="filter-btn px-4 py-2 rounded-lg active-filter" data-category="all">All</button>
+      <button class="filter-btn px-4 py-2 rounded-lg" data-category="Video">Videos</button>
+      <button class="filter-btn px-4 py-2 rounded-lg" data-category="Music">Music</button>
+      <button class="filter-btn px-4 py-2 rounded-lg" data-category="Meme">Memes</button>
+      <button class="filter-btn px-4 py-2 rounded-lg" data-category="Comedy">Comedy</button>
     </div>
+    <input type="text" id="searchInput" placeholder="Search entertainment..." 
+           class="mt-4 border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/2 focus:ring-2 focus:ring-pink-500 focus:outline-none">
   </section>
 
   <!-- Entertainment Grid -->
   <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="entertainmentGrid">
-    <!-- JSON will inject items here -->
+    <!-- Cards will be populated dynamically -->
   </section>
 
-  <!-- AI Recommendations -->
+  <!-- Suggested for You -->
   <section class="max-w-6xl mx-auto px-6 mb-16">
     <h3 class="text-2xl font-bold mb-6">🤖 Suggested For You</h3>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="aiSuggestions">
-      <!-- Will be populated dynamically -->
-    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="suggestionsContainer"></div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center mt-auto">
     <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
     <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-pink-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
   </footer>
 
   <!-- Scripts -->
   <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const grid = document.getElementById('entertainmentGrid');
+    fetch('entertainment.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('entertainmentGrid');
+        data.forEach(item => {
+          container.innerHTML += `
+            <div class="card bg-white rounded-lg shadow overflow-hidden p-4" data-category="${item.category}">
+              ${item.type === 'Video' ? 
+                `<iframe class="w-full h-56 mb-4" src="${item.url}" allowfullscreen></iframe>` :
+                item.type === 'Music' ?
+                `<audio controls class="w-full mb-4"><source src="${item.url}" type="audio/mpeg"></audio>` :
+                `<img src="${item.url}" alt="${item.title}" class="w-full mb-4 rounded-lg">`
+              }
+              <h4 class="font-bold text-lg">${item.title}</h4>
+              <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs font-semibold">${item.category}</span>
+            </div>
+          `;
+        });
 
-    let allData = [];
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+        const searchInput = document.getElementById('searchInput');
 
-    async function fetchEntertainment() {
-      try {
-        const res = await fetch('entertainment.json');
-        allData = await res.json();
-        renderItems();
-      } catch (err) {
-        console.error("Error loading entertainment.json", err);
-      }
-    }
+        // Filter
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelector('.active-filter').classList.remove('active-filter');
+            btn.classList.add('active-filter');
+            const category = btn.dataset.category;
+            cards.forEach(card => {
+              card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+            });
+          });
+        });
 
-    function renderItems(filter = "all") {
-      grid.innerHTML = "";
-      let filtered = filter === "all" ? allData : allData.filter(item => item.category === filter);
+        // Search
+        searchInput.addEventListener('input', () => {
+          const query = searchInput.value.toLowerCase();
+          cards.forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(query) ? 'block' : 'none';
+          });
+        });
 
-      filtered.forEach(item => {
-        grid.innerHTML += `
-          <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="${item.category}">
-            ${item.type === "video" ? 
-              `<iframe class="w-full h-56" src="${item.src}" allowfullscreen></iframe>` :
-              item.type === "audio" ? 
-              `<div class="p-6"><h4 class="font-semibold mb-2">${item.title}</h4>
-                <audio controls class="w-full">
-                  <source src="${item.src}" type="audio/mpeg">
-                </audio></div>` :
-              item.type === "image" ? 
-              `<img src="${item.src}" alt="${item.title}" class="w-full">` : ""
-            }
-            ${item.type !== "audio" ? `<div class="p-4"><h4 class="font-bold">${item.title}</h4></div>` : ""}
-          </div>
-        `;
-      });
-    }
-
-    // Filters
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active-filter'));
-        btn.classList.add('active-filter');
-        renderItems(btn.dataset.category);
-      });
-    });
-
-    // AI Suggested Section (static for now)
-    const suggestions = [
-      { title: "🔥 Stand-up Comedy Special", type: "Comedy", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" },
-      { title: "🎧 Chill Beats Playlist", type: "Music", img: "https://via.placeholder.com/400x250" },
-      { title: "🎬 Must-watch Movie Clip", type: "Video", img: "https://via.placeholder.com/400x250" }
-    ];
-
-    const aiContainer = document.getElementById("aiSuggestions");
-    suggestions.forEach(item => {
-      aiContainer.innerHTML += `
-        <div class="card bg-white rounded-lg shadow overflow-hidden">
-          <img src="${item.img}" alt="${item.type}" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">${item.type}</span>
-            <h4 class="font-bold mt-2">${item.title}</h4>
-          </div>
-        </div>
-      `;
-    });
-
-    fetchEntertainment();
+        // Suggested Section (AI-inspired)
+        const suggestions = data.slice(0,3); // example suggestion
+        const suggContainer = document.getElementById('suggestionsContainer');
+        suggestions.forEach(item => {
+          suggContainer.innerHTML += `
+            <div class="card bg-white rounded-lg shadow overflow-hidden p-4">
+              <img src="${item.url}" alt="${item.title}" class="w-full h-48 object-cover mb-4">
+              <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs font-semibold">${item.category}</span>
+              <h4 class="font-bold text-lg mt-2">${item.title}</h4>
+            </div>
+          `;
+        });
+      })
+      .catch(err => console.error("Error loading entertainment data:", err));
   </script>
 </body>
 </html>
