@@ -5,116 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>News - CastroHub</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
     .hero-bg { background: linear-gradient(135deg, #2563eb, #9333ea); }
     .news-card:hover { transform: translateY(-5px); transition: all 0.3s; }
-    .active-filter { background-color: #2563eb; color: white; }
+    .filter-btn.active { background-color: #2563eb; color: white; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 bg-white shadow flex-wrap">
-    <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
-    <ul class="hidden md:flex gap-6 font-medium flex-wrap">
-      <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
-      <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
-      <li><a href="news.html" class="text-indigo-600 font-bold">News</a></li>
-      <li><a href="entertainment.html" class="hover:text-indigo-600">Entertainment</a></li>
-      <li><a href="education.html" class="hover:text-indigo-600">Education</a></li>
-      <li><a href="projects.html" class="hover:text-indigo-600">Projects</a></li>
-      <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
-      <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
+      <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
+      <button id="menuToggle" class="block md:hidden text-indigo-700 text-2xl focus:outline-none">&#9776;</button>
+      <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
+        <ul class="flex flex-col md:flex-row md:space-x-6 gap-2 md:gap-0">
+          <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
+          <li><a href="news.html" class="font-semibold text-indigo-700">News</a></li>
+          <li><a href="entertainment.html" class="hover:text-pink-600">Entertainment</a></li>
+          <li><a href="education.html" class="hover:text-green-600">Education</a></li>
+          <li><a href="projects.html" class="hover:text-yellow-600">Projects</a></li>
+          <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <!-- Hero -->
   <section class="hero-bg text-white text-center py-20 px-6">
     <h2 class="text-5xl font-bold mb-4">CastroHub News</h2>
-    <p class="text-lg md:text-xl">Stay updated with the latest happenings in Tech, Education, Lifestyle, Sports, and more.</p>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto">Stay informed with updates across Tech, Education, Lifestyle, Sports, and more.</p>
   </section>
 
-  <!-- Search & Filters -->
-  <section class="max-w-6xl mx-auto py-10 px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 flex-wrap">
+  <!-- Filters & Search -->
+  <section class="container mx-auto px-6 py-10">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
       <input type="text" id="searchInput" placeholder="Search news..." 
              class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-      <div class="flex flex-wrap gap-2 mt-4 md:mt-0" id="filterButtons">
-        <button class="filter-btn px-4 py-2 rounded-lg active-filter" data-category="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Tech">Tech</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Education">Education</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Sports">Sports</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Lifestyle">Lifestyle</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
-        <button class="filter-btn px-4 py-2 rounded-lg" data-category="Global">Global</button>
+
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-btn active px-4 py-2 rounded-lg border border-indigo-600" data-category="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Tech">Tech</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Education">Education</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Sports">Sports</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Lifestyle">Lifestyle</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Global">Global</button>
       </div>
     </div>
   </section>
 
   <!-- News Grid -->
-  <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="newsGrid">
-    <!-- News cards will be rendered here dynamically -->
+  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="newsGrid">
+    <!-- News cards will be populated dynamically from JSON -->
   </section>
 
-  <!-- Load More -->
-  <div class="text-center mb-16">
-    <button class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Load More</button>
-  </div>
-
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-6 text-center mt-auto">
+  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto text-center">
     <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
     <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
   </footer>
 
   <!-- Scripts -->
   <script>
-    // Load news from JSON
-    fetch('news.json')
-      .then(res => res.json())
-      .then(data => {
-        const newsGrid = document.getElementById('newsGrid');
-        data.forEach(item => {
-          newsGrid.innerHTML += `
-            <div class="news-card bg-white rounded-lg shadow p-5" data-category="${item.category}">
-              <img src="${item.image}" alt="${item.title}" class="rounded-lg mb-4 w-full h-48 object-cover">
-              <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">${item.category}</span>
-              <h4 class="text-xl font-bold mt-2 mb-2">${item.title}</h4>
-              <p class="text-gray-600 mb-3">${item.summary}</p>
-              <a href="${item.link}" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
-            </div>
-          `;
-        });
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
 
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const newsCards = document.querySelectorAll('.news-card');
-        const searchInput = document.getElementById('searchInput');
+    // Sample news JSON
+    const newsData = [
+      { title: "AI Revolution: How CastroHub is Embracing AI", category: "Tech", description: "AI reshaping the way we learn, interact, and create.", link:"#", img:"https://via.placeholder.com/400x250" },
+      { title: "Kenya’s New Curriculum", category: "Education", description: "In-depth look into the new curriculum reforms.", link:"#", img:"https://via.placeholder.com/400x250" },
+      { title: "Harambee Stars Qualify for AFCON", category: "Sports", description: "Celebrations across the nation for historic qualification.", link:"#", img:"https://via.placeholder.com/400x250" },
+      { title: "Healthy Living Tips", category: "Lifestyle", description: "Discover lifestyle changes for better health.", link:"#", img:"https://via.placeholder.com/400x250" },
+      { title: "Kenyan Music Takes Over Africa", category: "Entertainment", description: "New wave of Kenyan artists making waves.", link:"#", img:"https://via.placeholder.com/400x250" },
+      { title: "Climate Action: A Global Call", category: "Global", description: "World leaders unite for climate initiatives.", link:"#", img:"https://via.placeholder.com/400x250" }
+    ];
 
-        filterButtons.forEach(btn => {
-          btn.addEventListener('click', () => {
-            document.querySelector('.active-filter').classList.remove('active-filter');
-            btn.classList.add('active-filter');
-            const category = btn.dataset.category;
-            newsCards.forEach(card => {
-              const cardCat = card.dataset.category;
-              card.style.display = (category === 'all' || cardCat === category) ? 'block' : 'none';
-            });
-          });
-        });
+    const newsGrid = document.getElementById("newsGrid");
 
-        // Search functionality
-        searchInput.addEventListener('input', () => {
-          const query = searchInput.value.toLowerCase();
-          newsCards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            card.style.display = text.includes(query) ? 'block' : 'none';
-          });
-        });
-      })
-      .catch(err => console.error('Error loading news:', err));
+    function renderNews(data) {
+      newsGrid.innerHTML = '';
+      data.forEach(item => {
+        newsGrid.innerHTML += `
+          <div class="news-card bg-white rounded-lg shadow p-5" data-category="${item.category}">
+            <img src="${item.img}" alt="${item.title}" class="rounded-lg mb-4">
+            <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">${item.category}</span>
+            <h4 class="text-xl font-bold mt-2 mb-2">${item.title}</h4>
+            <p class="text-gray-600 mb-3">${item.description}</p>
+            <a href="${item.link}" class="text-indigo-600 font-semibold hover:underline">Read More →</a>
+          </div>
+        `;
+      });
+    }
+
+    renderNews(newsData);
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('searchInput');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+        const filtered = category === 'all' ? newsData : newsData.filter(n => n.category === category);
+        const searchTerm = searchInput.value.toLowerCase();
+        renderNews(filtered.filter(n => n.title.toLowerCase().includes(searchTerm) || n.description.toLowerCase().includes(searchTerm)));
+      });
+    });
+
+    // Search input
+    searchInput.addEventListener('input', () => {
+      const categoryBtn = document.querySelector('.filter-btn.active');
+      const category = categoryBtn.dataset.category;
+      const filtered = category === 'all' ? newsData : newsData.filter(n => n.category === category);
+      const searchTerm = searchInput.value.toLowerCase();
+      renderNews(filtered.filter(n => n.title.toLowerCase().includes(searchTerm) || n.description.toLowerCase().includes(searchTerm)));
+    });
   </script>
+
 </body>
 </html>
