@@ -1,5 +1,12 @@
 {
   "articles": [
+     {
+      "title": "Raila Odinga Life and Times",
+      "category": "Lifestyle",
+      "description": "Life and Times Of Raila Odinga",
+      "link": "news/Raila-Odinga.html",
+      "image": "https://cdn.britannica.com/98/127198-050-F670E902/Raila-Odinga-Kenyan.jpg"
+    },
     {
       "title": "AI Revolution: How CastroHub is Embracing Artificial Intelligence",
       "category": "Tech",
