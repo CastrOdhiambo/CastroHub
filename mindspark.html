@@ -2,34 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindSpark TV - CastroHub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #2563eb, #9333ea); }
-    .video-card:hover { transform: translateY(-5px); transition: all 0.3s; }
-    .filter-btn.active { background-color: #2563eb; color: white; }
+    .hero-bg { background: linear-gradient(135deg, #1e3a8a, #9333ea); }
+    .video-card { transition: all 0.3s ease; }
+    .video-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .filter-btn.active { background-color: #1e3a8a; color: white; }
+    .social-icons a { transition: 0.3s; }
+    .social-icons a:hover { opacity: 0.7; }
   </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
   <!-- Navbar -->
   <header class="bg-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
-      <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
-      <button id="menuToggle" class="block md:hidden text-indigo-700 text-2xl focus:outline-none">&#9776;</button>
+      <h1 class="text-3xl font-bold text-indigo-700 tracking-wide flex items-center gap-2">
+        <i class="fas fa-brain text-indigo-600"></i> MindSpark TV
+      </h1>
+
+      <button id="menuToggle" class="block md:hidden text-indigo-700 text-3xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+
       <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
-        <ul class="flex flex-col md:flex-row md:space-x-6 gap-2 md:gap-0">
+        <ul class="flex flex-col md:flex-row md:space-x-6 gap-4 md:gap-0 text-lg font-semibold">
           <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
           <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
           <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
           <li><a href="entertainment.html" class="hover:text-pink-600">Entertainment</a></li>
           <li><a href="education.html" class="hover:text-green-600">Education</a></li>
           <li><a href="projects.html" class="hover:text-yellow-600">Projects</a></li>
-          <li><a href="mindspark.html" class="font-semibold text-indigo-700">MindSpark TV</a></li>
+          <li><a href="mindspark.html" class="text-indigo-800 border-b-2 border-indigo-700 pb-1">MindSpark TV</a></li>
           <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
         </ul>
       </nav>
@@ -37,47 +46,51 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg text-white text-center py-20 px-6">
-    <h2 class="text-5xl font-bold mb-4">MindSpark TV</h2>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto">Watch educational, tech, and entertainment videos curated for your learning and fun.</p>
+  <section class="hero-bg text-white py-24 text-center px-6">
+    <h2 class="text-5xl font-extrabold drop-shadow-lg">Welcome to MindSpark TV</h2>
+    <p class="text-xl mt-4 max-w-3xl mx-auto opacity-90">Explore the world of learning, innovation, creativity and entertainment curated just for you.</p>
+
+    <div class="social-icons flex justify-center gap-6 mt-6 text-3xl">
+      <a href="#" class="text-blue-500"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-pink-500"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
+    </div>
   </section>
 
   <!-- Filters & Search -->
   <section class="container mx-auto px-6 py-10">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-      <input type="text" id="searchInput" placeholder="Search videos..." 
-             class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
+      <input type="text" id="searchInput" placeholder="Search videos, topics..."
+        class="w-full md:w-1/2 border border-gray-300 shadow-sm rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+
       <div class="flex flex-wrap gap-2">
-        <button class="filter-btn active px-4 py-2 rounded-lg border border-indigo-600" data-category="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Education">Education</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Tech">Tech</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Entertainment">Entertainment</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="Projects">Projects</button>
+        <button class="filter-btn active px-4 py-2 rounded-full border border-indigo-600" data-category="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Education">Education</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Tech">Tech</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Projects">Projects</button>
       </div>
     </div>
   </section>
 
   <!-- Videos Grid -->
-  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="videoGrid">
-    <!-- Video cards populated dynamically -->
-  </section>
+  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16" id="videoGrid"></section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto text-center">
-    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
-    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-auto text-center text-lg">
+    <p>&copy; 2025 CastroHub | MindSpark TV</p>
+    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a></p>
+    <p>WhatsApp: 0759130506</p>
   </footer>
 
   <!-- Scripts -->
   <script>
-    // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
 
-    // Sample JSON data for MindSpark TV
     const videos = [
-      { title: "Getting Started With Ms Access| Creating Tables", category: "Education", link: "https://youtu.be/gyz2758hlEE", img: "https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" },
+      { title: "Getting Started With Ms Access | Creating Tables", category: "Education", link: "https://www.youtube.com/embed/gyz2758hlEE", img: "https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" },
       { title: "E-Learning Tips", category: "Education", link: "https://www.youtube.com/embed/dQw4w9WgXcQ", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
       { title: "Startup Ideas Showcase", category: "Projects", link: "https://www.youtube.com/embed/L_jWHffIx5E", img: "https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg" },
       { title: "Funny Tech Moments", category: "Entertainment", link: "https://www.youtube.com/embed/tgbNymZ7vqY", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" },
@@ -91,20 +104,18 @@
       grid.innerHTML = '';
       data.forEach(video => {
         grid.innerHTML += `
-          <div class="video-card bg-white rounded-lg shadow overflow-hidden">
-            <iframe class="w-full h-48" src="${video.link}" allowfullscreen></iframe>
+          <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden">
+            <iframe class="w-full h-56" src="${video.link}" allowfullscreen></iframe>
             <div class="p-4">
               <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">${video.category}</span>
-              <h4 class="font-bold mt-2">${video.title}</h4>
+              <h4 class="font-bold text-lg mt-3">${video.title}</h4>
             </div>
-          </div>
-        `;
+          </div>`;
       });
     }
 
     renderVideos(videos);
 
-    // Filter buttons & search
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
 
@@ -116,6 +127,7 @@
         const category = btn.dataset.category;
         const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
         const searchTerm = searchInput.value.toLowerCase();
+
         renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
       });
     });
@@ -125,8 +137,10 @@
       const category = categoryBtn.dataset.category;
       const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
       const searchTerm = searchInput.value.toLowerCase();
+
       renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
     });
   </script>
+
 </body>
 </html>
