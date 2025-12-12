@@ -1,458 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MindSpark TV — CastroHub</title>
-
-  <!-- Tailwind & Icons -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindSpark TV - CastroHub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#0f172a;--accent:#6d28d9}
-    html,body{font-family:'Poppins',sans-serif}
-    .hero-bg{background:linear-gradient(135deg,#1e3a8a,#9333ea)}
-    .video-card{transition:transform .25s ease,box-shadow .25s ease}
-    .video-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(15,23,42,.12)}
-    .filter-btn.active{background-color:var(--accent);color:white}
-    .scrollbar-hide::-webkit-scrollbar{display:none}
+    body { font-family: 'Poppins', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #1e3a8a, #9333ea); }
+    .video-card { transition: all 0.3s ease; }
+    .video-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .filter-btn.active { background-color: #1e3a8a; color: white; }
+    .social-icons a { transition: 0.3s; }
+    .social-icons a:hover { opacity: 0.7; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
-  <!-- NAVBAR -->
-  <header class="bg-white sticky top-0 z-50 shadow">
-    <div class="container mx-auto flex items-center justify-between px-6 py-3">
-      <div class="flex items-center gap-3">
-        <div class="text-2xl text-indigo-700 font-extrabold flex items-center gap-2">
-          <i class="fas fa-brain"></i>
-          <span>MindSpark TV</span>
-        </div>
-        <span class="text-sm text-gray-500">CastroHub</span>
-      </div>
+  <!-- Navbar -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
+      <h1 class="text-3xl font-bold text-indigo-700 tracking-wide flex items-center gap-2">
+        <i class="fas fa-brain text-indigo-600"></i> MindSpark TV
+      </h1>
 
-      <div class="hidden md:flex items-center gap-6">
-        <nav class="space-x-4 font-medium text-gray-700">
-          <a href="#home" class="hover:text-indigo-600">Home</a>
-          <a href="#shows" class="hover:text-indigo-600">Shows</a>
-          <a href="#library" class="hover:text-indigo-600">Library</a>
-          <a href="#community" class="hover:text-indigo-600">Community</a>
-          <a href="#about" class="hover:text-indigo-600">About</a>
-        </nav>
-
-        <div class="flex items-center gap-3">
-          <a href="https://facebook.com/MindsparkTV" target="_blank" class="text-blue-600 hover:opacity-80" aria-label="facebook"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="https://www.tiktok.com/@mindsparktv" target="_blank" class="text-pink-500 hover:opacity-80" aria-label="tiktok"><i class="fab fa-tiktok fa-lg"></i></a>
-          <a href="https://youtube.com/MindsparkTV" target="_blank" class="text-red-600 hover:opacity-80" aria-label="youtube"><i class="fab fa-youtube fa-lg"></i></a>
-          <button id="darkToggle" title="Toggle dark mode" class="ml-2 p-2 rounded-md hover:bg-gray-100"><i class="fas fa-moon"></i></button>
-        </div>
-      </div>
-
-      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
+      <button id="menuToggle" class="block md:hidden text-indigo-700 text-3xl focus:outline-none">
+        <i class="fas fa-bars"></i>
       </button>
-    </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-      <div class="p-4 space-y-2">
-        <a class="block" href="#home">Home</a>
-        <a class="block" href="#shows">Shows</a>
-        <a class="block" href="#library">Library</a>
-        <a class="block" href="#community">Community</a>
-        <a class="block" href="#about">About</a>
-      </div>
+      <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
+        <ul class="flex flex-col md:flex-row md:space-x-6 gap-4 md:gap-0 text-lg font-semibold">
+          <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
+          <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
+          <li><a href="entertainment.html" class="hover:text-pink-600">Entertainment</a></li>
+          <li><a href="education.html" class="hover:text-green-600">Education</a></li>
+          <li><a href="projects.html" class="hover:text-yellow-600">Projects</a></li>
+          <li><a href="mindspark.html" class="text-indigo-800 border-b-2 border-indigo-700 pb-1">MindSpark TV</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main id="home">
-    <section class="hero-bg text-white py-20">
-      <div class="container mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold">MindSpark TV</h1>
-        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto opacity-90">Igniting curiosity — tutorials, short-form reels, tech, projects and entertainment for learners and creators.</p>
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-24 text-center px-6">
+    <h2 class="text-5xl font-extrabold drop-shadow-lg">Welcome to MindSpark TV</h2>
+    <p class="text-xl mt-4 max-w-3xl mx-auto opacity-90">Explore the world of learning, innovation, creativity and entertainment curated just for you.</p>
 
-        <div class="mt-8 flex justify-center gap-4">
-          <a href="#library" class="px-6 py-3 bg-white text-indigo-700 rounded-full font-semibold shadow">Watch Videos</a>
-          <a href="https://youtube.com/MindsparkTV" target="_blank" class="px-6 py-3 border border-white rounded-full font-semibold hover:bg-white/10">Subscribe</a>
-        </div>
-
-        <div class="mt-8 flex justify-center gap-6 text-2xl">
-          <a href="https://facebook.com/MindsparkTV" target="_blank" class="text-blue-500"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.tiktok.com/@mindsparktv" target="_blank" class="text-pink-500"><i class="fab fa-tiktok"></i></a>
-          <a href="https://youtube.com/MindsparkTV" target="_blank" class="text-red-500"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRENDING / FEATURED -->
-    <section class="container mx-auto px-6 py-12">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold">🔥 Trending Now</h2>
-        <div class="flex gap-2 items-center">
-          <button id="prevFeat" class="p-2 rounded bg-gray-100 hover:bg-gray-200"><i class="fas fa-chevron-left"></i></button>
-          <button id="nextFeat" class="p-2 rounded bg-gray-100 hover:bg-gray-200"><i class="fas fa-chevron-right"></i></button>
-        </div>
-      </div>
-
-      <div id="featuredRow" class="flex gap-6 overflow-x-auto scrollbar-hide pb-2">
-        <!-- Featured cards injected here -->
-      </div>
-    </section>
-
-    <!-- CATEGORIES / SHOWS -->
-    <section id="shows" class="container mx-auto px-6 py-10">
-      <h2 class="text-2xl font-bold mb-6 text-center">Shows & Playlists</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h3 class="text-xl font-bold mb-2">EDU Masterclass</h3>
-          <p class="text-sm text-gray-600">Step-by-step tutorials, exam prep and study hacks.</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h3 class="text-xl font-bold mb-2">Innovators Desk</h3>
-          <p class="text-sm text-gray-600">Startup showcases, maker stories and project builds.</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h3 class="text-xl font-bold mb-2">LaughSpark</h3>
-          <p class="text-sm text-gray-600">Short sketches, reaction clips and entertainment.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- LIBRARY + FILTERS -->
-    <section id="library" class="container mx-auto px-6 py-10">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
-        <input id="searchInput" type="search" placeholder="Search videos, tags, creators..." class="w-full md:w-1/2 px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500" />
-
-        <div class="flex gap-2 flex-wrap">
-          <button class="filter-btn active px-4 py-2 rounded-full border" data-category="all">All</button>
-          <button class="filter-btn px-4 py-2 rounded-full border" data-category="Education">Education</button>
-          <button class="filter-btn px-4 py-2 rounded-full border" data-category="Tech">Tech</button>
-          <button class="filter-btn px-4 py-2 rounded-full border" data-category="Projects">Projects</button>
-          <button class="filter-btn px-4 py-2 rounded-full border" data-category="Entertainment">Entertainment</button>
-        </div>
-      </div>
-
-      <div id="videoGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
-      <div class="mt-8 text-center">
-        <button id="loadMore" class="px-6 py-3 bg-indigo-600 text-white rounded-full">Load more</button>
-      </div>
-    </section>
-
-    <!-- SHORTS / REELS -->
-    <section class="container mx-auto px-6 py-12">
-      <h2 class="text-2xl font-bold mb-4">Shorts & Reels</h2>
-      <div id="shortsRow" class="flex gap-4 overflow-x-auto scrollbar-hide">
-        <!-- short cards -->
-      </div>
-    </section>
-
-    <!-- TEAM / CREATORS -->
-    <section class="bg-white py-12">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-bold mb-6 text-center">Creators & Team</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-xl shadow text-center">
-            <img src="https://via.placeholder.com/100" alt="host" class="mx-auto rounded-full mb-4">
-            <h4 class="font-bold">Castro Dhiambo</h4>
-            <p class="text-sm text-gray-500">Founder & Host</p>
-          </div>
-          <div class="p-6 rounded-xl shadow text-center">
-            <img src="https://via.placeholder.com/100" alt="producer" class="mx-auto rounded-full mb-4">
-            <h4 class="font-bold">Producer</h4>
-            <p class="text-sm text-gray-500">Video Production</p>
-          </div>
-          <div class="p-6 rounded-xl shadow text-center">
-            <img src="https://via.placeholder.com/100" alt="editor" class="mx-auto rounded-full mb-4">
-            <h4 class="font-bold">Editor</h4>
-            <p class="text-sm text-gray-500">Editing & Motion</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMMUNITY / TESTIMONIALS -->
-    <section id="community" class="container mx-auto px-6 py-12">
-      <h2 class="text-2xl font-bold mb-6 text-center">Community Highlights</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <blockquote class="p-6 bg-gray-50 rounded-xl">“MindSpark helped me ace my exams!” — Student</blockquote>
-        <blockquote class="p-6 bg-gray-50 rounded-xl">“Great project ideas for small teams.” — Maker</blockquote>
-        <blockquote class="p-6 bg-gray-50 rounded-xl">“Shorts are hilarious and shareable.” — Viewer</blockquote>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="bg-indigo-700 text-white py-12 px-6">
-      <div class="container mx-auto text-center">
-        <h3 class="text-2xl font-bold mb-3">Get Mindspark Updates</h3>
-        <p class="mb-6 opacity-90">Subscribe for weekly highlights, new videos and behind-the-scenes.</p>
-        <form id="subscribeForm" class="flex flex-col md:flex-row justify-center gap-2 max-w-xl mx-auto">
-          <input id="subscribeEmail" type="email" placeholder="you@example.com" required class="px-4 py-3 rounded-l-lg text-black w-full md:w-auto" />
-          <button class="px-6 py-3 bg-black rounded-r-lg">Subscribe</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- GALLERY / BLOG / EVENTS (simple placeholders) -->
-    <section class="container mx-auto px-6 py-12">
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h4 class="font-bold mb-2">Latest Article</h4>
-          <p class="text-sm text-gray-600">How to plan a tech project from zero.</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h4 class="font-bold mb-2">Upcoming Event</h4>
-          <p class="text-sm text-gray-600">Live stream: Build a simple app — Dec 20, 2025</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow">
-          <h4 class="font-bold mb-2">Gallery</h4>
-          <p class="text-sm text-gray-600">Snapshots from recent shoots.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PARTNERS -->
-    <section class="bg-gray-50 py-8">
-      <div class="container mx-auto px-6 text-center">
-        <h4 class="font-bold mb-4">Partners & Supporters</h4>
-        <div class="flex items-center justify-center gap-6 flex-wrap">
-          <img src="https://via.placeholder.com/120x50" alt="partner1">
-          <img src="https://via.placeholder.com/120x50" alt="partner2">
-          <img src="https://via.placeholder.com/120x50" alt="partner3">
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
-    <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2025 CastroHub | MindSpark TV</p>
-      <p class="mt-2">Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: <a href="tel:+254759130506" class="text-indigo-400">0759130506</a></p>
+    <div class="social-icons flex justify-center gap-6 mt-6 text-3xl">
+      <a href="#" class="text-blue-500"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-pink-500"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
     </div>
+  </section>
+
+  <!-- Filters & Search -->
+  <section class="container mx-auto px-6 py-10">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
+      <input type="text" id="searchInput" placeholder="Search videos, topics..."
+        class="w-full md:w-1/2 border border-gray-300 shadow-sm rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-btn active px-4 py-2 rounded-full border border-indigo-600" data-category="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Education">Education</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Tech">Tech</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Entertainment">Entertainment</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Projects">Projects</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos Grid -->
+  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16" id="videoGrid"></section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-auto text-center text-lg">
+    <p>&copy; 2025 CastroHub | MindSpark TV</p>
+    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a></p>
+    <p>WhatsApp: 0759130506</p>
   </footer>
 
-  <!-- VIDEO MODAL -->
-  <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-xl overflow-hidden max-w-3xl w-full mx-4">
-      <div class="flex justify-between items-center p-3 border-b">
-        <h3 id="modalTitle" class="font-bold">Playing</h3>
-        <button id="closeModal" class="p-2"><i class="fas fa-times"></i></button>
-      </div>
-      <div id="modalBody" class="p-4">
-        <!-- iframe injected -->
-      </div>
-    </div>
-  </div>
-
-  <!-- SCRIPTS: data + interactions -->
+  <!-- Scripts -->
   <script>
-    // mobile menu
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
 
-    // dark mode toggle (simple)
-    const darkToggle = document.getElementById('darkToggle');
-    darkToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      document.body.classList.toggle('bg-gray-900');
-      document.body.classList.toggle('text-gray-100');
-    });
-
-    // sample data
-    const VIDEOS = [
-      {id:1,title:'Getting Started With MS Access — Creating Tables',category:'Education',yt:'https://www.youtube.com/embed/gyz2758hlEE',thumb:'https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg',views:12000,desc:'Beginner MS Access steps.'},
-      {id:2,title: "Getting Started with DTP-KCSE", category: "Education", link: "https://www.youtube.com/embed/Jpg4eJmUHaQ", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
-      {id:3,title:'Startup Ideas Showcase',category:'Projects',yt:'https://www.youtube.com/embed/L_jWHffIx5E',thumb:'https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg',views:8500,desc:'Small startup ideas.'},
-      {id:4,title:'Funny Tech Moments',category:'Entertainment',yt:'https://www.youtube.com/embed/tgbNymZ7vqY',thumb:'https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg',views:54000,desc:'Comedy & tech.'},
-      {id:5,title:'Math Tricks & Tips',category:'Education',yt:'https://www.youtube.com/embed/kJQP7kiw5Fk',thumb:'https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg',views:30100,desc:'Quick math hacks.'},
-      {id:6,title:'Coding Challenges',category:'Tech',yt:'https://www.youtube.com/embed/uelHwf8o7_U',thumb:'https://i.ytimg.com/vi/uelHwf8o7_U/hqdefault.jpg',views:19000,desc:'Algorithms & code.'}
+    const videos = [
+      { title: "Getting Started With Ms Access | Creating Tables", category: "Education", link: "https://www.youtube.com/embed/gyz2758hlEE", img: "https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" },
+      { title: "Getting Started with DTP-KCSE", category: "Education", link: "https://www.youtube.com/embed/Jpg4eJmUHaQ", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
+      { title: "Startup Ideas Showcase", category: "Projects", link: "https://www.youtube.com/embed/L_jWHffIx5E", img: "https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg" },
+      { title: "Funny Tech Moments", category: "Entertainment", link: "https://www.youtube.com/embed/tgbNymZ7vqY", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" },
+      { title: "Math Tricks & Tips", category: "Education", link: "https://www.youtube.com/embed/kJQP7kiw5Fk", img: "https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg" },
+      { title: "Coding Challenges", category: "Tech", link: "https://www.youtube.com/embed/uelHwf8o7_U", img: "https://i.ytimg.com/vi/uelHwf8o7_U/hqdefault.jpg" }
     ];
 
-    // render featured (top 3 by views)
-    const featuredRow = document.getElementById('featuredRow');
-    function renderFeatured(){
-      const top = [...VIDEOS].sort((a,b)=>b.views-a.views).slice(0,5);
-      featuredRow.innerHTML = '';
-      top.forEach(v=>{
-        const el = document.createElement('div');
-        el.className = 'min-w-[280px] bg-white rounded-xl overflow-hidden shadow video-card';
-        el.innerHTML = `
-          <div class="w-full h-40 bg-gray-200">
-            <img loading="lazy" src="${v.thumb}" alt="${v.title}" class="w-full h-full object-cover">
-          </div>
-          <div class="p-4">
-            <div class="text-sm text-indigo-600 font-semibold">${v.category}</div>
-            <h4 class="font-bold mt-2">${v.title}</h4>
-            <div class="mt-3 flex items-center justify-between">
-              <span class="text-sm text-gray-500">${v.views.toLocaleString()} views</span>
-              <button class="playBtn px-3 py-1 bg-indigo-600 text-white rounded" data-yt="${v.yt}" data-title="${v.title}"><i class="fas fa-play mr-2"></i>Play</button>
-            </div>
-          </div>
-        `;
-        featuredRow.appendChild(el);
-      });
-    }
-    renderFeatured();
+    const grid = document.getElementById("videoGrid");
 
-    // featured nav
-    document.getElementById('prevFeat').addEventListener('click',()=>{featuredRow.scrollBy({left:-320,behavior:'smooth'})});
-    document.getElementById('nextFeat').addEventListener('click',()=>{featuredRow.scrollBy({left:320,behavior:'smooth'})});
-
-    // render grid with pagination
-    const grid = document.getElementById('videoGrid');
-    let page = 1, perPage = 6;
-
-    function renderGrid(list){
+    function renderVideos(data) {
       grid.innerHTML = '';
-      list.forEach(v=>{
-        const card = document.createElement('div');
-        card.className = 'video-card bg-white rounded-xl overflow-hidden shadow';
-        card.innerHTML = `
-          <div class="relative w-full h-48 bg-gray-200">
-            <img loading="lazy" src="${v.thumb}" alt="${v.title}" class="w-full h-full object-cover">
-            <span class="absolute top-2 left-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded">${v.category}</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-bold">${v.title}</h4>
-            <p class="text-sm text-gray-500 mt-1">${v.desc}</p>
-            <div class="mt-3 flex items-center justify-between">
-              <div class="text-sm text-gray-500">${v.views.toLocaleString()} views</div>
-              <div class="flex gap-2">
-                <button class="playBtn px-3 py-1 bg-indigo-600 text-white rounded" data-yt="${v.yt}" data-title="${v.title}"><i class="fas fa-play"></i></button>
-                <button class="favBtn px-3 py-1 border rounded" data-id="${v.id}"><i class="fas fa-heart"></i></button>
-              </div>
+      data.forEach(video => {
+        grid.innerHTML += `
+          <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden">
+            <iframe class="w-full h-56" src="${video.link}" allowfullscreen></iframe>
+            <div class="p-4">
+              <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">${video.category}</span>
+              <h4 class="font-bold text-lg mt-3">${video.title}</h4>
             </div>
-          </div>
-        `;
-        grid.appendChild(card);
+          </div>`;
       });
     }
 
-    // initial load
-    function loadPage(){
-      const start = (page-1)*perPage;
-      const slice = VIDEOS.slice(start,start+perPage);
-      renderGrid(slice);
-      // show/hide load more
-      document.getElementById('loadMore').style.display = (start+perPage>=VIDEOS.length)?'none':'inline-block';
-    }
-    loadPage();
+    renderVideos(videos);
 
-    document.getElementById('loadMore').addEventListener('click',()=>{page++; loadPage();});
-
-    // Shorts (use small subset)
-    const shortsRow = document.getElementById('shortsRow');
-    function renderShorts(){
-      const shorts = VIDEOS.map(v=>v).slice(0,6);
-      shorts.forEach(s=>{
-        const el = document.createElement('div');
-        el.className='min-w-[180px] bg-white rounded-xl overflow-hidden shadow';
-        el.innerHTML = `
-          <div class="w-full h-40"><img loading="lazy" src="${s.thumb}" alt="${s.title}" class="w-full h-full object-cover"></div>
-          <div class="p-3"><h5 class="font-semibold text-sm">${s.title}</h5></div>
-        `;
-        shortsRow.appendChild(el);
-      });
-    }
-    renderShorts();
-
-    // Filters & search
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
 
-    filterButtons.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        filterButtons.forEach(b=>b.classList.remove('active'));
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        applyFilters();
+
+        const category = btn.dataset.category;
+        const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
+        const searchTerm = searchInput.value.toLowerCase();
+
+        renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
       });
     });
 
-    searchInput.addEventListener('input',()=>{applyFilters()});
+    searchInput.addEventListener('input', () => {
+      const categoryBtn = document.querySelector('.filter-btn.active');
+      const category = categoryBtn.dataset.category;
+      const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
+      const searchTerm = searchInput.value.toLowerCase();
 
-    function applyFilters(){
-      const active = document.querySelector('.filter-btn.active').dataset.category;
-      const q = searchInput.value.trim().toLowerCase();
-      let filtered = VIDEOS.slice();
-      if(active!=='all') filtered = filtered.filter(v=>v.category===active);
-      if(q) filtered = filtered.filter(v=>v.title.toLowerCase().includes(q) || v.desc.toLowerCase().includes(q));
-      // render first page of filtered
-      renderGrid(filtered.slice(0,perPage));
-      document.getElementById('loadMore').style.display = (filtered.length>perPage)?'inline-block':'none';
-      // store current filtered for load more (simple approach)
-      window._currentFiltered = filtered;
-      window._currentPage = 1;
-    }
-
-    // support load more for filtered
-    document.getElementById('loadMore').addEventListener('click',()=>{
-      if(window._currentFiltered){
-        window._currentPage = (window._currentPage||1) + 1;
-        const slice = window._currentFiltered.slice(0, window._currentPage*perPage);
-        renderGrid(slice);
-        if(slice.length>=window._currentFiltered.length) document.getElementById('loadMore').style.display='none';
-      } else {
-        page++; loadPage();
-      }
+      renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
     });
-
-    // play buttons open modal
-    document.addEventListener('click',e=>{
-      if(e.target.closest('.playBtn')){
-        const btn = e.target.closest('.playBtn');
-        const yt = btn.dataset.yt;
-        const title = btn.dataset.title;
-        openModal(yt,title);
-      }
-      if(e.target.closest('.favBtn')){
-        const id = e.target.closest('.favBtn').dataset.id;
-        toggleFav(id,e.target.closest('.favBtn'));
-      }
-    });
-
-    const modal = document.getElementById('videoModal');
-    const modalBody = document.getElementById('modalBody');
-    const modalTitle = document.getElementById('modalTitle');
-    document.getElementById('closeModal').addEventListener('click',closeModal);
-    function openModal(yt,title){
-      modalTitle.textContent = title;
-      modalBody.innerHTML = `<div class=\"relative\"><iframe class=\"w-full h-80\" src=\"${yt}?autoplay=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>`;
-      modal.classList.remove('hidden'); modal.classList.add('flex');
-    }
-    function closeModal(){ modalBody.innerHTML=''; modal.classList.add('hidden'); modal.classList.remove('flex'); }
-    modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
-
-    // favorites stored in localStorage
-    function toggleFav(id,btn){
-      let favs = JSON.parse(localStorage.getItem('mindspark_favs')||'[]');
-      id = Number(id);
-      if(favs.includes(id)){ favs = favs.filter(x=>x!==id); btn.classList.remove('bg-red-100'); }
-      else { favs.push(id); btn.classList.add('bg-red-100'); }
-      localStorage.setItem('mindspark_favs',JSON.stringify(favs));
-    }
-
-    // subscribe form (demo)
-    document.getElementById('subscribeForm').addEventListener('submit',e=>{
-      e.preventDefault();
-      const email = document.getElementById('subscribeEmail').value;
-      alert('Thanks — subscribed: ' + email);
-      e.target.reset();
-    });
-
-    // play buttons in featured are created after renderFeatured -> delegate
-    document.addEventListener('click',function(e){
-      if(e.target.closest('.playBtn')){ /* handled above */ }
-    });
-
-    // simple accessibility: close modal with escape
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
-
   </script>
+
 </body>
 </html>
