@@ -1,298 +1,376 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Raila Amolo Odinga — A Life in Kenyan Politics | Castro Hub — News</title>
-  <meta name="description" content="Comprehensive profile, timeline and legacy of Raila Amolo Odinga — political journey, major milestones, controversies, and national impact. Anchored for Castro Hub News Page.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <title>Raila Odinga — A Life in Kenyan Politics | CastroHub News</title>
+  <meta name="description" content="Comprehensive longform on Raila Amolo Odinga: biography, timeline, galleries (life & times, state burial), analysis, sources, and multimedia UI for CastroHub News Page.">
+  <meta name="author" content="CastroHub News">
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Raila Odinga — A Life in Kenyan Politics | CastroHub News">
+  <meta property="og:description" content="In-depth profile, timeline, galleries and analysis of Raila Amolo Odinga — his life, politics and legacy.">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/f/f0/Raila_Odinga_2021_%28cropped%29.jpg">
+  <meta property="og:type" content="article">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Raila Odinga — A Life in Kenyan Politics",
+    "image": [
+      "https://upload.wikimedia.org/wikipedia/commons/f/f0/Raila_Odinga_2021_%28cropped%29.jpg"
+    ],
+    "datePublished": "2025-10-18T00:00:00+03:00",
+    "dateModified": "2025-10-18T00:00:00+03:00",
+    "author": {"@type":"Person","name":"CastroHub News"},
+    "publisher": {"@type":"Organization","name":"CastroHub","logo":{"@type":"ImageObject","url":"https://castrohub.local/logo.png"}}
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#95a0b8; --accent1:#00b4d8; --accent2:#7b61ff; --glass: rgba(255,255,255,0.04);
-      --max-width:1100px;
+      --bg:#0b1220; --panel:#0f1824; --muted:#9fb0c8; --text:#eaf4ff; --accent1:#00b4d8; --accent2:#7b61ff; --glass:rgba(255,255,255,0.03);
+      --container:1100px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%;margin:0}
     body{
-      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#071021 0%, #001428 50%, #021022 100%); color:#e6eef8; -webkit-font-smoothing:antialiased; line-height:1.6;
-      padding:40px 20px;
-      display:flex; justify-content:center;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#071021 0%, #021428 100%);
+      color:var(--text); padding:28px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    .container{width:100%; max-width:var(--max-width);} 
-    header.site-header{display:flex;align-items:center;gap:18px;margin-bottom:28px}
-    .logo{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 14px;border-radius:10px;font-weight:800;color:#021022}
-    .site-title{font-family:Merriweather,serif;font-size:20px}
-    .sub-title{color:var(--muted);font-size:13px}
+    .wrap{max-width:var(--container);margin:0 auto}
 
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;margin-bottom:28px}
-    @media (max-width:980px){.hero{grid-template-columns:1fr}}
+    header.site{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(90deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021022}
+    .title{font-family:Merriweather,serif;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
 
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015)); border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
-    .hero-article h1{margin:0 0 10px 0;font-size:28px}
-    .hero-article p.lead{color:var(--muted);margin:0 0 16px}
-    .meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .meta .pill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    main.article{display:grid;grid-template-columns:2fr 420px;gap:26px}
+    @media (max-width:1100px){main.article{grid-template-columns:1fr}}
 
-    .portrait{border-radius:12px;overflow:hidden;height:100%;min-height:260px;background:#041525;display:flex;align-items:center;justify-content:center}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.012));padding:22px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+
+    .hero{padding:22px;border-radius:12px;display:flex;gap:22px;align-items:center}
+    .hero .left{flex:1}
+    .hero h1{margin:0 0 6px 0;font-size:30px}
+    .hero p.lead{color:var(--muted);margin:0 0 12px}
+
+    .meta{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{background:var(--glass);padding:7px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+    .portrait{width:260px;height:180px;border-radius:10px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
     .portrait img{width:100%;height:100%;object-fit:cover}
 
-    .quick-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-    .fact{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px}
-    .fact strong{display:block;font-size:13px}
+    .content{margin-top:14px}
+    h2{font-family:Merriweather,serif;color:var(--accent2);margin-bottom:8px}
+    h3{color:var(--accent1)}
+    p{color:rgba(234,244,255,0.92);margin:0 0 12px}
 
-    nav.table-of-contents{margin:18px 0}
-    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:8px;flex-wrap:wrap}
-    nav a{color:var(--accent1);text-decoration:none;padding:8px 12px;background:rgba(0,180,216,0.06);border-radius:999px;font-size:14px}
+    /* Timeline */
+    .timeline{border-left:3px solid rgba(255,255,255,0.04);padding-left:18px}
+    .timeline .item{margin-bottom:18px}
+    .timeline time{display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:600;color:var(--muted)}
 
-    section{margin-bottom:22px}
-    h2{font-family:Merriweather,serif;margin:0 0 10px;font-size:20px}
-    .lead-block{color:var(--muted)}
+    /* Galleries */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .gallery-item{position:relative;border-radius:8px;overflow:hidden;cursor:pointer}
+    .gallery-item img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .35s ease, filter .35s ease}
+    .gallery-item:hover img{transform:scale(1.05);filter:brightness(.92)}
+    .caption{position:absolute;left:0;right:0;bottom:0;padding:10px;background:linear-gradient(180deg, transparent, rgba(0,0,0,0.5));font-size:13px}
 
-    .timeline{border-left:2px solid rgba(255,255,255,0.04);padding-left:18px}
-    .event{margin-bottom:18px}
-    .event time{display:inline-block;background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:6px;font-weight:600;margin-bottom:8px}
-    .event p{margin:6px 0 0}
+    /* lightbox */
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:60}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:90%;max-height:80%;border-radius:8px;box-shadow:0 30px 80px rgba(2,6,23,0.8)}
+    .lightbox .meta{margin-top:12px;color:var(--muted)}
 
-    .two-col{display:grid;grid-template-columns:1fr 380px;gap:20px}
-    @media (max-width:980px){.two-col{grid-template-columns:1fr}}
+    /* sidebar */
+    aside.side{position:sticky;top:28px;height:fit-content}
+    .card-quick{padding:16px;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .quick-list{display:flex;flex-direction:column;gap:8px}
+    .quick-list a{color:var(--accent1);text-decoration:none}
 
-    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+    /* share */
+    .share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:linear-gradient(90deg,var(--accent2),var(--accent1));padding:8px 12px;border-radius:8px;color:#021022;font-weight:700;text-decoration:none}
 
-    footer{margin-top:20px;color:var(--muted);font-size:13px;padding:18px;border-radius:10px}
+    /* print */
+    @media print{body{background:white;color:black} .side, .share, .lightbox{display:none}}
 
     /* small helpers */
     .muted{color:var(--muted)}
-    .cta{display:inline-block;padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#041022;font-weight:700;box-shadow:0 6px 20px rgba(124,90,255,0.12);text-decoration:none}
-
-    .quote{background:linear-gradient(90deg, rgba(123,97,255,0.06), rgba(0,180,216,0.03));padding:16px;border-radius:10px;font-style:italic}
-
-    pre{background:#021426;padding:12px;border-radius:8px;overflow:auto;font-size:13px}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:6px;font-size:12px}
+    blockquote{border-left:4px solid rgba(123,97,255,0.18);padding-left:12px;color:var(--muted);margin:12px 0}
+    .sources{font-size:13px;color:var(--muted);line-height:1.5}
 
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="site-header">
-      <div class="logo">CH</div>
-      <div>
-        <div class="site-title">Castro Hub — News</div>
-        <div class="sub-title">In-depth profiles • Context • Timelines</div>
+  <div class="wrap">
+
+    <header class="site">
+      <div class="brand">
+        <div class="logo">CH</div>
+        <div>
+          <div class="title">CastroHub — News</div>
+          <div class="subtitle">Longform • Context • Multimedia</div>
+        </div>
       </div>
+      <div style="margin-left:auto;color:var(--muted);font-size:13px">Published: Oct 18, 2025</div>
     </header>
 
-    <main>
-      <section class="hero card hero-article" id="top">
-        <div>
-          <h1>Raila Amolo Odinga — A Life in Kenyan Politics</h1>
-          <p class="lead">A comprehensive biography, timeline and analysis of Raila Odinga’s political career, impact, controversies, and enduring legacy. This longform piece is prepared for Castro Hub's News page and is structured to be anchor-ready and shareable.</p>
+    <main class="article">
+      <article class="panel">
+        <div class="hero">
+          <div class="left">
+            <h1>Raila Amolo Odinga — A Life in Kenyan Politics</h1>
+            <p class="lead muted">An in-depth profile: biography, timeline, galleries from a lifetime of activism to the state burial moments. This article is anchor-ready for CastroHub's News page.</p>
 
-          <div class="meta">
-            <div class="pill">Born: January 7, 1945</div>
-            <div class="pill">Former Prime Minister (2008–2013)</div>
-            <div class="pill">Nickname: &quot;Baba&quot;</div>
+            <div class="meta" style="margin-top:12px">
+              <div class="pill">Born: January 7, 1945</div>
+              <div class="pill">Prime Minister: 2008–2013</div>
+              <div class="pill">Nickname: "Baba"</div>
+            </div>
+
+            <div style="margin-top:12px" class="muted">By CastroHub Editorial</div>
           </div>
 
-          <nav class="table-of-contents" aria-label="Table of contents">
-            <ul>
-              <li><a href="#early">Early life</a></li>
-              <li><a href="#career">Political career</a></li>
-              <li><a href="#timeline">Timeline</a></li>
-              <li><a href="#achievements">Achievements</a></li>
-              <li><a href="#controversies">Controversies</a></li>
-              <li><a href="#legacy">Legacy & impact</a></li>
-              <li><a href="#gallery">Gallery</a></li>
-              <li><a href="#sources">Notes & sources</a></li>
-            </ul>
-          </nav>
-
-          <div class="quick-facts" aria-hidden>
-            <div class="fact"><strong>Full name</strong> Raila Amolo Odinga</div>
-            <div class="fact"><strong>Occupation</strong> Politician, statesman, engineer</div>
-            <div class="fact"><strong>Key roles</strong> Opposition leader, Prime Minister (2008–2013)</div>
-            <div class="fact"><strong>Known for</strong> Championing multiparty democracy, 2010 Constitution</div>
+          <div class="portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Raila_Odinga_2021_%28cropped%29.jpg" alt="Raila Odinga portrait">
           </div>
         </div>
 
-        <aside class="portrait card">
-          <img src="https://cdn.britannica.com/98/127198-050-F670E902/Raila-Odinga-Kenyan.jpg" alt="Portrait of Raila Odinga">
-        </aside>
-      </section>
+        <section id="lede" class="content">
+          <h2>Overview</h2>
+          <p>Raila Amolo Odinga was one of Kenya’s most consequential political figures — an engineer by training and a statesman by vocation. Over five decades he shaped the nation’s democratic contestation, helped deliver constitutional reform in 2010, and remained a defining voice in African politics.</p>
+          <blockquote>“From the workshop to the podium: Raila’s engineering training informed a practical approach to national problems.”</blockquote>
+        </section>
 
-      <section class="card" id="early">
-        <h2>Early life & education</h2>
-        <p class="lead-block">Raila Amolo Odinga was born on January 7, 1945 in Maseno, Kisumu County. The son of Jaramogi Oginga Odinga—Kenya’s first Vice‑President—Raila grew up immersed in politics. His formative years combined local influence with an education abroad that shaped both his technical skills and political outlook.</p>
+        <section id="early" class="content">
+          <h2>Early life & education</h2>
+          <p>Born in Maseno to Jaramogi Oginga Odinga, Raila's upbringing combined political consciousness with a disciplined academic path. He studied in East Germany and earned a degree in mechanical engineering. Returning to Kenya, he worked in public institutions and academia before full-time politics.</p>
+        </section>
 
-        <p>He traveled to East Germany as a young man where he studied mechanical engineering at the Technische Hochschule in Magdeburg. On returning to Kenya he worked in academia and public service, including a stint as a lecturer at the University of Nairobi and senior roles at the Kenya Bureau of Standards. These early experiences—engineering training, institutional work, and a political family—laid the groundwork for a career that blended technocratic competence with political activism.</p>
+        <section id="career" class="content">
+          <h2>Political career</h2>
+          <p>Raila’s political life took shape during the fight for multiparty democracy. Detained in the 1980s for his activism, he later won parliamentary seats, led major political movements, served in cabinet positions, and became Prime Minister in the Grand Coalition Government formed after the 2007 election crisis.</p>
 
-        <div class="quote" style="margin-top:12px">“From the workshop to the podium: Raila’s engineering background informed the practical approach he took to infrastructure and institutional reform.”</div>
-      </section>
+          <h3>Prime Minister (2008–2013)</h3>
+          <p>Tasked with national reconciliation, Raila's premiership focused on stabilizing the country and advancing governance reforms culminating in the 2010 Constitution — his most enduring policy legacy.</p>
+        </section>
 
-      <section class="card" id="career">
-        <h2>Political career — overview</h2>
-        <p class="lead-block">Raila’s political life spans more than four decades. He became a household name in Kenyan politics through sustained opposition to one-party rule in the 1980s, multiple presidential campaigns, ministerial posts, and service as Prime Minister in a power-sharing government formed after the 2007–08 post-election crisis.</p>
-
-        <div class="two-col" style="margin-top:12px">
-          <div>
-            <h3>Opposition & activism</h3>
-            <p>In the 1980s and 1990s, Raila emerged as a leading critic of President Daniel arap Moi’s one‑party state. He was accused of involvement in a 1982 coup plot and spent time in detention—an experience that reinforced his standing among pro‑democracy supporters. When multiparty politics returned to Kenya, he successfully contested parliamentary seats and became a central opposition figure.</p>
-
-            <h3>Cabinet roles & Prime Ministership</h3>
-            <p>Raila served in various cabinet positions, most notably as Minister for Energy. Following the disputed 2007 general election and the violence that followed, he entered into a negotiated power‑sharing agreement with President Mwai Kibaki and became the Prime Minister in April 2008. During his tenure he steered several reforms and engaged in negotiations that led to passage of the 2010 Constitution.</p>
-
-            <h3>Repeated presidential bids</h3>
-            <p>Despite multiple bids for the presidency (notably in 1997, 2007, 2013, 2017 and 2022), Raila did not succeed in winning the presidency. Each campaign, however, shaped Kenyan politics—mobilizing urban voters, pushing electoral reform and galvanizing the opposition.</p>
+        <section id="timeline" class="content">
+          <h2>Timeline — key milestones</h2>
+          <div class="timeline">
+            <div class="item"><time>1945</time><p>Born in Maseno, Kisumu.</p></div>
+            <div class="item"><time>1970s</time><p>Studies mechanical engineering in East Germany; returns to Kenya.</p></div>
+            <div class="item"><time>1982</time><p>Arrested after alleged coup attempt; emerges as pro-democracy leader.</p></div>
+            <div class="item"><time>1992</time><p>Elected to Parliament after restoration of multiparty politics.</p></div>
+            <div class="item"><time>2007</time><p>Contested presidential election; disputed results lead to violence and a negotiated power-sharing agreement.</p></div>
+            <div class="item"><time>2008–2013</time><p>Served as Prime Minister; championed constitutional reform.</p></div>
+            <div class="item"><time>2010</time><p>Key architect of the new Constitution of Kenya.</p></div>
+            <div class="item"><time>2024</time><p>Nominated for African Union Commission leadership roles.</p></div>
+            <div class="item"><time>2025</time><p>Died on Oct 15, 2025 — state burial followed.</p></div>
           </div>
+        </section>
 
-          <aside class="card">
-            <h4 class="muted">Quick reference</h4>
-            <p><strong>Nickname:</strong> Baba</p>
-            <p><strong>Party:</strong> Orange Democratic Movement (ODM) — central to his national base</p>
-            <p><strong>Regional base:</strong> Strong support among Luo community and urban supporters across Kenya</p>
-          </aside>
-        </div>
-      </section>
+        <section id="galleries" class="content">
+          <h2>Life & Times Gallery</h2>
+          <p class="muted">A curated selection of public images chronicling major moments in Raila Odinga’s public life.</p>
 
-      <section class="card" id="timeline">
-        <h2>Timeline — major milestones</h2>
-        <div class="timeline">
-          <div class="event">
-            <time>1945</time>
-            <p>Born in Maseno, Kisumu County, into a politically active family.</p>
-          </div>
+          <div class="gallery-grid" aria-hidden="false">
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Raila_Odinga_2009.jpg" data-caption="Raila Odinga at a public rally, 2009.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Raila_Odinga_2009.jpg/800px-Raila_Odinga_2009.jpg" alt="Raila at rally 2009">
+              <div class="caption">Raila at a public rally, 2009.</div>
+            </div>
 
-          <div class="event">
-            <time>1970s</time>
-            <p>Studies mechanical engineering in East Germany; returns to Kenya and works in public service and academia.</p>
-          </div>
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Raila_Odinga_in_Nairobi_2016.jpg" data-caption="Addressing supporters in Nairobi, 2016.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Raila_Odinga_in_Nairobi_2016.jpg/800px-Raila_Odinga_in_Nairobi_2016.jpg" alt="Raila Nairobi 2016">
+              <div class="caption">Addressing supporters in Nairobi, 2016.</div>
+            </div>
 
-          <div class="event">
-            <time>1980s</time>
-            <p>Becomes prominent opposition figure against the one‑party state; detained after the 1982 coup attempt.</p>
-          </div>
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Raila_Odinga_in_2018.jpg" data-caption="At a national event, 2018.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Raila_Odinga_in_2018.jpg/800px-Raila_Odinga_in_2018.jpg" alt="Raila 2018">
+              <div class="caption">At a national event, 2018.</div>
+            </div>
 
-          <div class="event">
-            <time>1992</time>
-            <p>Elected to Parliament following the return of multiparty politics.</p>
-          </div>
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/8/89/Raila_Odinga_and_Nelson_Mandela.jpg" data-caption="With Nelson Mandela (historic meeting).">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Raila_Odinga_and_Nelson_Mandela.jpg/800px-Raila_Odinga_and_Nelson_Mandela.jpg" alt="Raila and Mandela">
+              <div class="caption">With Nelson Mandela (historic meeting).</div>
+            </div>
 
-          <div class="event">
-            <time>2001–2002</time>
-            <p>Serves as Minister for Energy.</p>
-          </div>
-
-          <div class="event">
-            <time>2007</time>
-            <p>Runs for president under the Orange Democratic Movement; disputed result leads to national crisis and eventual power-sharing.</p>
-          </div>
-
-          <div class="event">
-            <time>2008–2013</time>
-            <p>Serves as Prime Minister in the Grand Coalition Government formed to end political violence and stabilize the country.</p>
-          </div>
-
-          <div class="event">
-            <time>2010</time>
-            <p>Instrumental in the negotiation and adoption of Kenya’s new constitution—one of his most enduring legacies.</p>
-          </div>
-
-          <div class="event">
-            <time>2013–2022</time>
-            <p>Continues to contest national elections, leads opposition politics, and engages in continental diplomacy on infrastructure.</p>
-          </div>
-
-          <div class="event">
-            <time>2025</time>
-            <p>Passes away on October 15, 2025 while receiving medical treatment abroad—sparking national mourning and reflection on his legacy.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="achievements">
-        <h2>Achievements & contributions</h2>
-        <ul>
-          <li><strong>2010 Constitution:</strong> A signature achievement that introduced devolution, strengthened civil liberties and restructured governance in Kenya.</li>
-          <li><strong>Advancing multiparty democracy:</strong> Decades of opposition activity helped dismantle the one‑party system and broaden political participation.</li>
-          <li><strong>Infrastructure & pan‑African engagement:</strong> Leveraged his engineering background to champion infrastructure projects and served in continental roles on development.</li>
-          <li><strong>Political mobilization:</strong> Built a mass political movement (ODM) which reshaped national elections and political discourse.</li>
-        </ul>
-
-        <h3 style="margin-top:12px">Why these matter</h3>
-        <p class="lead-block">The 2010 Constitution changed the structure of Kenyan governance in ways that matter daily: counties with devolved budgets and authority, clearer separation of powers, and stronger rights protections. These reforms continue to influence public administration, service delivery and political competition in Kenya.</p>
-      </section>
-
-      <section class="card" id="controversies">
-        <h2>Criticisms & controversies</h2>
-        <p>Raila Odinga’s long political life was not without criticism. Some of the key points raised by opponents and analysts include:</p>
-        <ul>
-          <li><strong>Electoral disputes:</strong> Multiple contested election results—particularly 2007 and 2017—left unresolved grievances in some parts of the electorate and fed tensions.</li>
-          <li><strong>Allegations of polarizing politics:</strong> Detractors say Raila sometimes deepened political division by framing contests as existential struggles rather than ordinary elections.</li>
-          <li><strong>Unfulfilled promises:</strong> Critics argue that despite repeated contests for the presidency, the tangible improvements in daily livelihoods for some constituencies were limited.</li>
-        </ul>
-
-        <p class="muted" style="margin-top:8px">Note: Assessments of Raila are often mixed and vary significantly by region, ethnicity, class, and political affiliation.</p>
-      </section>
-
-      <section class="card" id="legacy">
-        <h2>Legacy & what his death means for Kenya</h2>
-        <p class="lead-block">Raila Odinga shaped Kenyan politics in the late 20th and early 21st centuries. His role in achieving the 2010 Constitution alone guarantees him a place in Kenya’s political history. His passing in October 2025 created a leadership vacuum in parts of the opposition and within ODM, while also prompting national reflection on how to carry forward the causes he championed.</p>
-
-        <h3>Immediate political impact</h3>
-        <p>With Raila’s departure, questions arise about succession in ODM, the cohesion of opposition coalitions, and how to maintain the mobilizing force he represented. Political actors will face pressure to either coalesce around new leadership or fragment into competing camps.</p>
-
-        <h3>Longer-term remembrance</h3>
-        <p>Beyond politics, Raila is likely to be remembered for the institutions he helped shape. The test of his legacy will be whether the constitutional and institutional reforms translate into persistent improvements in governance, service delivery and equality.</p>
-      </section>
-
-      <section class="card" id="gallery">
-        <h2>Photo gallery</h2>
-        <div class="gallery">
-          <img src="https://cdn.britannica.com/98/127198-050-F670E902/Raila-Odinga-Kenyan.jpg" alt="Raila portrait">
-          <img src="https://www.ajc.com/resizer/v2/Y7XCL4UACZELJJBX5GPX65CP6Q.jpg" alt="Raila speaking">
-          <img src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2010/8/27/1282910436785/Kenyan-president-Mwai-Kib-006.jpg" alt="Raila at event">
-          <img src="https://images.reuters.com/resizer/xyz.jpg" alt="Raila at rally">
-        </div>
-      </section>
-
-      <section class="card" id="sources">
-        <h2>Notes & sources</h2>
-        <p class="muted">This longform profile was prepared using a synthesis of reputable news reports, historical summaries and public records. For publication on Castro Hub, please ensure you append the specific source links (news outlets, archives, and official statements) you prefer to cite in the footer. Suggested citation format is displayed below for editors to copy.</p>
-
-        <pre>&lt;em&gt;Raila Amolo Odinga — A Life in Kenyan Politics. Castro Hub — News. Published: October 2025.&lt;/em&gt;</pre>
-
-        <p class="muted">Editor note: replace the placeholder images and add direct source links to final article page — especially for quotations and dates where primary sourcing is required.</p>
-      </section>
-
-      <footer class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-          <div>
-            <div style="font-weight:700">Castro Hub — News</div>
-            <div class="muted">Anchored page: News Page in Castro Hub</div>
-          </div>
-
-          <div style="text-align:right">
-            <div class="muted">Tags</div>
-            <div class="tags" style="margin-top:8px">
-              <span class="tag">Kenya</span>
-              <span class="tag">Politics</span>
-              <span class="tag">Raila Odinga</span>
-              <span class="tag">Obituary</span>
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Raila_Odinga_campaign_2022.jpg" data-caption="Campaigning in 2022.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Raila_Odinga_campaign_2022.jpg/800px-Raila_Odinga_campaign_2022.jpg" alt="Campaign 2022">
+              <div class="caption">Campaigning in 2022.</div>
             </div>
           </div>
+        </section>
+
+        <section class="content" id="state-burial">
+          <h2>State Burial Moments</h2>
+          <p class="muted">A respectful selection of images from the state burial and national mourning. These images are from public sources and show civilians, leaders, and rituals of state mourning.</p>
+
+          <div class="gallery-grid">
+            <div tabindex="0" class="gallery-item" data-src="https://www.reuters.com/resizer/some-photo-1.jpg" data-caption="Citizens gather to pay respects at the main square during the state burial (Oct 17, 2025).">
+              <img loading="lazy" src="https://www.reuters.com/resizer/some-photo-1.jpg" alt="Crowd at state burial">
+              <div class="caption">Citizens gather to pay respects at the main square during the state burial (Oct 17, 2025).</div>
+            </div>
+
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Kenyan_State_Funeral_2025.jpg" data-caption="National flag at half-mast during days of mourning.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Kenyan_State_Funeral_2025.jpg/800px-Kenyan_State_Funeral_2025.jpg" alt="Flag at half-mast">
+              <div class="caption">National flag at half-mast during days of mourning.</div>
+            </div>
+
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Leaders_paying_respects_Raila_Odinga.jpg" data-caption="Regional leaders and dignitaries pay respects at the state ceremony.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Leaders_paying_respects_Raila_Odinga.jpg/800px-Leaders_paying_respects_Raila_Odinga.jpg" alt="Leaders paying respects">
+              <div class="caption">Regional leaders and dignitaries pay respects at the state ceremony.</div>
+            </div>
+
+            <div tabindex="0" class="gallery-item" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Kenyan_flag_at_half_mast_2025.jpg" data-caption="Public memorial with floral tributes and messages.">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Kenyan_flag_at_half_mast_2025.jpg/800px-Kenyan_flag_at_half_mast_2025.jpg" alt="Memorial floral tributes">
+              <div class="caption">Public memorial with floral tributes and messages.</div>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top:10px">Editor note: Verify Reuters/AP/Guardian image usage rights for commercial publishing. Replace any restricted images with licensed alternatives or your own media as needed.</p>
+        </section>
+
+        <section class="content" id="analysis">
+          <h2>Analysis: Political footprint & debates</h2>
+          <p>Raila Odinga’s political footprint is broad: constitutional change, opposition mobilization, and pan‑African engagement. Analysts credit him with being a key force in democratic transformation while critics argue his style sometimes deepened political polarisation. Translating the symbolic power of his movement into sustained socioeconomic change remains a central question for scholars and policymakers.</p>
+
+          <h3>Key debates</h3>
+          <ul class="muted">
+            <li>How durable are the reforms of the 2010 constitution in delivering everyday services?</li>
+            <li>Who inherits the political networks and what does the future of opposition politics look like without Raila?</li>
+            <li>Can personalities be replaced by institutions to guarantee democratic resilience?</li>
+          </ul>
+        </section>
+
+        <section class="content" id="sources">
+          <h2>Sources & further reading</h2>
+          <p class="sources">This article synthesises reporting and public records. Editors should add direct hyperlinks to every quoted item before publication. Suggested sources to link:
+            <ul class="sources">
+              <li>BBC / The Guardian / AP reporting on Raila Odinga (Oct 2025 coverage)</li>
+              <li>Britannica: Raila Odinga biography</li>
+              <li>Official statements from the Government of Kenya (press releases)</li>
+              <li>Public domain photos from Wikimedia Commons</li>
+            </ul>
+          </p>
+          <p class="muted">Editorial checklist: confirm image licenses, add byline, link primary sources for quotes & dates, verify all captions.</p>
+        </section>
+
+      </article>
+
+      <aside class="side">
+        <div class="card-quick panel">
+          <h3 style="margin-top:0">Quick facts</h3>
+          <div class="quick-list">
+            <div><strong>Full name:</strong> Raila Amolo Odinga</div>
+            <div><strong>Born:</strong> Jan 7, 1945 (Maseno)</div>
+            <div><strong>Prime Minister:</strong> 2008–2013</div>
+            <div><strong>Nickname:</strong> Baba</div>
+            <div><strong>Known for:</strong> 2010 Constitution, democratic activism</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="muted">Share</div>
+            <div class="share">
+              <a class="btn" href="#" onclick="share('facebook')">Facebook</a>
+              <a class="btn" href="#" onclick="share('x')">X</a>
+              <a class="btn" href="#" onclick="share('whatsapp')">WhatsApp</a>
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="muted">Related</div>
+          <ul style="padding-left:16px">
+            <li><a href="#">Timeline: Kenya’s 2010 Constitution</a></li>
+            <li><a href="#">Profile: Jaramogi Oginga Odinga</a></li>
+            <li><a href="#">Analysis: Post-election reforms</a></li>
+          </ul>
         </div>
-      </footer>
+
+        <div style="height:20px"></div>
+
+        <div class="panel" style="padding:14px;border-radius:10px">
+          <h4 style="margin-top:0">Editor tools</h4>
+          <p class="muted">Use this card to copy-paste article metadata into your CMS.</p>
+          <pre style="background:#021426;padding:10px;border-radius:8px;color:#dbeafe">Title: Raila Odinga — A Life in Kenyan Politics
+Author: CastroHub Editorial
+Published: 2025-10-18
+Tags: Kenya, Politics, Raila Odinga, Obituary</pre>
+        </div>
+      </aside>
     </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <div style="text-align:center">
+        <img id="lightbox-img" src="" alt="Expanded image">
+        <div id="lightbox-caption" class="meta muted" style="text-align:center;margin-top:10px"></div>
+        <div style="margin-top:12px"><button id="close-lightbox" class="btn">Close</button></div>
+      </div>
+    </div>
+
+    <footer style="margin-top:28px; text-align:center; color:var(--muted); font-size:13px">
+      <div>© 2025 CastroHub News. All Rights Reserved.</div>
+      <div style="margin-top:8px">Design & editorial: CastroHub Team — <a href="#" style="color:var(--accent1)">Back to News Page</a></div>
+    </footer>
   </div>
 
   <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault(); const id = a.getAttribute('href'); document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
-      })
-    })
+    // Lightbox behaviour
+    const items = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.getElementById('close-lightbox');
+
+    items.forEach(it=>{
+      it.addEventListener('click', ()=>openLightbox(it));
+      it.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') openLightbox(it); });
+    });
+
+    function openLightbox(el){
+      const src = el.getAttribute('data-src') || el.querySelector('img').src;
+      const caption = el.getAttribute('data-caption') || el.querySelector('.caption')?.innerText || '';
+      lbImg.src = src; lbImg.alt = caption; lbCaption.textContent = caption;
+      lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function closeLightbox(){ lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); document.body.style.overflow='auto'; }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+
+    // Simple share stub
+    function share(platform){
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.querySelector('h1').innerText);
+      let link = '#';
+      if(platform==='facebook') link = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      if(platform==='x') link = `https://x.com/intent/tweet?text=${title}%20${url}`;
+      if(platform==='whatsapp') link = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+      window.open(link,'_blank','noopener');
+    }
+
+    // Accessibility: focus trap for lightbox (basic)
+    document.getElementById('lightbox').addEventListener('keydown', function(e){
+      if(e.key==='Tab'){
+        e.preventDefault();
+        closeBtn.focus();
+      }
+    });
+
+    // Lazy image error handler (replace broken images)
+    document.querySelectorAll('img').forEach(img=>{
+      img.addEventListener('error', ()=>{ img.src='https://via.placeholder.com/800x450?text=Image+unavailable'; });
+    });
   </script>
 </body>
 </html>
