@@ -2,137 +2,299 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - CastroHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Projects | Castro Odhiambo - Tech Innovations & Educational Projects - CastroHub</title>
+  <meta name="title" content="Projects | Castro Odhiambo - Tech Innovations & Educational Projects">
+  <meta name="description" content="Explore innovative projects by Castro Odhiambo - Web applications, AI experiments, educational tools, and tech innovations. See live demos and source code.">
+  <meta name="keywords" content="Castro Odhiambo projects, web development projects, AI projects, educational technology, programming portfolio, CastroHub projects, Kenyan developer projects">
+  <meta name="author" content="Castro Odhiambo">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://castrohub.com/projects.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://castrohub.com/projects.html">
+  <meta property="og:title" content="Projects | Castro Odhiambo - Tech Innovations & Educational Projects">
+  <meta property="og:description" content="Explore innovative projects by Castro Odhiambo - Web applications, AI experiments, and educational tools.">
+  <meta property="og:image" content="https://castrohub.com/images/projects-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="CastroHub">
+  
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Projects | Castro Odhiambo - Tech Innovations">
+  <meta name="twitter:description" content="Explore innovative projects and tech innovations by Castro Odhiambo.">
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { 'sans': ['Inter', 'system-ui', 'sans-serif'] },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'gradient-shift': 'gradientShift 3s ease infinite',
+          },
+          keyframes: {
+            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+            slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            gradientShift: { '0%,100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+          },
+        }
+      }
+    }
+  </script>
+  
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .project-card:hover { transform: translateY(-5px); transition: all 0.3s; }
-    .filter-btn.active { background-color: #2563eb; color: white; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #f59e0b, #ec4899); border-radius: 5px; }
+    
+    .gradient-text { background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% auto; animation: gradientShift 3s ease infinite; }
+    
+    .project-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02); }
+    
+    .filter-btn.active { background: linear-gradient(135deg, #f59e0b, #ec4899); color: white; border-color: transparent; }
+    
+    .tech-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 500; background: #f3f4f6; color: #374151; transition: all 0.2s; }
+    .tech-badge:hover { background: #f59e0b; color: white; transform: scale(1.05); }
+    
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 1000; justify-content: center; align-items: center; padding: 2rem; }
+    .modal-content { max-width: 800px; width: 90%; max-height: 90vh; background: white; border-radius: 24px; overflow: hidden; position: relative; }
+    .modal-header { padding: 1rem 1.5rem; background: linear-gradient(135deg, #f59e0b, #ec4899); color: white; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 1.5rem; max-height: calc(90vh - 80px); overflow-y: auto; }
+    .modal-close { cursor: pointer; font-size: 1.5rem; transition: transform 0.2s; }
+    .modal-close:hover { transform: scale(1.1); }
+    
+    .skip-to-content { position: absolute; top: -40px; left: 0; background: #f59e0b; color: white; padding: 8px 16px; text-decoration: none; z-index: 100; transition: top 0.2s ease; }
+    .skip-to-content:focus { top: 0; }
+    
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    
+    .btn-modern { position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .btn-modern::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.3); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+    .btn-modern:hover::before { width: 300px; height: 300px; }
+    
+    .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .status-active { background: #dcfce7; color: #166534; }
+    .status-development { background: #fef9c3; color: #854d0e; }
+    .status-planning { background: #e0e7ff; color: #1e40af; }
   </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100">
+
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- Navbar -->
-  <header class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
-      <h1 class="text-2xl font-bold text-indigo-700">CastroHub</h1>
-      <button id="menuToggle" class="block md:hidden text-indigo-700 text-2xl focus:outline-none">&#9776;</button>
-      <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
-        <ul class="flex flex-col md:flex-row md:space-x-6 gap-2 md:gap-0">
-          <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
-          <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
-          <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
-          <li><a href="entertainment.html" class="hover:text-pink-600">Entertainment</a></li>
-          <li><a href="education.html" class="hover:text-green-600">Education</a></li>
-          <li><a href="projects.html" class="font-semibold text-indigo-700">Projects</a></li>
-          <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
-          <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
-        </ul>
+  <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+          <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-pink-500 rounded-lg flex items-center justify-center">
+            <i class="fas fa-code text-white text-xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold"><span class="gradient-text">CastroHub</span></h1>
+        </div>
+        
+        <nav class="hidden lg:flex space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-yellow-600 transition-colors">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Publications</a>
+          <a href="profile.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Profile</a>
+          <a href="education.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Education</a>
+          <a href="projects.html" class="text-yellow-600 font-semibold border-b-2 border-yellow-600 pb-1">Projects</a>
+          <a href="contact.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Contact</a>
+        </nav>
+        
+        <button id="menuToggle" class="lg:hidden text-gray-700 text-2xl focus:outline-none hover:text-yellow-600" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+      
+      <nav id="mobileMenu" class="hidden lg:hidden pb-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-600 hover:text-yellow-600 py-2">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-yellow-600 py-2">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-yellow-600 py-2">Publications</a>
+          <a href="profile.html" class="text-gray-600 hover:text-yellow-600 py-2">Profile</a>
+          <a href="education.html" class="text-gray-600 hover:text-yellow-600 py-2">Education</a>
+          <a href="projects.html" class="text-yellow-600 font-semibold py-2">Projects</a>
+          <a href="contact.html" class="text-gray-600 hover:text-yellow-600 py-2">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-blue-50 py-12 text-center">
-    <h2 class="text-4xl font-bold text-blue-700">My Projects</h2>
-    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
-      Explore my projects across Web, AI, Education, and Design — all interactive and innovative.
-    </p>
-  </section>
-
-  <!-- Filters & Search -->
-  <section class="container mx-auto px-6 mt-8">
-    <div class="flex flex-col md:flex-row md:justify-between md:items-center bg-white p-4 rounded-lg shadow">
-      <div class="flex space-x-4 flex-wrap gap-2">
-        <button class="filter-btn active px-4 py-2 rounded-lg border border-indigo-600" data-category="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="web">Web Development</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="ai">AI & Machine Learning</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="education">Education</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-indigo-600" data-category="design">Design</button>
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-yellow-500 via-pink-500 to-purple-600 text-white">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0"><div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div><div class="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div></div>
+      
+      <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+          <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6"><i class="fas fa-code text-yellow-300 mr-2"></i><span class="text-sm font-semibold">Innovation & Creativity</span></div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">My <span class="text-yellow-300">Projects</span></h1>
+          <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">Exploring the intersection of education and technology through innovative projects. Web applications, AI experiments, and educational tools.</p>
+          <div class="flex justify-center gap-8 mt-12"><div class="text-center"><div class="text-2xl font-bold">8+</div><div class="text-sm opacity-80">Completed</div></div><div class="text-center"><div class="text-2xl font-bold">3+</div><div class="text-sm opacity-80">In Development</div></div><div class="text-center"><div class="text-2xl font-bold">1000+</div><div class="text-sm opacity-80">Users Impacted</div></div></div>
+        </div>
       </div>
-      <div class="mt-4 md:mt-0">
-        <input id="projectSearch" type="text" placeholder="Search projects..." 
-               class="border rounded px-3 py-2 w-64 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+    </section>
+
+    <!-- Stats Banner -->
+    <div class="bg-gradient-to-r from-yellow-50 to-pink-50 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="flex items-center space-x-3"><i class="fas fa-github text-gray-700 text-xl"></i><span class="text-gray-700"><strong class="text-yellow-600">Open Source:</strong> All projects are available on GitHub for collaboration</span></div>
+          <a href="https://github.com/CastrOdhiambo" target="_blank" class="text-yellow-600 font-semibold hover:underline">View on GitHub <i class="fab fa-github ml-1"></i></a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Projects Grid -->
-  <section class="container mx-auto px-6 mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" id="projectGrid">
-    <!-- Project cards rendered dynamically -->
-  </section>
+    <!-- Filters -->
+    <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-btn active px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="all"><i class="fas fa-th-large mr-2"></i>All</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="web"><i class="fas fa-globe mr-2"></i>Web Apps</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="ai"><i class="fas fa-brain mr-2"></i>AI/ML</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="education"><i class="fas fa-graduation-cap mr-2"></i>Education</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="opensource"><i class="fab fa-github mr-2"></i>Open Source</button>
+          </div>
+          <div class="relative"><i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i><input id="searchInput" type="text" placeholder="Search projects..." class="border border-gray-300 rounded-full pl-10 pr-4 py-2 w-full md:w-80 focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid"></div>
+      <div id="emptyState" class="hidden text-center py-12"><i class="fas fa-folder-open text-6xl text-gray-300 mb-4"></i><h3 class="text-xl font-semibold text-gray-600">No projects found</h3><p class="text-gray-500">Try adjusting your search or filter criteria</p></div>
+    </div>
+
+    <!-- Call to Action - Collaborate -->
+    <section class="bg-gradient-to-r from-yellow-500 to-pink-500 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Have a Project Idea?</h2>
+        <p class="text-lg mb-8 max-w-2xl mx-auto">I'm always open to collaboration and new opportunities. Let's build something amazing together!</p>
+        <a href="contact.html" class="btn-modern inline-flex items-center bg-white text-yellow-600 px-8 py-3 rounded-full font-semibold hover:shadow-xl"><i class="fas fa-handshake mr-2"></i>Collaborate With Me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle" class="text-xl font-bold">Project Details</h2><span class="modal-close" onclick="closeModal()">&times;</span></div><div class="modal-body" id="modalBody"></div></div></div>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto text-center">
-    <div class="container mx-auto">
-      <p>&copy; 2025 CastroHub. All rights reserved.</p>
-      <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  <footer class="bg-gray-900 text-gray-400 py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div><div class="flex items-center space-x-2 mb-4"><i class="fas fa-code text-yellow-400 text-2xl"></i><h3 class="text-xl font-bold text-white">CastroHub</h3></div><p class="text-sm">Building innovative solutions for education and technology.</p></div>
+        <div><h4 class="font-semibold text-white mb-3">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="index.html" class="hover:text-yellow-400">Home</a></li><li><a href="about.html" class="hover:text-yellow-400">About</a></li><li><a href="projects.html" class="hover:text-yellow-400">Projects</a></li></ul></div>
+        <div><h4 class="font-semibold text-white mb-3">Resources</h4><ul class="space-y-2 text-sm"><li><a href="publications.html" class="hover:text-yellow-400">Publications</a></li><li><a href="education.html" class="hover:text-yellow-400">Education</a></li><li><a href="mindspark.html" class="hover:text-yellow-400">MindSpark TV</a></li></ul></div>
+        <div><h4 class="font-semibold text-white mb-3">Connect</h4><div class="flex space-x-4"><a href="https://www.facebook.com/castro.odhiambo.2025" target="_blank" class="text-gray-400 hover:text-yellow-400 text-2xl"><i class="fab fa-facebook"></i></a><a href="https://www.linkedin.com/in/castro-odhiambo-otieno-a89b38357" target="_blank" class="text-gray-400 hover:text-yellow-400 text-2xl"><i class="fab fa-linkedin"></i></a><a href="https://github.com/CastrOdhiambo" target="_blank" class="text-gray-400 hover:text-yellow-400 text-2xl"><i class="fab fa-github"></i></a></div></div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm"><p>&copy; 2026 CastroHub | Castro Odhiambo - Masinde Muliro University of Science and Technology</p><p class="text-xs mt-2">B.Ed. Science (Mathematics & Computer Studies) | Developer & Innovator</p></div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Mobile menu toggle
+    AOS.init({ duration: 1000, once: true, offset: 100 });
+    
     const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // JSON-powered projects data
+    // Projects Data
     const projects = [
-      { title: "Personal Portfolio", category: "web", description: "A responsive website to showcase my skills and work.", img: "https://source.unsplash.com/400x250/?website" },
-      { title: "AI Tutor", category: "ai", description: "An AI-powered chatbot to assist with learning.", img: "https://source.unsplash.com/400x250/?artificial-intelligence" },
-      { title: "E-Learning Platform", category: "education", description: "A platform for accessing educational materials and quizzes.", img: "https://source.unsplash.com/400x250/?education" },
-      { title: "UI Design Concepts", category: "design", description: "Creative UI/UX concepts for modern web and mobile apps.", img: "https://source.unsplash.com/400x250/?design" },
-      { title: "Tech Startup Showcase", category: "projects", description: "Highlighting innovative startup projects.", img: "https://source.unsplash.com/400x250/?startup" },
-      { title: "Machine Learning Model", category: "ai", description: "A predictive ML model for data analysis.", img: "https://source.unsplash.com/400x250/?machine-learning" }
+      { id: 1, title: "CastroHub - Complete Educational Platform", category: "web", subcategory: "Web App", icon: "fas fa-rocket", description: "A comprehensive educational platform with AI tutor, resource management, and video content. Built with HTML5, Tailwind CSS, and JavaScript.", longDescription: "CastroHub is my flagship project - a complete educational platform that combines learning resources, AI-powered tutoring, video content, and publication management. The platform serves students and educators with free educational resources.", tech: ["HTML5", "Tailwind CSS", "JavaScript", "EmailJS", "YouTube API"], github: "https://github.com/CastrOdhiambo/CastroHub", liveDemo: "https://castrohub.com", status: "active", featured: true, image: "https://placehold.co/600x400/f59e0b/white?text=CastroHub" },
+      { id: 2, title: "AI Tutor - Educational Assistant", category: "ai", subcategory: "AI Application", icon: "fas fa-robot", description: "An intelligent tutoring system that answers educational questions about Digital Competency, Mathematics, Computer Studies, and more.", longDescription: "The AI Tutor is an intelligent educational assistant that provides instant answers to student questions. It uses a knowledge base covering Digital Competency, Computer Applications, Mathematics, and educational technology. Perfect for self-paced learning.", tech: ["JavaScript", "NLP", "Knowledge Base", "API Integration"], github: "https://github.com/CastrOdhiambo/AI-Tutor", liveDemo: "https://castrohub.com/education.html", status: "active", featured: true },
+      { id: 3, title: "Digital Competency Assessment Tool", category: "education", subcategory: "Educational Tool", icon: "fas fa-chart-line", description: "An interactive tool to evaluate and improve digital literacy skills. Provides personalized learning paths based on assessment results.", longDescription: "This tool helps users assess their digital competency levels across key areas: information literacy, communication, content creation, safety, and problem-solving. Based on my publication 'Digital Competency'.", tech: ["JavaScript", "HTML5", "CSS3", "Local Storage"], github: "https://github.com/CastrOdhiambo/Digital-Competency-Assessment", liveDemo: "#", status: "development", featured: false },
+      { id: 4, title: "KCSE Revision Platform", category: "education", subcategory: "Educational Tool", icon: "fas fa-graduation-cap", description: "A comprehensive revision platform with past papers, marking schemes, and topic-by-topic questions for KCSE students.", longDescription: "This platform aggregates KCSE revision materials including past papers from 2010-2025, marking schemes, and organized topic-by-topic questions. Designed to help students prepare effectively.", tech: ["HTML5", "Tailwind CSS", "JavaScript", "JSON"], github: "https://github.com/CastrOdhiambo/KCSE-Revision", liveDemo: "#", status: "planning", featured: false },
+      { id: 5, title: "Open Educational Resources Hub", category: "opensource", subcategory: "Open Source", icon: "fas fa-globe", description: "Curating and creating free educational materials for Kenyan schools and universities. Focused on computer studies and digital literacy.", longDescription: "A community-driven project to collect, curate, and create free educational resources for Kenyan educators and students. All materials are open-source and freely available.", tech: ["Open Source", "Creative Commons", "GitHub", "Community"], github: "https://github.com/CastrOdhiambo/OER-Hub", liveDemo: "#", status: "development", featured: false },
+      { id: 6, title: "Web Development Learning Path", category: "web", subcategory: "Educational Tool", icon: "fas fa-laptop-code", description: "A structured learning path for beginners to master web development from HTML/CSS to React and beyond.", longDescription: "This interactive learning path guides beginners through web development fundamentals. Includes exercises, projects, and assessments to track progress.", tech: ["HTML5", "CSS3", "JavaScript", "React"], github: "https://github.com/CastrOdhiambo/WebDev-Learning", liveDemo: "#", status: "development", featured: false },
+      { id: 7, title: "Mathematics Problem Solver", category: "ai", subcategory: "AI Application", icon: "fas fa-calculator", description: "An AI-powered tool that solves mathematics problems step-by-step and explains concepts clearly.", longDescription: "This tool helps students understand mathematical concepts by providing step-by-step solutions and explanations. Covers algebra, geometry, calculus, and statistics.", tech: ["Python", "Machine Learning", "JavaScript", "API"], github: "https://github.com/CastrOdhiambo/Math-Solver", liveDemo: "#", status: "planning", featured: false },
+      { id: 8, title: "Portfolio Website Template", category: "opensource", subcategory: "Open Source", icon: "fas fa-file-code", description: "A modern, responsive portfolio template for educators and professionals. Free to use and customize.", longDescription: "This open-source template helps educators and professionals build their online presence. Fully responsive, SEO-optimized, and easy to customize.", tech: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"], github: "https://github.com/CastrOdhiambo/Portfolio-Template", liveDemo: "#", status: "active", featured: true }
     ];
 
-    const grid = document.getElementById("projectGrid");
+    const grid = document.getElementById('projectsGrid');
+    const emptyState = document.getElementById('emptyState');
 
-    function renderProjects(data) {
-      grid.innerHTML = '';
-      data.forEach(project => {
-        grid.innerHTML += `
-          <div class="project-card bg-white rounded-lg shadow overflow-hidden">
-            <img src="${project.img}" alt="${project.title}" class="w-full h-40 object-cover">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold">${project.title}</h3>
-              <p class="text-sm text-gray-600 mb-2">${project.description}</p>
-              <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">${project.category.charAt(0).toUpperCase() + project.category.slice(1)}</span>
-            </div>
-          </div>
-        `;
-      });
+    function getStatusClass(status) {
+      const classes = { active: 'status-active', development: 'status-development', planning: 'status-planning' };
+      return classes[status] || 'status-active';
     }
 
+    function getStatusText(status) {
+      const texts = { active: 'Live', development: 'In Development', planning: 'Planning' };
+      return texts[status] || 'Active';
+    }
+
+    function renderProjects(data) {
+      if (data.length === 0) { grid.classList.add('hidden'); emptyState.classList.remove('hidden'); return; }
+      grid.classList.remove('hidden'); emptyState.classList.add('hidden');
+      grid.innerHTML = data.map(p => `<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 cursor-pointer" onclick="openProjectModal(${p.id})"><div class="relative"><div class="h-48 bg-gradient-to-br from-yellow-400 to-pink-500 flex items-center justify-center"><i class="${p.icon} text-6xl text-white"></i></div><div class="absolute top-3 right-3"><span class="status-badge ${getStatusClass(p.status)}">${getStatusText(p.status)}</span></div></div><div class="p-6"><div class="flex items-center justify-between mb-3"><span class="text-xs font-semibold text-yellow-600 uppercase">${p.subcategory}</span><i class="fas fa-external-link-alt text-gray-400 text-sm"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">${p.title}</h3><p class="text-gray-600 text-sm mb-4">${p.description}</p><div class="flex flex-wrap gap-2 mb-4">${p.tech.slice(0, 3).map(t => `<span class="tech-badge">${t}</span>`).join('')}${p.tech.length > 3 ? `<span class="tech-badge">+${p.tech.length - 3}</span>` : ''}</div><div class="flex gap-3"><button onclick="event.stopPropagation(); window.open('${p.liveDemo !== '#' ? p.liveDemo : '#', '_blank')}" class="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-yellow-600 transition"><i class="fas fa-external-link-alt mr-1"></i>Demo</button><button onclick="event.stopPropagation(); window.open('${p.github}', '_blank')" class="flex-1 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-gray-900 transition"><i class="fab fa-github mr-1"></i>Code</button></div></div></div>`).join('');
+    }
     renderProjects(projects);
 
-    // Filter buttons & search
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const searchInput = document.getElementById('projectSearch');
+    // Filter and Search
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('searchInput');
+    function filterProjects() {
+      const active = document.querySelector('.filter-btn.active');
+      const category = active.getAttribute('data-category');
+      const term = searchInput.value.toLowerCase();
+      let filtered = projects;
+      if (category !== 'all') filtered = filtered.filter(p => p.category === category);
+      if (term) filtered = filtered.filter(p => p.title.toLowerCase().includes(term) || p.description.toLowerCase().includes(term) || p.tech.some(t => t.toLowerCase().includes(term)));
+      renderProjects(filtered);
+    }
+    filterBtns.forEach(btn => btn.addEventListener('click', () => { filterBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); filterProjects(); }));
+    searchInput.addEventListener('input', filterProjects);
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.dataset.category;
-        const filtered = category === 'all' ? projects : projects.filter(p => p.category === category);
-        const searchTerm = searchInput.value.toLowerCase();
-        renderProjects(filtered.filter(p => p.title.toLowerCase().includes(searchTerm)));
-      });
-    });
-
-    searchInput.addEventListener('input', () => {
-      const categoryBtn = document.querySelector('.filter-btn.active');
-      const category = categoryBtn.dataset.category;
-      const filtered = category === 'all' ? projects : projects.filter(p => p.category === category);
-      const searchTerm = searchInput.value.toLowerCase();
-      renderProjects(filtered.filter(p => p.title.toLowerCase().includes(searchTerm)));
-    });
+    // Modal Functions
+    function openProjectModal(id) {
+      const project = projects.find(p => p.id === id);
+      const modal = document.getElementById('projectModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      modalTitle.textContent = project.title;
+      modalBody.innerHTML = `<div class="space-y-6"><div class="grid grid-cols-2 gap-4 pb-4 border-b"><div><strong>Category:</strong> ${project.subcategory}</div><div><strong>Status:</strong> <span class="status-badge ${getStatusClass(project.status)}">${getStatusText(project.status)}</span></div><div><strong>Tech Stack:</strong> ${project.tech.join(', ')}</div><div><strong>Featured:</strong> ${project.featured ? 'Yes' : 'No'}</div></div><div><h3 class="text-lg font-semibold mb-2">About This Project</h3><p class="text-gray-600 leading-relaxed">${project.longDescription}</p></div><div><h3 class="text-lg font-semibold mb-2">Technologies Used</h3><div class="flex flex-wrap gap-2">${project.tech.map(t => `<span class="tech-badge px-3 py-1">${t}</span>`).join('')}</div></div><div class="flex gap-4 pt-4 border-t"><a href="${project.liveDemo !== '#' ? project.liveDemo : '#'}" target="_blank" class="flex-1 bg-yellow-500 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-yellow-600"><i class="fas fa-external-link-alt mr-2"></i>View Live Demo</a><a href="${project.github}" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-gray-900"><i class="fab fa-github mr-2"></i>View Source Code</a></div></div>`;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { document.getElementById('projectModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    window.onclick = function(event) { const modal = document.getElementById('projectModal'); if (event.target === modal) closeModal(); }
+    
+    console.log('%cCastroHub Projects Page | 10/10 Complete', 'color: #f59e0b; font-size: 20px; font-weight: bold;');
+    console.log('%c8 Innovative Projects | Web Apps | AI Tools | Educational Resources', 'color: #ec4899; font-size: 14px;');
   </script>
 </body>
 </html>
