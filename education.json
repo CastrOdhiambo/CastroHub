@@ -1,5 +1,12 @@
 {
   "resources": [
+     {
+      "title": "| Digital Comptency | Digital Comptency Book",
+      "category": "Notes",
+      "description": "Mathematics Revision.",
+      "link": "Assets/Digital Competency.pdf",
+      "tags": ["Computer", "Notes", "education"]
+    },
     {
       "title": "| Form Two mid term Exams-Mathematics | Mathematics Past Examination Papers",
       "category": "exam",
