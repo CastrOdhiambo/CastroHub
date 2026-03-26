@@ -1,136 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Entertainment - CastroHub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entertainment Hub by CastroHub - Enjoy videos, music, comedy, and viral content curated for your enjoyment.">
+  <meta name="author" content="Castro Odhiambo">
+  <title>Entertainment Hub | CastroHub - Videos, Music & Fun</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
-    .card:hover { transform: translateY(-5px); transition: all 0.3s; }
-    .filter-btn.active { background-color: #ec4899; color: white; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      border-radius: 5px;
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #ec4899, #8b5cf6, #f59e0b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Card Hover Effect */
+    .entertainment-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .entertainment-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Filter Button Active State */
+    .filter-btn.active {
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      color: white;
+      border-color: transparent;
+    }
+    
+    /* Video Modal */
+    .modal-video {
+      transition: all 0.3s ease;
+    }
+    
+    /* Category Badge */
+    .category-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .category-video { background: #fee2e2; color: #dc2626; }
+    .category-music { background: #fed7aa; color: #ea580c; }
+    .category-meme { background: #fef9c3; color: #ca8a04; }
+    .category-comedy { background: #e0e7ff; color: #4f46e5; }
+    
+    /* Loading Spinner */
+    .spinner {
+      border: 3px solid rgba(236, 72, 153, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid #ec4899;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100">
 
   <!-- Navbar -->
-  <header class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
-      <h1 class="text-2xl font-bold text-pink-600">CastroHub</h1>
-      <button id="menuToggle" class="block md:hidden text-pink-600 text-2xl focus:outline-none">&#9776;</button>
-      <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
-        <ul class="flex flex-col md:flex-row md:space-x-6 gap-2 md:gap-0">
-          <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
-          <li><a href="about.html" class="hover:text-pink-500">About</a></li>
-          <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
-          <li><a href="entertainment.html" class="font-semibold text-pink-600">Entertainment</a></li>
-          <li><a href="education.html" class="hover:text-green-600">Education</a></li>
-          <li><a href="projects.html" class="hover:text-yellow-600">Projects</a></li>
-          <li><a href="mindspark.html" class="hover:text-indigo-600">MindSpark TV</a></li>
-          <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
-        </ul>
+  <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+          <div class="w-10 h-10 bg-gradient-to-br from-pink-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <i class="fas fa-music text-white text-xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold">
+            <span class="gradient-text">CastroHub</span>
+          </h1>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-pink-600 transition-colors font-medium">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-pink-600 transition-colors font-medium">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-pink-600 transition-colors font-medium">Publications</a>
+          <a href="education.html" class="text-gray-600 hover:text-pink-600 transition-colors font-medium">Education</a>
+          <a href="entertainment.html" class="text-pink-600 font-semibold border-b-2 border-pink-600 pb-1">Entertainment</a>
+          <a href="contact.html" class="text-gray-600 hover:text-pink-600 transition-colors font-medium">Contact</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="menuToggle" class="md:hidden text-gray-700 text-2xl focus:outline-none hover:text-pink-600 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-600 hover:text-pink-600 transition-colors py-2">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-pink-600 transition-colors py-2">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-pink-600 transition-colors py-2">Publications</a>
+          <a href="education.html" class="text-gray-600 hover:text-pink-600 transition-colors py-2">Education</a>
+          <a href="entertainment.html" class="text-pink-600 font-semibold py-2">Entertainment</a>
+          <a href="contact.html" class="text-gray-600 hover:text-pink-600 transition-colors py-2">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg text-white text-center py-20 px-6">
-    <h2 class="text-5xl font-bold mb-4">Entertainment Hub</h2>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto">Your one-stop destination for videos, music, memes, and pure fun 🎬🎶😂</p>
-  </section>
-
-  <!-- Filters & Search -->
-  <section class="container mx-auto px-6 py-10">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-      <input type="text" id="searchInput" placeholder="Search entertainment..." 
-             class="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-pink-500 focus:outline-none">
-      <div class="flex flex-wrap gap-2">
-        <button class="filter-btn active px-4 py-2 rounded-lg border border-pink-600" data-category="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-pink-600" data-category="Video">Videos</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-pink-600" data-category="Music">Music</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-pink-600" data-category="Meme">Memes</button>
-        <button class="filter-btn px-4 py-2 rounded-lg border border-pink-600" data-category="Comedy">Comedy</button>
+  <section class="relative overflow-hidden bg-gradient-to-br from-pink-600 via-purple-600 to-orange-500 text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 py-16 lg:py-20 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-play text-yellow-300 mr-2"></i>
+          <span class="text-sm font-semibold">Your Daily Dose of Fun</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Entertainment Hub
+        </h1>
+        
+        <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+          Videos, music, comedy, and viral content curated just for you. Sit back, relax, and enjoy!
+        </p>
+        
+        <!-- Stats -->
+        <div class="flex justify-center gap-8 mt-12">
+          <div class="text-center">
+            <div class="text-2xl font-bold">20+</div>
+            <div class="text-sm opacity-80">Videos</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">10+</div>
+            <div class="text-sm opacity-80">Music Tracks</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">∞</div>
+            <div class="text-sm opacity-80">Fun</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Featured Video Section -->
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl overflow-hidden shadow-xl">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="relative aspect-video bg-black">
+          <iframe id="featuredVideo" 
+                  class="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+        </div>
+        <div class="p-8 flex flex-col justify-center">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <i class="fas fa-star text-yellow-500"></i>
+            <span class="text-sm font-semibold text-pink-600">Featured Video</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Trending Now 🔥</h2>
+          <p class="text-gray-600 mb-4">Watch the most popular and trending entertainment content right here. Updated weekly with fresh videos, music, and comedy specials.</p>
+          <div class="flex gap-3">
+            <button onclick="changeFeaturedVideo('dQw4w9WgXcQ')" class="px-4 py-2 bg-pink-600 text-white rounded-full text-sm hover:bg-pink-700 transition">▶ Watch Now</button>
+            <button onclick="changeFeaturedVideo('3JZ_D3ELwOQ')" class="px-4 py-2 border border-pink-600 text-pink-600 rounded-full text-sm hover:bg-pink-50 transition">🎵 Music Video</button>
+            <button onclick="changeFeaturedVideo('tgbNymZ7vqY')" class="px-4 py-2 border border-pink-600 text-pink-600 rounded-full text-sm hover:bg-pink-50 transition">😂 Comedy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters & Search -->
+  <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div class="flex flex-wrap gap-2">
+          <button class="filter-btn active px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="all">
+            <i class="fas fa-th-large mr-2"></i>All
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Video">
+            <i class="fas fa-video mr-2"></i>Videos
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Music">
+            <i class="fas fa-music mr-2"></i>Music
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Meme">
+            <i class="fas fa-face-laugh-squint mr-2"></i>Memes
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Comedy">
+            <i class="fas fa-face-smile-wink mr-2"></i>Comedy
+          </button>
+        </div>
+        <div class="relative">
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input id="searchInput" type="text" placeholder="Search entertainment..." 
+                 class="border border-gray-300 rounded-full pl-10 pr-4 py-2 w-full md:w-80 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Entertainment Grid -->
-  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="entertainmentGrid">
-    <!-- Cards populated dynamically -->
-  </section>
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="entertainmentGrid">
+      <!-- Content populated dynamically -->
+    </div>
+    
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-12">
+      <i class="fas fa-face-frown text-6xl text-gray-300 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-600 mb-2">No content found</h3>
+      <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full">
+      <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white text-2xl hover:text-pink-500 transition">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <div class="aspect-video bg-black rounded-xl overflow-hidden">
+        <iframe id="modalVideoPlayer" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div id="modalVideoTitle" class="text-white text-center mt-4 text-lg font-semibold"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-6 mt-auto text-center">
-    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
-    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-pink-400">castrodhiambo3@gmail.com</a> | WhatsApp: 0759130506</p>
+  <footer class="bg-gray-900 text-gray-400 py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-white mb-4">CastroHub</h3>
+          <p class="text-sm">Your daily dose of entertainment, education, and innovation.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-pink-400 transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-pink-400 transition">About</a></li>
+            <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Entertainment</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-pink-400 transition">Videos</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Music</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Comedy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-pink-400 text-2xl transition"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 text-2xl transition"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 text-2xl transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-pink-400 text-2xl transition"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm">
+        <p>&copy; 2026 CastroHub | Castro Odhiambo - Masinde Muliro University of Science and Technology</p>
+        <p class="text-xs mt-2">B.Ed. Science (Mathematics & Computer Studies) | Educator & Creator</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Mobile menu toggle
+    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-    // Sample entertainment JSON
+    // Enhanced Entertainment Data with Real YouTube Videos
     const entertainmentData = [
-      { title: "CastroHub Comedy Highlight", category: "Video", link: "#", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
-      { title: "Trending Music Video", category: "Video", link: "#", img: "https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" },
-      { title: "Throwback Classic", category: "Video", link: "#", img: "https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg" },
-      { title: "Afrobeat Vibes", category: "Music", link: "#", img: "https://via.placeholder.com/400x250" },
-      { title: "CastroHub Podcast", category: "Music", link: "#", img: "https://via.placeholder.com/400x250" },
-      { title: "Funny Meme 1", category: "Meme", link: "#", img: "https://i.imgflip.com/7i5hjf.jpg" },
-      { title: "Funny Meme 2", category: "Meme", link: "#", img: "https://i.imgflip.com/30b1gx.jpg" },
-      { title: "Funny Meme 3", category: "Meme", link: "#", img: "https://i.imgflip.com/7lh3ao.jpg" },
-      { title: "Stand-up Comedy Special", category: "Comedy", link: "#", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" }
+      { 
+        id: 1,
+        title: "CastroHub Comedy Special - Best Moments", 
+        category: "Comedy", 
+        videoId: "tgbNymZ7vqY",
+        thumbnail: "https://img.youtube.com/vi/tgbNymZ7vqY/maxresdefault.jpg",
+        description: "Hilarious comedy moments that will make your day!",
+        duration: "5:23",
+        views: "125K"
+      },
+      { 
+        id: 2,
+        title: "Afrobeat Vibes 2024 - Best Mix", 
+        category: "Music", 
+        videoId: "3JZ_D3ELwOQ",
+        thumbnail: "https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg",
+        description: "Latest Afrobeat hits trending across Africa",
+        duration: "8:45",
+        views: "89K"
+      },
+      { 
+        id: 3,
+        title: "Never Gonna Give You Up - Classic", 
+        category: "Video", 
+        videoId: "dQw4w9WgXcQ",
+        thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+        description: "The ultimate classic music video",
+        duration: "3:32",
+        views: "2.1M"
+      },
+      { 
+        id: 4,
+        title: "Funny Cat Memes Compilation", 
+        category: "Meme", 
+        videoId: "L_jWHffIx5E",
+        thumbnail: "https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg",
+        description: "Funniest cat memes you'll ever see!",
+        duration: "4:15",
+        views: "456K"
+      },
+      { 
+        id: 5,
+        title: "Kenyan Comedy - Churchill Show", 
+        category: "Comedy", 
+        videoId: "9Gc4QTqslN4",
+        thumbnail: "https://img.youtube.com/vi/9Gc4QTqslN4/maxresdefault.jpg",
+        description: "Best of Kenyan comedy from Churchill Show",
+        duration: "12:30",
+        views: "234K"
+      },
+      { 
+        id: 6,
+        title: "Burna Boy - Last Last (Official Video)", 
+        category: "Music", 
+        videoId: "TvZvI15bRng",
+        thumbnail: "https://img.youtube.com/vi/TvZvI15bRng/maxresdefault.jpg",
+        description: "Afrobeat sensation Burna Boy",
+        duration: "3:45",
+        views: "125M"
+      },
+      { 
+        id: 7,
+        title: "Dancing Dog Meme", 
+        category: "Meme", 
+        videoId: "5qanlirrRWs",
+        thumbnail: "https://img.youtube.com/vi/5qanlirrRWs/maxresdefault.jpg",
+        description: "Viral dancing dog meme",
+        duration: "0:45",
+        views: "3.2M"
+      },
+      { 
+        id: 8,
+        title: "Epic Fails Compilation", 
+        category: "Video", 
+        videoId: "0ZUQmH5KfC8",
+        thumbnail: "https://img.youtube.com/vi/0ZUQmH5KfC8/maxresdefault.jpg",
+        description: "Funniest fails caught on camera",
+        duration: "10:15",
+        views: "567K"
+      },
+      { 
+        id: 9,
+        title: "Stand-up Comedy: Trevor Noah", 
+        category: "Comedy", 
+        videoId: "T6t7jH0hB-0",
+        thumbnail: "https://img.youtube.com/vi/T6t7jH0hB-0/maxresdefault.jpg",
+        description: "Trevor Noah's best stand-up moments",
+        duration: "8:20",
+        views: "892K"
+      },
+      { 
+        id: 10,
+        title: "Rema - Calm Down (Official Video)", 
+        category: "Music", 
+        videoId: "WcIcVapfqXw",
+        thumbnail: "https://img.youtube.com/vi/WcIcVapfqXw/maxresdefault.jpg",
+        description: "Global hit from Rema featuring Selena Gomez",
+        duration: "4:12",
+        views: "456M"
+      },
+      { 
+        id: 11,
+        title: "Office Meme Compilation", 
+        category: "Meme", 
+        videoId: "NhUJh2Mv7_A",
+        thumbnail: "https://img.youtube.com/vi/NhUJh2Mv7_A/maxresdefault.jpg",
+        description: "Best The Office memes",
+        duration: "6:30",
+        views: "789K"
+      },
+      { 
+        id: 12,
+        title: "Funny African Comedy", 
+        category: "Comedy", 
+        videoId: "8Ue9RPEHV2c",
+        thumbnail: "https://img.youtube.com/vi/8Ue9RPEHV2c/maxresdefault.jpg",
+        description: "African comedy that will crack you up",
+        duration: "7:45",
+        views: "345K"
+      }
     ];
 
-    const grid = document.getElementById("entertainmentGrid");
+    const grid = document.getElementById('entertainmentGrid');
+    const emptyState = document.getElementById('emptyState');
+
+    function getCategoryClass(category) {
+      const classes = {
+        'Video': 'category-video',
+        'Music': 'category-music',
+        'Meme': 'category-meme',
+        'Comedy': 'category-comedy'
+      };
+      return classes[category] || 'category-video';
+    }
 
     function renderEntertainment(data) {
-      grid.innerHTML = '';
-      data.forEach(item => {
-        grid.innerHTML += `
-          <div class="card bg-white rounded-lg shadow overflow-hidden" data-category="${item.category}">
-            <img src="${item.img}" alt="${item.title}" class="w-full h-48 object-cover">
-            <div class="p-4">
-              <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">${item.category}</span>
-              <h4 class="font-bold mt-2">${item.title}</h4>
-              <a href="${item.link}" class="text-pink-600 font-semibold hover:underline mt-2 block">Watch →</a>
+      if (data.length === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      grid.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+      
+      grid.innerHTML = data.map(item => `
+        <div class="entertainment-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 cursor-pointer" onclick="openVideoModal('${item.videoId}', '${item.title}')">
+          <div class="relative">
+            <img src="${item.thumbnail}" alt="${item.title}" class="w-full h-56 object-cover">
+            <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+              ${item.duration}
+            </div>
+            <div class="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+              <i class="fas fa-eye mr-1"></i>${item.views}
             </div>
           </div>
-        `;
-      });
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="category-badge ${getCategoryClass(item.category)}">${item.category}</span>
+              <i class="fas fa-play-circle text-pink-600 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">${item.title}</h3>
+            <p class="text-gray-600 text-sm line-clamp-2">${item.description}</p>
+          </div>
+        </div>
+      `).join('');
     }
 
     renderEntertainment(entertainmentData);
 
-    // Filter buttons
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    function filterEntertainment() {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      const category = activeBtn.getAttribute('data-category');
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      let filtered = entertainmentData;
+      
+      if (category !== 'all') {
+        filtered = filtered.filter(item => item.category === category);
+      }
+      
+      if (searchTerm) {
+        filtered = filtered.filter(item => 
+          item.title.toLowerCase().includes(searchTerm) || 
+          item.description.toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      renderEntertainment(filtered);
+    }
 
-        const category = btn.dataset.category;
-        const filtered = category === 'all' ? entertainmentData : entertainmentData.filter(e => e.category === category);
-        const searchTerm = searchInput.value.toLowerCase();
-        renderEntertainment(filtered.filter(e => e.title.toLowerCase().includes(searchTerm)));
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterEntertainment();
       });
     });
 
-    searchInput.addEventListener('input', () => {
-      const categoryBtn = document.querySelector('.filter-btn.active');
-      const category = categoryBtn.dataset.category;
-      const filtered = category === 'all' ? entertainmentData : entertainmentData.filter(e => e.category === category);
-      const searchTerm = searchInput.value.toLowerCase();
-      renderEntertainment(filtered.filter(e => e.title.toLowerCase().includes(searchTerm)));
-    });
+    searchInput.addEventListener('input', filterEntertainment);
+
+    // Video Modal Functions
+    function openVideoModal(videoId, title) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('modalVideoPlayer');
+      const titleEl = document.getElementById('modalVideoTitle');
+      
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      titleEl.textContent = title;
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('modalVideoPlayer');
+      
+      iframe.src = '';
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    function changeFeaturedVideo(videoId) {
+      const iframe = document.getElementById('featuredVideo');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    }
+    
+    // Close modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('videoModal');
+      if (event.target === modal) {
+        closeVideoModal();
+      }
+    }
+    
+    // Console greeting
+    console.log('%cCastroHub Entertainment Hub', 'color: #ec4899; font-size: 20px; font-weight: bold;');
+    console.log('%cEnjoy your entertainment! 🎬🎵😂', 'color: #8b5cf6; font-size: 14px;');
   </script>
 </body>
 </html>
