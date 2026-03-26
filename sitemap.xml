@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Main Pages - Highest Priority -->
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/index.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://castrodhiambo.github.io/CastroHub/images/og-image.jpg</image:loc>
+      <image:title>CastroHub - Homepage</image:title>
+      <image:caption>Welcome to CastroHub - Your hub for education and innovation</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/about.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://github.com/CastrOdhiambo/updated-web/blob/main/profile%20photo.jpg?raw=true</image:loc>
+      <image:title>Castro Odhiambo - Educator and Author</image:title>
+      <image:caption>About Castro Odhiambo - Educator, Author, and Tech Innovator at MMUST</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/profile.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://github.com/CastrOdhiambo/updated-web/blob/main/profile%20photo.jpg?raw=true</image:loc>
+      <image:title>Castro Odhiambo Profile</image:title>
+      <image:caption>Professional profile of Castro Odhiambo - Mathematics and Computer Studies Educator</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/publications.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/education.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/mindspark.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/gyz2758hlEE/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>MindSpark TV - Educational Videos</video:title>
+      <video:description>Educational videos and tutorials on Digital Competency, Computer Applications, and more</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=gyz2758hlEE</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/gyz2758hlEE</video:player_loc>
+      <video:duration>923</video:duration>
+      <video:publication_date>2026-03-26</video:publication_date>
+    </video:video>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/contact.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/projects.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/entertainment.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/tgbNymZ7vqY/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Entertainment Hub - Videos & Memes</video:title>
+      <video:description>Funny videos, music, and entertainment content</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=tgbNymZ7vqY</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/tgbNymZ7vqY</video:player_loc>
+      <video:duration>525</video:duration>
+      <video:publication_date>2026-03-26</video:publication_date>
+    </video:video>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/news.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- PDF Resources - Important for search indexing -->
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/Assets/Digital%20Comptency.pdf</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/Assets/ACHIEVE%20HIGHER%20COMPUTER%20STUDIES%20BOOK.pdf</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/Assets/maths%20topical%20revisions.pdf</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/Assets/form%202%20maths%20midterm.docx</loc>
+    <lastmod>2025-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://castrodhiambo.github.io/CastroHub/Assets/computer%20studies%20f2%20MIDTERM%20EXAM.docx</loc>
+    <lastmod>2025-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
