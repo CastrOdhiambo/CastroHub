@@ -3,172 +3,695 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CastroHub | My Profile</title>
+  <meta name="description" content="Profile of Castro Odhiambo - Educator, Author, and Tech Innovator at Masinde Muliro University">
+  <meta name="author" content="Castro Odhiambo">
+  <title>Castro Odhiambo | Educator, Author & Tech Innovator</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2d9d6a52a.js" crossorigin="anonymous"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  
   <style>
-    body { font-family: 'Poppins', sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #f97316, #f59e0b);
+      border-radius: 5px;
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #f59e0b, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+    }
+    
     .timeline::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 50%;
-      top: 0;
       transform: translateX(-50%);
       width: 4px;
       height: 100%;
+      background: linear-gradient(135deg, #f97316, #f59e0b);
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
       background: #f97316;
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+    }
+    
+    .timeline-content {
+      width: calc(50% - 2rem);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-dot {
+        left: 20px;
+      }
+      .timeline-content {
+        width: calc(100% - 3rem);
+        margin-left: 3rem !important;
+      }
+    }
+    
+    /* Skill Bar Animation */
+    .skill-bar {
+      animation: growBar 1.5s ease-out forwards;
+      transform-origin: left;
+    }
+    
+    @keyframes growBar {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+    
+    /* Card Hover Effects */
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Achievement Icon Animation */
+    .achievement-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover .achievement-icon {
+      transform: scale(1.1);
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
-    <h1 class="text-2xl font-bold text-orange-700">CastroHub</h1>
-    <ul class="hidden md:flex gap-6 font-medium">
-      <li><a href="index.html" class="hover:text-orange-600">Home</a></li>
-      <li><a href="about.html" class="hover:text-orange-600">About</a></li>
-      <li><a href="profile.html" class="text-orange-600 font-bold">Profile</a></li>
-      <li><a href="projects.html" class="hover:text-orange-600">Projects</a></li>
-      <li><a href="education.html" class="hover:text-orange-600">Education</a></li>
-      <li><a href="contact.html" class="hover:text-orange-600">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <section class="text-center py-16 bg-gradient-to-r from-orange-500 to-yellow-400 text-white" data-aos="fade-up">
-    <h2 class="text-4xl font-bold mb-4">Castro Odhiambo</h2>
-    <p class="text-lg">Dreamer | Builder | Lifelong Learner</p>
-  </section>
-
-  <!-- About Me -->
-  <section class="max-w-4xl mx-auto px-6 py-12 text-center" data-aos="fade-right">
-    <h3 class="text-3xl font-bold text-orange-600 mb-6">About Me</h3>
-    <p class="text-gray-700 leading-relaxed">
-      I’m Castro Odhiambo, passionate about technology, education, and creativity. 
-      CastroHub is my platform to share knowledge, ideas, and projects that inspire 
-      positive change. I believe in continuous learning and building tools that benefit 
-      both myself and the wider community.
-    </p>
-  </section>
-
-  <!-- Timeline -->
-  <section class="relative max-w-5xl mx-auto px-6 py-12" data-aos="zoom-in">
-    <h3 class="text-3xl font-bold text-orange-600 mb-10 text-center">My Journey</h3>
-    <div class="timeline relative">
-      <div class="mb-10 flex justify-between items-center w-full">
-        <div class="order-1 w-5/12"></div>
-        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
-        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
-          <h4 class="font-bold text-orange-600">2022</h4>
-          <p>Started Bachelor of Education (Science) in Mathematics & Computer Studies at MMUST.</p>
+  <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+          <div class="w-10 h-10 bg-gradient-to-br from-orange-600 to-yellow-500 rounded-lg flex items-center justify-center">
+            <i class="fas fa-user-graduate text-white text-xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold">
+            <span class="gradient-text">CastroHub</span>
+          </h1>
         </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-orange-600 transition-colors font-medium">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-orange-600 transition-colors font-medium">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-orange-600 transition-colors font-medium">Publications</a>
+          <a href="profile.html" class="text-orange-600 font-semibold border-b-2 border-orange-600 pb-1">Profile</a>
+          <a href="education.html" class="text-gray-600 hover:text-orange-600 transition-colors font-medium">Education</a>
+          <a href="contact.html" class="text-gray-600 hover:text-orange-600 transition-colors font-medium">Contact</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="menuToggle" class="md:hidden text-gray-700 text-2xl focus:outline-none hover:text-orange-600 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
-      <div class="mb-10 flex justify-between items-center w-full flex-row-reverse">
-        <div class="order-1 w-5/12"></div>
-        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
-        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
-          <h4 class="font-bold text-orange-600">2024</h4>
-          <p>Conducted field research at St. Peter’s Mumias Boys High School on education challenges.</p>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-600 hover:text-orange-600 transition-colors py-2">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-orange-600 transition-colors py-2">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-orange-600 transition-colors py-2">Publications</a>
+          <a href="profile.html" class="text-orange-600 font-semibold py-2">Profile</a>
+          <a href="education.html" class="text-gray-600 hover:text-orange-600 transition-colors py-2">Education</a>
+          <a href="contact.html" class="text-gray-600 hover:text-orange-600 transition-colors py-2">Contact</a>
         </div>
-      </div>
-      <div class="mb-10 flex justify-between items-center w-full">
-        <div class="order-1 w-5/12"></div>
-        <div class="z-20 flex items-center order-1 bg-orange-600 w-8 h-8 rounded-full"></div>
-        <div class="order-1 w-5/12 bg-white p-4 rounded shadow">
-          <h4 class="font-bold text-orange-600">2025</h4>
-          <p>Launched CastroHub – a multi-purpose platform for news, education, entertainment, and projects.</p>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section with Profile Image -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-orange-600 via-yellow-500 to-pink-500 text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 py-16 lg:py-20 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+        <!-- Profile Image -->
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full blur-2xl opacity-50"></div>
+          <img src="https://github.com/CastrOdhiambo/updated-web/blob/main/profile%20photo.jpg?raw=true" 
+               alt="Castro Odhiambo" 
+               class="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-white shadow-2xl object-cover">
+        </div>
+        
+        <!-- Profile Info -->
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+            <i class="fas fa-star text-yellow-300 mr-2"></i>
+            <span class="text-sm font-semibold">Educator & Author</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Castro Odhiambo</h1>
+          <p class="text-xl mb-2">B.Ed. Science (Mathematics & Computer Studies)</p>
+          <p class="text-lg opacity-90">Masinde Muliro University of Science and Technology</p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-6">
+            <a href="#contact" class="inline-flex items-center bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all">
+              <i class="fas fa-envelope mr-2"></i> Contact Me
+            </a>
+            <a href="publications.html" class="inline-flex items-center bg-transparent border-2 border-white text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-all">
+              <i class="fas fa-book mr-2"></i> Publications
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Achievements -->
-  <section class="max-w-6xl mx-auto px-6 py-12" data-aos="fade-up">
-    <h3 class="text-3xl font-bold text-orange-600 mb-8 text-center">Achievements</h3>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
-        <i class="fas fa-graduation-cap text-3xl text-orange-500 mb-4"></i>
-        <h4 class="font-semibold">Academic Excellence</h4>
-        <p class="text-sm text-gray-600">Recognition for excellence in Mathematics & Computer Studies.</p>
+  <!-- Stats Section -->
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up">
+        <div class="text-3xl font-bold text-orange-600">2+</div>
+        <div class="text-gray-600 text-sm mt-1">Publications</div>
       </div>
-      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
-        <i class="fas fa-laptop-code text-3xl text-orange-500 mb-4"></i>
-        <h4 class="font-semibold">Tech Innovator</h4>
-        <p class="text-sm text-gray-600">Created AI/web-based projects showcased at university exhibitions.</p>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-3xl font-bold text-orange-600">4+</div>
+        <div class="text-gray-600 text-sm mt-1">Years Teaching</div>
       </div>
-      <div class="bg-white p-6 rounded shadow text-center hover:scale-105 transition-transform">
-        <i class="fas fa-users text-3xl text-orange-500 mb-4"></i>
-        <h4 class="font-semibold">Community Leader</h4>
-        <p class="text-sm text-gray-600">Mentored students in coding and academic development.</p>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-3xl font-bold text-orange-600">10+</div>
+        <div class="text-gray-600 text-sm mt-1">Projects</div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-3xl font-bold text-orange-600">1000+</div>
+        <div class="text-gray-600 text-sm mt-1">Students Impacted</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Me Section -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <div class="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-user-circle mr-2"></i> Who I Am
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Passionate Educator & Tech Innovator</h2>
+        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+          I'm <strong class="text-orange-600">Castro Odhiambo</strong>, a passionate educator and fourth-year student at 
+          <strong class="text-orange-600">Masinde Muliro University of Science and Technology</strong>, pursuing a Bachelor's degree in 
+          Education Science, specializing in Mathematics and Computer Studies.
+        </p>
+        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+          My journey in education is driven by a deep commitment to bridging the gap between technology and learning. 
+          I've authored two publications: <strong class="text-orange-600">"Digital Competency"</strong> and 
+          <strong class="text-orange-600">"Practical Guide to Computer Applications"</strong>, aimed at empowering 
+          learners with essential digital skills.
+        </p>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Through <strong class="text-orange-600">CastroHub</strong>, I'm creating a platform that combines my expertise 
+          in education, technology, and research to make learning more accessible and engaging for everyone.
+        </p>
+      </div>
+      <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-8" data-aos="fade-left">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Quick Facts</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-orange-600 mt-1"></i>
+            <div>
+              <p class="font-semibold">Location</p>
+              <p class="text-gray-600">Kakamega, Kenya</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-university text-orange-600 mt-1"></i>
+            <div>
+              <p class="font-semibold">Institution</p>
+              <p class="text-gray-600">Masinde Muliro University of Science and Technology</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-graduation-cap text-orange-600 mt-1"></i>
+            <div>
+              <p class="font-semibold">Program</p>
+              <p class="text-gray-600">B.Ed. Science (Mathematics & Computer Studies)</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-calendar-alt text-orange-600 mt-1"></i>
+            <div>
+              <p class="font-semibold">Year of Study</p>
+              <p class="text-gray-600">Fourth Year (2023 - Present)</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="bg-orange-50 py-12" data-aos="fade-up">
-    <h3 class="text-3xl font-bold text-center text-orange-600 mb-8">Skills</h3>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 px-6">
-      <div>
-        <h4 class="font-semibold">Mathematics</h4>
-        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
-          <div class="bg-orange-600 h-3 rounded-full animate-[grow_2s_ease-in-out]" style="width: 90%"></div>
+  <!-- Timeline Section -->
+  <section class="bg-gradient-to-r from-orange-50 to-yellow-50 py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <div class="inline-block px-4 py-2 bg-orange-200 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-road mr-2"></i> My Journey
         </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Life & Career Timeline</h2>
+        <p class="text-gray-600 mt-2">Key milestones in my academic and professional journey</p>
       </div>
-      <div>
-        <h4 class="font-semibold">Web Development</h4>
-        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
-          <div class="bg-orange-600 h-3 rounded-full" style="width: 85%"></div>
+      
+      <div class="timeline">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-graduation-cap text-orange-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-orange-600">2022</h3>
+                <p class="text-gray-600 font-semibold">Started University Journey</p>
+              </div>
+            </div>
+            <p class="text-gray-600">Enrolled at Masinde Muliro University of Science and Technology, pursuing Bachelor of Education Science in Mathematics and Computer Studies.</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <h4 class="font-semibold">AI & Machine Learning</h4>
-        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
-          <div class="bg-orange-600 h-3 rounded-full" style="width: 70%"></div>
+        
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-chalkboard-user text-orange-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-orange-600">2025</h3>
+                <p class="text-gray-600 font-semibold">Teaching Practice Experience</p>
+              </div>
+            </div>
+            <p class="text-gray-600">Completed teaching practice at Kuoyo Kochia Boys High School, Homabay schools, gaining hands-on experience in classroom management and instructional strategies.</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <h4 class="font-semibold">Leadership</h4>
-        <div class="w-full bg-gray-200 rounded-full h-3 mt-2">
-          <div class="bg-orange-600 h-3 rounded-full" style="width: 80%"></div>
+        
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-book-open text-orange-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-orange-600">2024</h3>
+                <p class="text-gray-600 font-semibold">Published First Books</p>
+              </div>
+            </div>
+            <p class="text-gray-600">Authored and published "Digital Competency" and "Practical Guide to Computer Applications" - educational resources for modern learners.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-globe text-orange-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-orange-600">2025</h3>
+                <p class="text-gray-600 font-semibold">Launched CastroHub</p>
+              </div>
+            </div>
+            <p class="text-gray-600">Created CastroHub - a comprehensive platform for education, entertainment, and innovation, reaching thousands of learners.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 5 -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-center mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-microchip text-orange-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-orange-600">2026</h3>
+                <p class="text-gray-600 font-semibold">AI Integration & Future Plans</p>
+              </div>
+            </div>
+            <p class="text-gray-600">Integrating AI-powered learning tools into CastroHub, expanding educational resources, and preparing for graduation.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Personal Journal -->
-  <section class="max-w-5xl mx-auto px-6 py-12" data-aos="fade-right">
-    <h3 class="text-3xl font-bold text-orange-600 mb-8 text-center">My Journal</h3>
-    <div id="journal-entries" class="grid gap-6 md:grid-cols-2"></div>
+  <!-- Achievements Section -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <div class="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
+        <i class="fas fa-trophy mr-2"></i> Recognition
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Achievements & Milestones</h2>
+      <p class="text-gray-600 mt-2">Celebrating accomplishments in education and technology</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-book text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Published Author</h3>
+        <p class="text-gray-600">Authored "Digital Competency" and "Practical Guide to Computer Applications"</p>
+      </div>
+      
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-chalkboard-user text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Educator Recognition</h3>
+        <p class="text-gray-600">Recognized for excellence in Mathematics and Computer Studies instruction</p>
+      </div>
+      
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-laptop-code text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Tech Innovator</h3>
+        <p class="text-gray-600">Created AI-powered educational platform and web-based learning tools</p>
+      </div>
+      
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-users text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Community Impact</h3>
+        <p class="text-gray-600">Mentored 100+ students in coding and academic development</p>
+      </div>
+      
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="400">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-microphone-alt text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Speaker & Presenter</h3>
+        <p class="text-gray-600">Presented research at university symposiums and educational conferences</p>
+      </div>
+      
+      <div class="achievement-card bg-white rounded-2xl shadow-lg p-6 text-center hover-lift" data-aos="fade-up" data-aos-delay="500">
+        <div class="achievement-icon w-20 h-20 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-brain text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">AI Education Research</h3>
+        <p class="text-gray-600">Conducted research on AI applications in Kenyan education systems</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="bg-gradient-to-r from-orange-50 to-yellow-50 py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <div class="inline-block px-4 py-2 bg-orange-200 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-code mr-2"></i> Expertise
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Skills & Competencies</h2>
+        <p class="text-gray-600 mt-2">Continuous learning and growth in education and technology</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div data-aos="fade-right">
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">Mathematics Education</span>
+              <span class="text-orange-600">90%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">Web Development</span>
+              <span class="text-orange-600">85%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">Digital Competency</span>
+              <span class="text-orange-600">95%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left">
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">AI & Machine Learning</span>
+              <span class="text-orange-600">70%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">Leadership & Mentorship</span>
+              <span class="text-orange-600">85%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-gray-700">Curriculum Development</span>
+              <span class="text-orange-600">80%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div class="skill-bar bg-gradient-to-r from-orange-600 to-yellow-500 h-3 rounded-full" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Journal Section -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <div class="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
+        <i class="fas fa-journal-whills mr-2"></i> Reflections
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">My Journal</h2>
+      <p class="text-gray-600 mt-2">Personal thoughts, experiences, and insights</p>
+    </div>
+    
+    <div id="journal-entries" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Journal entries will be loaded dynamically -->
+      <div class="text-center py-12">
+        <div class="spinner mx-auto"></div>
+        <p class="text-gray-500 mt-4">Loading journal entries...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-orange-600 to-yellow-500 text-white py-16" id="contact">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Connect & Collaborate</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">I'm always excited to connect with fellow educators, researchers, and innovators.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="contact.html" class="inline-flex items-center bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all">
+          <i class="fas fa-envelope mr-2"></i> Get in Touch
+        </a>
+        <a href="publications.html" class="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-all">
+          <i class="fas fa-book mr-2"></i> Read Publications
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
-    <p>&copy; 2025 CastroHub. All Rights Reserved.</p>
+  <footer class="bg-gray-900 text-gray-400 py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold text-white mb-4">CastroHub</h3>
+          <p class="text-sm">Empowering minds through education and innovation.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="about.html" class="hover:text-orange-400 transition">About</a></li>
+            <li><a href="publications.html" class="hover:text-orange-400 transition">Publications</a></li>
+            <li><a href="education.html" class="hover:text-orange-400 transition">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><i class="fas fa-envelope mr-2"></i> castrodhiambo3@gmail.com</li>
+            <li><i class="fab fa-whatsapp mr-2"></i> 0759130506</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> MMUST, Kenya</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-orange-400 text-2xl transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-orange-400 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-400 hover:text-orange-400 text-2xl transition"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm">
+        <p>&copy; 2026 CastroHub | Castro Odhiambo - Masinde Muliro University of Science and Technology</p>
+        <p class="text-xs mt-2">B.Ed. Science (Mathematics & Computer Studies) | Educator & Author</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- AOS Script -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1000, once: true });</script>
-
-  <!-- Journal Loader -->
   <script>
-    fetch("journal.json")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("journal-entries");
-        data.forEach(entry => {
-          container.innerHTML += `
-            <div class="bg-white p-6 rounded shadow hover:shadow-lg transition" data-aos="fade-up">
-              <h4 class="font-bold text-orange-600 mb-2">${entry.title}</h4>
-              <p class="text-sm text-gray-500 mb-4">${entry.date}</p>
-              <p class="text-gray-700">${entry.content}</p>
+    // Initialize AOS
+    AOS.init({ duration: 1000, once: true });
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Load Journal Entries
+    async function loadJournalEntries() {
+      try {
+        const response = await fetch('journal.json');
+        const data = await response.json();
+        
+        const container = document.getElementById('journal-entries');
+        container.innerHTML = data.map(entry => `
+          <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift" data-aos="fade-up">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fas fa-quote-left text-orange-600 text-sm"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800">${entry.title}</h3>
+                <p class="text-xs text-gray-500">${entry.date}</p>
+              </div>
             </div>
-          `;
-        });
-      });
+            <p class="text-gray-600 text-sm leading-relaxed">${entry.content}</p>
+          </div>
+        `).join('');
+      } catch (error) {
+        console.error('Error loading journal entries:', error);
+        const container = document.getElementById('journal-entries');
+        container.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <i class="fas fa-book-open text-4xl text-gray-300 mb-4"></i>
+            <p class="text-gray-500">Journal entries coming soon...</p>
+          </div>
+        `;
+      }
+    }
+    
+    loadJournalEntries();
+    
+    // Console greeting
+    console.log('%cCastro Odhiambo | Educator & Author', 'color: #f97316; font-size: 20px; font-weight: bold;');
+    console.log('%cMMUST | B.Ed. Science (Mathematics & Computer Studies)', 'color: #f59e0b; font-size: 14px;');
   </script>
 </body>
 </html>
