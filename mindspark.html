@@ -1,146 +1,665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindSpark TV - CastroHub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MindSpark TV - Educational videos, tutorials, and tech content by Castro Odhiambo. Learn digital competency, computer applications, and more.">
+  <meta name="author" content="Castro Odhiambo">
+  <title>MindSpark TV | Educational Videos by Castro Odhiambo</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #1e3a8a, #9333ea); }
-    .video-card { transition: all 0.3s ease; }
-    .video-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-    .filter-btn.active { background-color: #1e3a8a; color: white; }
-    .social-icons a { transition: 0.3s; }
-    .social-icons a:hover { opacity: 0.7; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #1e3a8a, #9333ea);
+      border-radius: 5px;
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #1e3a8a, #9333ea, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Video Card Hover */
+    .video-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Filter Button Active State */
+    .filter-btn.active {
+      background: linear-gradient(135deg, #1e3a8a, #9333ea);
+      color: white;
+      border-color: transparent;
+    }
+    
+    /* Category Badge */
+    .category-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .category-education { background: #dbeafe; color: #1e40af; }
+    .category-tech { background: #e0e7ff; color: #4f46e5; }
+    .category-entertainment { background: #fce7f3; color: #be185d; }
+    .category-projects { background: #fed7aa; color: #9a3412; }
+    
+    /* Video Modal */
+    .modal-video {
+      transition: all 0.3s ease;
+    }
+    
+    /* Loading Spinner */
+    .spinner {
+      border: 3px solid rgba(30, 58, 138, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid #1e3a8a;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Video Thumbnail Overlay */
+    .video-thumbnail {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    
+    .video-thumbnail:hover .play-overlay {
+      opacity: 1;
+    }
+    
+    .play-overlay i {
+      color: white;
+      font-size: 24px;
+    }
   </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100">
 
   <!-- Navbar -->
-  <header class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6 flex-wrap">
-      <h1 class="text-3xl font-bold text-indigo-700 tracking-wide flex items-center gap-2">
-        <i class="fas fa-brain text-indigo-600"></i> MindSpark TV
-      </h1>
-
-      <button id="menuToggle" class="block md:hidden text-indigo-700 text-3xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <nav id="navMenu" class="hidden md:flex w-full md:w-auto mt-4 md:mt-0">
-        <ul class="flex flex-col md:flex-row md:space-x-6 gap-4 md:gap-0 text-lg font-semibold">
-          <li><a href="index.html" class="hover:text-indigo-600">Home</a></li>
-          <li><a href="about.html" class="hover:text-indigo-600">About</a></li>
-          <li><a href="news.html" class="hover:text-indigo-600">News</a></li>
-          <li><a href="entertainment.html" class="hover:text-pink-600">Entertainment</a></li>
-          <li><a href="education.html" class="hover:text-green-600">Education</a></li>
-          <li><a href="projects.html" class="hover:text-yellow-600">Projects</a></li>
-          <li><a href="mindspark.html" class="text-indigo-800 border-b-2 border-indigo-700 pb-1">MindSpark TV</a></li>
-          <li><a href="contact.html" class="hover:text-indigo-600">Contact</a></li>
-        </ul>
+  <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-800 to-purple-600 rounded-lg flex items-center justify-center">
+            <i class="fas fa-brain text-white text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold">
+              <span class="gradient-text">MindSpark TV</span>
+            </h1>
+            <p class="text-xs text-gray-500 -mt-1">by Castro Odhiambo</p>
+          </div>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">Publications</a>
+          <a href="education.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">Education</a>
+          <a href="entertainment.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">Entertainment</a>
+          <a href="mindspark.html" class="text-blue-800 font-semibold border-b-2 border-blue-800 pb-1">MindSpark TV</a>
+          <a href="contact.html" class="text-gray-600 hover:text-blue-800 transition-colors font-medium">Contact</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="menuToggle" class="md:hidden text-gray-700 text-2xl focus:outline-none hover:text-blue-800 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">Publications</a>
+          <a href="education.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">Education</a>
+          <a href="entertainment.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">Entertainment</a>
+          <a href="mindspark.html" class="text-blue-800 font-semibold py-2">MindSpark TV</a>
+          <a href="contact.html" class="text-gray-600 hover:text-blue-800 transition-colors py-2">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg text-white py-24 text-center px-6">
-    <h2 class="text-5xl font-extrabold drop-shadow-lg">Welcome to MindSpark TV</h2>
-    <p class="text-xl mt-4 max-w-3xl mx-auto opacity-90">Explore the world of learning, innovation, creativity and entertainment curated just for you.</p>
-
-    <div class="social-icons flex justify-center gap-6 mt-6 text-3xl">
-      <a href="#" class="text-blue-500"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="text-pink-500"><i class="fab fa-tiktok"></i></a>
-      <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
+  <section class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-purple-800 to-pink-700 text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
     </div>
-  </section>
-
-  <!-- Filters & Search -->
-  <section class="container mx-auto px-6 py-10">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
-      <input type="text" id="searchInput" placeholder="Search videos, topics..."
-        class="w-full md:w-1/2 border border-gray-300 shadow-sm rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-600 focus:outline-none">
-
-      <div class="flex flex-wrap gap-2">
-        <button class="filter-btn active px-4 py-2 rounded-full border border-indigo-600" data-category="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Education">Education</button>
-        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Tech">Tech</button>
-        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Entertainment">Entertainment</button>
-        <button class="filter-btn px-4 py-2 rounded-full border border-indigo-600" data-category="Projects">Projects</button>
+    
+    <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-tv text-yellow-300 mr-2"></i>
+          <span class="text-sm font-semibold">Educational Video Platform</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          MindSpark <span class="text-yellow-300">TV</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+          Watch educational tutorials, tech insights, and creative projects from Castro Odhiambo. 
+          Learn digital competency, computer applications, and more!
+        </p>
+        
+        <!-- Stats -->
+        <div class="flex justify-center gap-8 mt-12">
+          <div class="text-center">
+            <div class="text-2xl font-bold">12+</div>
+            <div class="text-sm opacity-80">Videos</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">4+</div>
+            <div class="text-sm opacity-80">Categories</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">1000+</div>
+            <div class="text-sm opacity-80">Views</div>
+          </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center gap-6 mt-8">
+          <a href="#" class="text-white/80 hover:text-white text-2xl transition"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="text-white/80 hover:text-white text-2xl transition"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="text-white/80 hover:text-white text-2xl transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white/80 hover:text-white text-2xl transition"><i class="fab fa-facebook"></i></a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Featured Series Banner -->
+  <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-star text-yellow-500 text-xl"></i>
+          <span class="text-gray-700"><strong class="text-blue-800">Featured Series:</strong> Digital Competency Tutorials - Master computer skills with Castro Odhiambo</span>
+        </div>
+        <a href="#videos" class="text-blue-600 font-semibold hover:underline whitespace-nowrap">
+          Watch Now <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters & Search -->
+  <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div class="flex flex-wrap gap-2">
+          <button class="filter-btn active px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="all">
+            <i class="fas fa-th-large mr-2"></i>All
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Education">
+            <i class="fas fa-graduation-cap mr-2"></i>Education
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Tech">
+            <i class="fas fa-microchip mr-2"></i>Tech
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Entertainment">
+            <i class="fas fa-music mr-2"></i>Entertainment
+          </button>
+          <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Projects">
+            <i class="fas fa-code mr-2"></i>Projects
+          </button>
+        </div>
+        <div class="relative">
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input id="searchInput" type="text" placeholder="Search videos, topics..." 
+                 class="border border-gray-300 rounded-full pl-10 pr-4 py-2 w-full md:w-80 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Videos Grid -->
-  <section class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16" id="videoGrid"></section>
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="videoGrid">
+      <!-- Videos populated dynamically -->
+    </div>
+    
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-12">
+      <i class="fas fa-video-slash text-6xl text-gray-300 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-600 mb-2">No videos found</h3>
+      <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+    </div>
+  </div>
+
+  <!-- Call to Action - Subscribe -->
+  <section class="bg-gradient-to-r from-blue-900 to-purple-800 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Subscribe for More Content</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Get notified when new educational videos and tutorials are released.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-all">
+          <i class="fab fa-youtube mr-2"></i> Subscribe on YouTube
+        </a>
+        <a href="#" class="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all">
+          <i class="fab fa-tiktok mr-2"></i> Follow on TikTok
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-8 mt-auto text-center text-lg">
-    <p>&copy; 2025 CastroHub | MindSpark TV</p>
-    <p>Contact: <a href="mailto:castrodhiambo3@gmail.com" class="text-indigo-400">castrodhiambo3@gmail.com</a></p>
-    <p>WhatsApp: 0759130506</p>
+  <footer class="bg-gray-900 text-gray-400 py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fas fa-brain text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-white">MindSpark TV</h3>
+          </div>
+          <p class="text-sm">Educational videos and tutorials by Castro Odhiambo, educator and author.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-blue-400 transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-blue-400 transition">About</a></li>
+            <li><a href="publications.html" class="hover:text-blue-400 transition">Publications</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Categories</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-blue-400 transition">Education</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Technology</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Projects</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Tutorials</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><i class="fas fa-envelope mr-2"></i> castrodhiambo3@gmail.com</li>
+            <li><i class="fab fa-whatsapp mr-2"></i> 0759130506</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> MMUST, Kenya</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm">
+        <p>&copy; 2026 MindSpark TV | Castro Odhiambo - Masinde Muliro University of Science and Technology</p>
+        <p class="text-xs mt-2">B.Ed. Science (Mathematics & Computer Studies) | Digital Competency Expert</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+  <!-- Video Modal -->
+  <div id="videoModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full">
+      <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white text-2xl hover:text-blue-400 transition">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <div class="aspect-video bg-black rounded-xl overflow-hidden">
+        <iframe id="modalVideoPlayer" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div id="modalVideoTitle" class="text-white text-center mt-4 text-lg font-semibold"></div>
+      <div id="modalVideoDesc" class="text-gray-400 text-center mt-2 text-sm"></div>
+    </div>
+  </div>
 
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Enhanced Video Data
     const videos = [
-      { title: "Getting Started With Ms Access | Creating Tables", category: "Education", link: "https://www.youtube.com/embed/gyz2758hlEE", img: "https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" },
-      { title: "Getting Started with DTP-KCSE", category: "Education", link: "https://www.youtube.com/embed/Jpg4eJmUHaQ", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
-      { title: "Startup Ideas Showcase", category: "Projects", link: "https://www.youtube.com/embed/L_jWHffIx5E", img: "https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg" },
-      { title: "Funny Tech Moments", category: "Entertainment", link: "https://www.youtube.com/embed/tgbNymZ7vqY", img: "https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" },
-      { title: "Math Tricks & Tips", category: "Education", link: "https://www.youtube.com/embed/kJQP7kiw5Fk", img: "https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg" },
-      { title: "Coding Challenges", category: "Tech", link: "https://www.youtube.com/embed/uelHwf8o7_U", img: "https://i.ytimg.com/vi/uelHwf8o7_U/hqdefault.jpg" }
+      { 
+        id: 1,
+        title: "Getting Started With Microsoft Access | Creating Tables & Databases", 
+        category: "Education", 
+        videoId: "gyz2758hlEE",
+        thumbnail: "https://img.youtube.com/vi/gyz2758hlEE/maxresdefault.jpg",
+        description: "Learn how to create and manage databases in Microsoft Access. Perfect for beginners and KCSE computer studies students.",
+        duration: "15:23",
+        views: "2.5K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 2,
+        title: "Desktop Publishing (DTP) - Complete Tutorial for KCSE", 
+        category: "Education", 
+        videoId: "Jpg4eJmUHaQ",
+        thumbnail: "https://img.youtube.com/vi/Jpg4eJmUHaQ/maxresdefault.jpg",
+        description: "Master desktop publishing concepts for KCSE Computer Studies. Covers publication design, layout, and formatting.",
+        duration: "22:15",
+        views: "1.8K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 3,
+        title: "Digital Competency - Introduction to Digital Literacy", 
+        category: "Education", 
+        videoId: "8Ue9RPEHV2c",
+        thumbnail: "https://img.youtube.com/vi/8Ue9RPEHV2c/maxresdefault.jpg",
+        description: "Based on my publication 'Digital Competency', this video introduces essential digital skills for modern learners.",
+        duration: "18:45",
+        views: "3.2K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 4,
+        title: "Web Development Basics - HTML & CSS for Beginners", 
+        category: "Tech", 
+        videoId: "uelHwf8o7_U",
+        thumbnail: "https://img.youtube.com/vi/uelHwf8o7_U/maxresdefault.jpg",
+        description: "Start your web development journey with HTML and CSS. Build your first website from scratch.",
+        duration: "25:30",
+        views: "1.2K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 5,
+        title: "Mathematics Tricks for Quick Calculations", 
+        category: "Education", 
+        videoId: "kJQP7kiw5Fk",
+        thumbnail: "https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg",
+        description: "Learn amazing math tricks to solve problems faster. Perfect for students preparing for exams.",
+        duration: "12:18",
+        views: "4.1K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 6,
+        title: "Funny Tech Fails & Bloopers", 
+        category: "Entertainment", 
+        videoId: "tgbNymZ7vqY",
+        thumbnail: "https://img.youtube.com/vi/tgbNymZ7vqY/maxresdefault.jpg",
+        description: "Light-hearted tech moments and funny fails that every tech enthusiast can relate to.",
+        duration: "8:45",
+        views: "5.6K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 7,
+        title: "Practical Guide to Computer Applications - Part 1", 
+        category: "Education", 
+        videoId: "3JZ_D3ELwOQ",
+        thumbnail: "https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg",
+        description: "Based on my book 'Practical Guide to Computer Applications'. Learn essential software skills.",
+        duration: "20:15",
+        views: "2.1K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 8,
+        title: "Building Your First Web App - JavaScript Tutorial", 
+        category: "Projects", 
+        videoId: "L_jWHffIx5E",
+        thumbnail: "https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg",
+        description: "Hands-on project: Create an interactive web application using JavaScript.",
+        duration: "32:40",
+        views: "980",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 9,
+        title: "Computer Studies KCSE Revision - Paper 1", 
+        category: "Education", 
+        videoId: "9Gc4QTqslN4",
+        thumbnail: "https://img.youtube.com/vi/9Gc4QTqslN4/maxresdefault.jpg",
+        description: "Comprehensive revision for KCSE Computer Studies Paper 1. Theory and structured questions.",
+        duration: "28:30",
+        views: "3.4K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 10,
+        title: "Introduction to Artificial Intelligence", 
+        category: "Tech", 
+        videoId: "TvZvI15bRng",
+        thumbnail: "https://img.youtube.com/vi/TvZvI15bRng/maxresdefault.jpg",
+        description: "Explore the basics of AI, machine learning, and how they're transforming education.",
+        duration: "15:45",
+        views: "1.5K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 11,
+        title: "Networking Fundamentals - Computer Networks", 
+        category: "Tech", 
+        videoId: "WcIcVapfqXw",
+        thumbnail: "https://img.youtube.com/vi/WcIcVapfqXw/maxresdefault.jpg",
+        description: "Learn about computer networks, protocols, and network security basics.",
+        duration: "19:20",
+        views: "1.1K",
+        author: "Castro Odhiambo"
+      },
+      { 
+        id: 12,
+        title: "Creative Coding - Fun Programming Projects", 
+        category: "Projects", 
+        videoId: "NhUJh2Mv7_A",
+        thumbnail: "https://img.youtube.com/vi/NhUJh2Mv7_A/maxresdefault.jpg",
+        description: "Explore creative coding projects that make learning programming fun and engaging.",
+        duration: "14:50",
+        views: "890",
+        author: "Castro Odhiambo"
+      }
     ];
 
-    const grid = document.getElementById("videoGrid");
+    const grid = document.getElementById('videoGrid');
+    const emptyState = document.getElementById('emptyState');
+
+    function getCategoryClass(category) {
+      const classes = {
+        'Education': 'category-education',
+        'Tech': 'category-tech',
+        'Entertainment': 'category-entertainment',
+        'Projects': 'category-projects'
+      };
+      return classes[category] || 'category-education';
+    }
 
     function renderVideos(data) {
-      grid.innerHTML = '';
-      data.forEach(video => {
-        grid.innerHTML += `
-          <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden">
-            <iframe class="w-full h-56" src="${video.link}" allowfullscreen></iframe>
-            <div class="p-4">
-              <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">${video.category}</span>
-              <h4 class="font-bold text-lg mt-3">${video.title}</h4>
+      if (data.length === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      grid.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+      
+      grid.innerHTML = data.map(video => `
+        <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 cursor-pointer" onclick="openVideoModal('${video.videoId}', '${video.title}', '${video.description}')">
+          <div class="relative video-thumbnail">
+            <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-52 object-cover">
+            <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+              ${video.duration}
             </div>
-          </div>`;
-      });
+            <div class="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+              <i class="fas fa-eye mr-1"></i>${video.views}
+            </div>
+            <div class="play-overlay">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="category-badge ${getCategoryClass(video.category)}">${video.category}</span>
+              <i class="fas fa-play-circle text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">${video.title}</h3>
+            <p class="text-gray-600 text-sm line-clamp-2">${video.description}</p>
+            <div class="flex items-center mt-3 text-xs text-gray-500">
+              <i class="fas fa-user-graduate mr-1"></i>
+              <span>${video.author}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
 
     renderVideos(videos);
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
 
-    filterButtons.forEach(btn => {
+    function filterVideos() {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      const category = activeBtn.getAttribute('data-category');
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      let filtered = videos;
+      
+      if (category !== 'all') {
+        filtered = filtered.filter(video => video.category === category);
+      }
+      
+      if (searchTerm) {
+        filtered = filtered.filter(video => 
+          video.title.toLowerCase().includes(searchTerm) || 
+          video.description.toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      renderVideos(filtered);
+    }
+
+    filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const category = btn.dataset.category;
-        const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
-        const searchTerm = searchInput.value.toLowerCase();
-
-        renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
+        filterVideos();
       });
     });
 
-    searchInput.addEventListener('input', () => {
-      const categoryBtn = document.querySelector('.filter-btn.active');
-      const category = categoryBtn.dataset.category;
-      const filtered = category === 'all' ? videos : videos.filter(v => v.category === category);
-      const searchTerm = searchInput.value.toLowerCase();
+    searchInput.addEventListener('input', filterVideos);
 
-      renderVideos(filtered.filter(v => v.title.toLowerCase().includes(searchTerm)));
-    });
+    // Video Modal Functions
+    function openVideoModal(videoId, title, description) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('modalVideoPlayer');
+      const titleEl = document.getElementById('modalVideoTitle');
+      const descEl = document.getElementById('modalVideoDesc');
+      
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      titleEl.textContent = title;
+      descEl.textContent = description;
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('modalVideoPlayer');
+      
+      iframe.src = '';
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('videoModal');
+      if (event.target === modal) {
+        closeVideoModal();
+      }
+    }
+    
+    // Console greeting
+    console.log('%cMindSpark TV | Educational Videos by Castro Odhiambo', 'color: #1e3a8a; font-size: 20px; font-weight: bold;');
+    console.log('%cWatch, Learn, and Grow! 🎓💡', 'color: #9333ea; font-size: 14px;');
   </script>
-
 </body>
 </html>
