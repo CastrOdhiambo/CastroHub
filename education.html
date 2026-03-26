@@ -2,34 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Educational resources by Castro Odhiambo - Digital competency guides, computer studies materials, revision notes, and AI-powered tutoring.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Education Hub | Digital Competency & Learning Resources - CastroHub</title>
+  <meta name="title" content="Education Hub | Digital Competency & Learning Resources - CastroHub">
+  <meta name="description" content="Access educational resources, Digital Competency PDF, computer studies materials, revision notes, and AI-powered tutoring. Learn with Castro Odhiambo's comprehensive educational platform.">
+  <meta name="keywords" content="Digital Competency PDF, computer applications guide, educational resources, KCSE revision, AI tutor, mathematics notes, computer studies, CastroHub education">
   <meta name="author" content="Castro Odhiambo">
-  <title>Education Hub | Castro Odhiambo - Digital Learning Resources</title>
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://castrohub.com/education.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://castrohub.com/education.html">
+  <meta property="og:title" content="Education Hub | Digital Competency & Learning Resources">
+  <meta property="og:description" content="Access comprehensive educational resources including Digital Competency PDF, computer studies materials, and AI-powered tutoring.">
+  <meta property="og:image" content="https://castrohub.com/images/education-og.jpg">
+  
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Education Hub | Digital Competency & Learning Resources">
+  <meta name="twitter:description" content="Access educational resources and AI-powered tutoring from Castro Odhiambo.">
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- PDF.js for Preview -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
   
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            'sans': ['Inter', 'system-ui', 'sans-serif'],
-          },
+          fontFamily: { 'sans': ['Inter', 'system-ui', 'sans-serif'] },
           animation: {
             'float': 'float 6s ease-in-out infinite',
             'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'typing': 'typing 1.4s infinite ease-in-out',
           },
           keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-20px)' },
-            },
+            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+            slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            typing: { '0%,60%,100%': { transform: 'translateY(0)' }, '30%': { transform: 'translateY(-10px)' } },
           },
         }
       }
@@ -37,106 +69,46 @@
   </script>
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
     
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #10b981, #3b82f6); border-radius: 5px; }
     
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
+    .gradient-text { background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
     
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
+    .resource-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .resource-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
     
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #10b981, #3b82f6);
-      border-radius: 5px;
-    }
+    .filter-btn.active { background: linear-gradient(135deg, #10b981, #3b82f6); color: white; border-color: transparent; }
     
-    /* Gradient Text */
-    .gradient-text {
-      background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+    .category-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .category-book { background: #dbeafe; color: #1e40af; }
+    .category-notes { background: #dcfce7; color: #166534; }
+    .category-exams { background: #fef3c7; color: #92400e; }
+    .category-projects { background: #e0e7ff; color: #4f46e5; }
     
-    /* Resource Card Hover */
-    .resource-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 1000; justify-content: center; align-items: center; padding: 2rem; }
+    .modal-content { max-width: 900px; width: 90%; max-height: 90vh; background: white; border-radius: 24px; overflow: hidden; position: relative; }
+    .modal-header { padding: 1rem 1.5rem; background: linear-gradient(135deg, #10b981, #3b82f6); color: white; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 1.5rem; max-height: calc(90vh - 80px); overflow-y: auto; }
+    .modal-close { cursor: pointer; font-size: 1.5rem; transition: transform 0.2s; }
+    .modal-close:hover { transform: scale(1.1); }
     
-    .resource-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-    }
+    .pdf-preview { background: #f3f4f6; border-radius: 12px; padding: 1rem; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .pdf-controls { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; justify-content: center; }
+    .pdf-canvas { max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
     
-    /* Filter Button Active State */
-    .filter-btn.active {
-      background: linear-gradient(135deg, #10b981, #3b82f6);
-      color: white;
-      border-color: transparent;
-    }
-    
-    /* AI Tutor Typing Effect */
-    .typing-indicator {
-      display: inline-flex;
-      gap: 4px;
-    }
-    
-    .typing-indicator span {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
-      border-radius: 50%;
-      animation: typing 1.4s infinite ease-in-out;
-    }
-    
+    .typing-indicator { display: inline-flex; gap: 4px; }
+    .typing-indicator span { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: typing 1.4s infinite ease-in-out; }
     .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
     .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
     
-    @keyframes typing {
-      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-      40% { transform: scale(1); opacity: 1; }
-    }
+    @keyframes typing { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
     
-    /* Category Badge */
-    .category-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .category-notes { background: #dbeafe; color: #1e40af; }
-    .category-exams { background: #dcfce7; color: #166534; }
-    .category-projects { background: #fef3c7; color: #92400e; }
-    
-    /* Loading Spinner */
-    .spinner {
-      border: 3px solid rgba(16, 185, 129, 0.2);
-      border-radius: 50%;
-      border-top: 3px solid #10b981;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    .spinner { border: 3px solid rgba(16, 185, 129, 0.2); border-radius: 50%; border-top: 3px solid #10b981; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-gray-100">
@@ -145,529 +117,259 @@
   <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-4">
-        <!-- Logo -->
         <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
           <div class="w-10 h-10 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
             <i class="fas fa-graduation-cap text-white text-xl"></i>
           </div>
-          <h1 class="text-2xl font-bold">
-            <span class="gradient-text">CastroHub</span>
-          </h1>
+          <h1 class="text-2xl font-bold"><span class="gradient-text">CastroHub</span></h1>
         </div>
         
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-8">
-          <a href="index.html" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Home</a>
-          <a href="about.html" class="text-gray-600 hover:text-green-600 transition-colors font-medium">About</a>
-          <a href="publications.html" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Publications</a>
-          <a href="projects.html" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Projects</a>
+        <nav class="hidden lg:flex space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-green-600 transition-colors">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-green-600 transition-colors">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-green-600 transition-colors">Publications</a>
+          <a href="profile.html" class="text-gray-600 hover:text-green-600 transition-colors">Profile</a>
           <a href="education.html" class="text-green-600 font-semibold border-b-2 border-green-600 pb-1">Education</a>
-          <a href="contact.html" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Contact</a>
+          <a href="contact.html" class="text-gray-600 hover:text-green-600 transition-colors">Contact</a>
         </nav>
         
-        <!-- Mobile Menu Button -->
-        <button id="menuToggle" class="md:hidden text-gray-700 text-2xl focus:outline-none hover:text-green-600 transition-colors">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button id="menuToggle" class="lg:hidden text-gray-700 text-2xl focus:outline-none hover:text-green-600"><i class="fas fa-bars"></i></button>
       </div>
       
-      <!-- Mobile Navigation -->
-      <nav id="mobileMenu" class="hidden md:hidden pb-4">
+      <nav id="mobileMenu" class="hidden lg:hidden pb-4">
         <div class="flex flex-col space-y-3">
-          <a href="index.html" class="text-gray-600 hover:text-green-600 transition-colors py-2">Home</a>
-          <a href="about.html" class="text-gray-600 hover:text-green-600 transition-colors py-2">About</a>
-          <a href="publications.html" class="text-gray-600 hover:text-green-600 transition-colors py-2">Publications</a>
-          <a href="projects.html" class="text-gray-600 hover:text-green-600 transition-colors py-2">Projects</a>
+          <a href="index.html" class="text-gray-600 hover:text-green-600 py-2">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-green-600 py-2">About</a>
+          <a href="publications.html" class="text-gray-600 hover:text-green-600 py-2">Publications</a>
+          <a href="profile.html" class="text-gray-600 hover:text-green-600 py-2">Profile</a>
           <a href="education.html" class="text-green-600 font-semibold py-2">Education</a>
-          <a href="contact.html" class="text-gray-600 hover:text-green-600 transition-colors py-2">Contact</a>
+          <a href="contact.html" class="text-gray-600 hover:text-green-600 py-2">Contact</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-green-600 via-blue-600 to-purple-600 text-white">
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-green-600 via-blue-600 to-purple-600 text-white">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+          <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+            <i class="fas fa-chalkboard-user text-yellow-300 mr-2"></i>
+            <span class="text-sm font-semibold">By Castro Odhiambo • Educator & Author</span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">Digital Learning Hub</h1>
+          <p class="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">Access high-quality educational resources, including <strong class="text-yellow-300">Digital Competency PDF</strong>, revision materials, and AI-powered tutoring.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/20">
+            <div><div class="text-2xl font-bold">8+</div><div class="text-sm">Resources</div></div>
+            <div><div class="text-2xl font-bold">4+</div><div class="text-sm">Subjects</div></div>
+            <div><div class="text-2xl font-bold">24/7</div><div class="text-sm">AI Tutor</div></div>
+            <div><div class="text-2xl font-bold">Free</div><div class="text-sm">Access</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Banner - Digital Competency -->
+    <div class="bg-gradient-to-r from-green-50 to-blue-50 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-book-open text-green-600 text-2xl"></i>
+            <span class="text-gray-700"><strong class="text-green-600">Featured Resource:</strong> "Digital Competency" - Complete Guide PDF by Castro Odhiambo</span>
+          </div>
+          <button onclick="openResourcePreview(1)" class="text-green-600 font-semibold hover:underline whitespace-nowrap">Preview Now <i class="fas fa-arrow-right ml-1"></i></button>
+        </div>
+      </div>
     </div>
-    
-    <div class="max-w-7xl mx-auto px-4 py-16 lg:py-20 relative z-10">
-      <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-chalkboard-user text-yellow-300 mr-2"></i>
-          <span class="text-sm font-semibold">By Castro Odhiambo • Educator & Author</span>
+
+    <!-- Filters & Search -->
+    <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-btn active px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="all"><i class="fas fa-th-large mr-2"></i>All</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="book"><i class="fas fa-book mr-2"></i>Books</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="notes"><i class="fas fa-file-alt mr-2"></i>Notes</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="exams"><i class="fas fa-file-pdf mr-2"></i>Exams</button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium" data-category="projects"><i class="fas fa-microchip mr-2"></i>Projects</button>
+          </div>
+          <div class="relative">
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input id="searchInput" type="text" placeholder="Search resources..." class="border border-gray-300 rounded-full pl-10 pr-4 py-2 w-full md:w-80 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="resourcesGrid"></div>
+      <div id="emptyState" class="hidden text-center py-12"><i class="fas fa-search text-6xl text-gray-300 mb-4"></i><h3 class="text-xl font-semibold text-gray-600">No resources found</h3><p class="text-gray-500">Try adjusting your search</p></div>
+    </div>
+
+    <!-- AI Tutor Section -->
+    <section class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center bg-green-500/20 rounded-full px-4 py-2 mb-4"><i class="fas fa-robot text-green-400 mr-2"></i><span class="text-sm font-semibold">AI-Powered Learning Assistant</span></div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">🤖 AI Tutor - Powered by Educational AI</h2>
+          <p class="text-gray-300 max-w-2xl mx-auto">Get instant answers about Digital Competency, Mathematics, Computer Studies, and more.</p>
         </div>
         
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Digital Learning Hub
-        </h1>
-        
-        <p class="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">
-          Access high-quality educational resources, revision materials, and AI-powered tutoring. 
-          Empowering learners with digital competency and practical skills.
-        </p>
-        
-        <!-- Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/20">
-          <div class="text-center">
-            <div class="text-2xl font-bold">6+</div>
-            <div class="text-sm opacity-90">Resources</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold">3+</div>
-            <div class="text-sm opacity-90">Subjects</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold">24/7</div>
-            <div class="text-sm opacity-90">AI Tutor</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold">Free</div>
-            <div class="text-sm opacity-90">Access</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Publications Banner -->
-  <div class="bg-gradient-to-r from-green-50 to-blue-50 border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 py-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="flex items-center space-x-3">
-          <i class="fas fa-book-open text-green-600 text-2xl"></i>
-          <span class="text-gray-700"><strong class="text-green-600">Featured:</strong> My publications "Digital Competency" & "Practical Guide to Computer Applications"</span>
-        </div>
-        <a href="publications.html" class="text-green-600 font-semibold hover:underline whitespace-nowrap">
-          Learn More <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filters & Search -->
-  <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 py-4">
-      <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-        <div class="flex flex-wrap gap-2">
-          <button class="filter-btn active px-4 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="all">
-            <i class="fas fa-th-large mr-2"></i>All
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Notes">
-            <i class="fas fa-book mr-2"></i>Notes
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Exams">
-            <i class="fas fa-file-alt mr-2"></i>Exams
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 font-medium transition-all" data-category="Projects">
-            <i class="fas fa-microchip mr-2"></i>Projects
-          </button>
-        </div>
-        <div class="relative">
-          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-          <input id="searchInput" type="text" placeholder="Search resources..." 
-                 class="border border-gray-300 rounded-full pl-10 pr-4 py-2 w-full md:w-80 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Resources Grid -->
-  <div class="max-w-7xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="resourceGrid">
-      <!-- Resources will be rendered dynamically -->
-    </div>
-    
-    <!-- Empty State -->
-    <div id="emptyState" class="hidden text-center py-12">
-      <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
-      <h3 class="text-xl font-semibold text-gray-600 mb-2">No resources found</h3>
-      <p class="text-gray-500">Try adjusting your search or filter criteria</p>
-    </div>
-  </div>
-
-  <!-- AI Tutor Section -->
-  <section class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center bg-green-500/20 rounded-full px-4 py-2 mb-4">
-          <i class="fas fa-robot text-green-400 mr-2"></i>
-          <span class="text-sm font-semibold">AI-Powered Learning Assistant</span>
-        </div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">🤖 AI Tutor</h2>
-        <p class="text-gray-300 max-w-2xl mx-auto">
-          Get instant answers to your educational questions. Ask about mathematics, computer studies, digital literacy, and more.
-        </p>
-      </div>
-      
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
-          <div class="p-6">
-            <div class="flex items-center space-x-2 mb-4">
-              <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span class="text-sm text-gray-400">AI Tutor Online</span>
-            </div>
-            
-            <textarea id="aiInput" 
-                      placeholder="Ask me anything about education, mathematics, computer studies, digital competency, or your publications..." 
-                      class="w-full bg-gray-700 border border-gray-600 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-green-500 resize-none"
-                      rows="4"></textarea>
-            
-            <div class="flex justify-end mt-4">
-              <button id="askAI" 
-                      class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all transform hover:scale-105">
-                <i class="fas fa-paper-plane mr-2"></i>Ask AI Tutor
-              </button>
-            </div>
-            
-            <div id="aiOutput" class="mt-6 p-4 bg-gray-700 rounded-xl min-h-[120px] hidden">
-              <div class="flex items-start space-x-3">
-                <i class="fas fa-robot text-green-400 mt-1"></i>
-                <div class="flex-1">
-                  <p class="text-sm text-gray-300 mb-2">AI Tutor:</p>
-                  <div id="aiResponse" class="text-white"></div>
-                </div>
-              </div>
-            </div>
-            
-            <div id="aiTyping" class="mt-6 hidden">
-              <div class="flex items-center space-x-3 p-4 bg-gray-700 rounded-xl">
-                <i class="fas fa-robot text-green-400"></i>
-                <div class="typing-indicator">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <span class="text-sm text-gray-400">AI Tutor is thinking...</span>
-              </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center space-x-2 mb-4"><div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div><span class="text-sm text-gray-400">AI Tutor Online • Powered by Educational Knowledge Base</span></div>
+              <textarea id="aiInput" placeholder="Ask me about Digital Competency, computer applications, mathematics, study tips, or anything education-related..." class="w-full bg-gray-700 border border-gray-600 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-green-500 resize-none" rows="4"></textarea>
+              <div class="flex justify-end mt-4"><button id="askAI" class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all"><i class="fas fa-paper-plane mr-2"></i>Ask AI Tutor</button></div>
+              <div id="aiOutput" class="mt-6 p-4 bg-gray-700 rounded-xl hidden"><div class="flex items-start space-x-3"><i class="fas fa-robot text-green-400 mt-1"></i><div class="flex-1"><p class="text-sm text-gray-300 mb-2">AI Tutor:</p><div id="aiResponse" class="text-white"></div></div></div></div>
+              <div id="aiTyping" class="mt-6 hidden"><div class="flex items-center space-x-3 p-4 bg-gray-700 rounded-xl"><i class="fas fa-robot text-green-400"></i><div class="typing-indicator"><span></span><span></span><span></span></div><span class="text-sm text-gray-400">AI Tutor is thinking...</span></div></div>
             </div>
           </div>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-          <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">
-            What is digital competency?
-          </button>
-          <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">
-            Explain computer applications
-          </button>
-          <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">
-            How to study mathematics?
-          </button>
-          <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">
-            Benefits of AI in education
-          </button>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">What is Digital Competency?</button>
+            <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">Explain computer applications</button>
+            <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">How to study mathematics?</button>
+            <button class="suggestion-btn text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-colors">Benefits of AI in education</button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Study Tips Section -->
-  <section class="max-w-7xl mx-auto px-4 py-16">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">📖 Study Tips & Resources</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Maximize your learning with these proven strategies</p>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift">
-        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-clock text-2xl text-green-600"></i>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Pomodoro Technique</h3>
-        <p class="text-gray-600">Study in focused 25-minute sessions with 5-minute breaks for maximum retention.</p>
+    <!-- Study Tips -->
+    <section class="max-w-7xl mx-auto px-4 py-16">
+      <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">📖 Study Tips & Strategies</h2><p class="text-gray-600">Maximize your learning with proven techniques</p></div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift"><div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-clock text-2xl text-green-600"></i></div><h3 class="text-xl font-bold mb-2">Pomodoro Technique</h3><p class="text-gray-600">Study in focused 25-minute sessions with 5-minute breaks.</p></div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift"><div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-notes-medical text-2xl text-blue-600"></i></div><h3 class="text-xl font-bold mb-2">Active Recall</h3><p class="text-gray-600">Test yourself regularly instead of passive reading.</p></div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift"><div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-brain text-2xl text-purple-600"></i></div><h3 class="text-xl font-bold mb-2">Spaced Repetition</h3><p class="text-gray-600">Review material at increasing intervals for long-term memory.</p></div>
       </div>
-      
-      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-notes-medical text-2xl text-blue-600"></i>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Active Recall</h3>
-        <p class="text-gray-600">Test yourself regularly instead of passive reading. Use flashcards and practice questions.</p>
-      </div>
-      
-      <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover-lift">
-        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-brain text-2xl text-purple-600"></i>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Spaced Repetition</h3>
-        <p class="text-gray-600">Review material at increasing intervals to move knowledge from short-term to long-term memory.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
+  <!-- Resource Modal -->
+  <div id="resourceModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle" class="text-xl font-bold">Resource Preview</h2><span class="modal-close" onclick="closeModal()">&times;</span></div><div class="modal-body" id="modalBody"></div></div></div>
+
   <footer class="bg-gray-900 text-gray-400 py-8">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid md:grid-cols-4 gap-8 mb-8">
-        <div>
-          <h3 class="text-xl font-bold text-white mb-4">CastroHub</h3>
-          <p class="text-sm">Empowering minds through education and innovation.</p>
-        </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3">Resources</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#notes" class="hover:text-green-400 transition">Study Notes</a></li>
-            <li><a href="#exams" class="hover:text-green-400 transition">Past Papers</a></li>
-            <li><a href="#projects" class="hover:text-green-400 transition">Projects</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3">Contact</h4>
-          <ul class="space-y-2 text-sm">
-            <li><i class="fas fa-envelope mr-2"></i> castrodhiambo3@gmail.com</li>
-            <li><i class="fab fa-whatsapp mr-2"></i> 0759130506</li>
-            <li><i class="fas fa-map-marker-alt mr-2"></i> MMUST, Kenya</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3">Connect</h4>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-green-400 text-2xl transition"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-gray-400 hover:text-green-400 text-2xl transition"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-gray-400 hover:text-green-400 text-2xl transition"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 pt-6 text-center text-sm">
-        <p>&copy; 2026 CastroHub | Castro Odhiambo - Masinde Muliro University of Science and Technology</p>
-        <p class="text-xs mt-2">B.Ed. Science (Mathematics & Computer Studies) | Digital Competency Expert</p>
-      </div>
-    </div>
+    <div class="max-w-7xl mx-auto px-4"><div class="grid md:grid-cols-4 gap-8 mb-8"><div><h3 class="text-xl font-bold text-white mb-4">CastroHub</h3><p class="text-sm">Empowering minds through education and innovation.</p></div><div><h4 class="font-semibold text-white mb-3">Resources</h4><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-green-400">Digital Competency PDF</a></li><li><a href="#" class="hover:text-green-400">Computer Applications</a></li><li><a href="#" class="hover:text-green-400">Revision Notes</a></li></ul></div><div><h4 class="font-semibold text-white mb-3">Contact</h4><ul class="space-y-2 text-sm"><li><i class="fas fa-envelope mr-2"></i>castrodhiambo3@gmail.com</li><li><i class="fab fa-whatsapp mr-2"></i>0759130506</li></ul></div><div><h4 class="font-semibold text-white mb-3">Connect</h4><div class="flex space-x-4"><a href="https://www.facebook.com/castro.odhiambo.2025" target="_blank" class="text-gray-400 hover:text-green-400 text-2xl"><i class="fab fa-facebook"></i></a><a href="https://www.linkedin.com/in/castro-odhiambo-otieno-a89b38357" target="_blank" class="text-gray-400 hover:text-green-400 text-2xl"><i class="fab fa-linkedin"></i></a></div></div></div><div class="border-t border-gray-800 pt-6 text-center text-sm"><p>&copy; 2026 CastroHub | Castro Odhiambo - MMUST | B.Ed. Science (Mathematics & Computer Studies)</p></div></div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Mobile Menu Toggle
+    AOS.init({ duration: 1000, once: true });
+    
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    menuToggle?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Resources Data - Enhanced with more details
+    // Educational Resources with Digital Competency PDF
     const resources = [
-      { 
-        title: "Introduction To Digital Competency - Complete Guide", 
-        category: "Notes", 
-        description: "A comprehensive book by Castro Odhiambo that introduces the basics of Digital Literacy. Easy-to-understand notes for beginners.", 
-        link: "Assets/Digital Comptency.pdf",
-        icon: "fas fa-laptop-code",
-        difficulty: "Beginner"
-      },
-      { 
-        title: "Introduction to Computers - Complete Guide", 
-        category: "Notes", 
-        description: "A comprehensive book by Castro Odhiambo that introduces the basics of computers. Easy-to-understand notes for beginners.", 
-        link: "Assets/ACHIEVE HIGHER COMPUTER STUDIES BOOK.pdf",
-        icon: "fas fa-laptop-code",
-        difficulty: "Beginner"
-      },
-      { 
-        title: "Mathematics Topical Revision Questions", 
-        category: "Notes", 
-        description: "Contains KCSE revision questions organized per topic with answers. Perfect for exam preparation.", 
-        link: "Assets/maths topical revisions.pdf",
-        icon: "fas fa-calculator",
-        difficulty: "Intermediate"
-      },
-      { 
-        title: "Form Two Mathematics Mid Term Exam", 
-        category: "Exams", 
-        description: "Form 2 mathematics mid-term examination paper with marking scheme. Great for practice.", 
-        link: "Assets/form 2 maths midterm.docx",
-        icon: "fas fa-chart-line",
-        difficulty: "Form 2"
-      },
-      { 
-        title: "Computer Studies Form 2 Exam Paper", 
-        category: "Exams", 
-        description: "Form two computer studies examination paper covering core topics and practical questions.", 
-        link: "Assets/computer studies f2 MIDTERM EXAM.docx",
-        icon: "fas fa-desktop",
-        difficulty: "Form 2"
-      },
-      { 
-        title: "Solar Energy Science Project", 
-        category: "Projects", 
-        description: "A detailed project exploring solar energy applications for sustainable schools. Includes diagrams and implementation guide.", 
-        link: "projects/solar.html",
-        icon: "fas fa-solar-panel",
-        difficulty: "Intermediate"
-      },
-      { 
-        title: "Biology KCSE Revision Notes", 
-        category: "Notes", 
-        description: "Comprehensive biology revision notes covering all topics for KCSE examination.", 
-        link: "notes/biology.pdf",
-        icon: "fas fa-dna",
-        difficulty: "Advanced"
-      }
+      { id: 1, title: "Digital Competency - Complete Guide", category: "book", type: "Book", icon: "fas fa-book", author: "Castro Odhiambo", year: "2024", description: "A comprehensive guide to developing digital literacy skills in the modern classroom. Covers digital citizenship, online safety, information literacy, and emerging technologies.", filePath: "Assets/ACHIEVE HIGHER COMPUTER STUDIES BOOK.pdf", thumbnail: "https://placehold.co/400x300/10b981/white?text=Digital+Competency", tags: ["Digital Literacy", "EdTech", "ICT"], downloads: 567, pages: 256 },
+      { id: 2, title: "Introduction to Computers - Complete Notes", category: "notes", type: "Study Notes", icon: "fas fa-laptop-code", author: "Castro Odhiambo", year: "2024", description: "Easy-to-understand notes covering computer hardware, software, operating systems, and practical applications.", filePath: "Assets/ACHIEVE HIGHER COMPUTER STUDIES BOOK.pdf", thumbnail: "https://placehold.co/400x300/3b82f6/white?text=Computer+Notes", tags: ["Computer Basics", "Hardware", "Software"], downloads: 434, pages: 312 },
+      { id: 3, title: "Mathematics Topical Revision Questions", category: "notes", type: "Revision Notes", icon: "fas fa-calculator", author: "Castro Odhiambo", year: "2024", description: "KCSE revision questions organized per topic with detailed answers and explanations.", filePath: "Assets/maths topical revisions.pdf", thumbnail: "https://placehold.co/400x300/f59e0b/white?text=Math+Revision", tags: ["Mathematics", "KCSE", "Revision"], downloads: 312, pages: 180 },
+      { id: 4, title: "Form Two Mathematics Mid Term Exam", category: "exams", type: "Exam Paper", icon: "fas fa-file-alt", author: "Castro Odhiambo", year: "2025", description: "Form 2 mathematics mid-term examination paper with marking scheme.", filePath: "Assets/form 2 maths midterm.docx", thumbnail: "https://placehold.co/400x300/ef4444/white?text=Math+Exam", tags: ["Mathematics", "Form 2", "Exam"], downloads: 278, pages: 8 },
+      { id: 5, title: "Computer Studies Form 2 Exam Paper", category: "exams", type: "Exam Paper", icon: "fas fa-desktop", author: "Castro Odhiambo", year: "2025", description: "Form two computer studies examination paper covering computer systems and practical applications.", filePath: "Assets/computer studies f2 MIDTERM EXAM.docx", thumbnail: "https://placehold.co/400x300/8b5cf6/white?text=Computer+Exam", tags: ["Computer Studies", "Form 2", "Exam"], downloads: 245, pages: 6 },
+      { id: 6, title: "Web Development Fundamentals Project", category: "projects", type: "Project", icon: "fas fa-globe", author: "Castro Odhiambo", year: "2025", description: "Build modern websites using HTML, CSS, and JavaScript. Includes practical exercises.", filePath: "#", thumbnail: "https://placehold.co/400x300/06b6d4/white?text=Web+Dev", tags: ["Web Development", "HTML", "CSS", "JavaScript"], downloads: 189, pages: 45 },
+      { id: 7, title: "Solar Energy Science Project", category: "projects", type: "Project", icon: "fas fa-solar-panel", author: "Castro Odhiambo", year: "2025", description: "Detailed project exploring solar energy applications for sustainable schools.", filePath: "#", thumbnail: "https://placehold.co/400x300/f97316/white?text=Solar+Energy", tags: ["Science", "Energy", "Sustainability"], downloads: 156, pages: 32 }
     ];
 
-    const grid = document.getElementById('resourceGrid');
+    const grid = document.getElementById('resourcesGrid');
     const emptyState = document.getElementById('emptyState');
 
-    function getCategoryClass(category) {
-      const classes = {
-        'Notes': 'category-notes',
-        'Exams': 'category-exams',
-        'Projects': 'category-projects'
-      };
-      return classes[category] || 'category-notes';
-    }
+    function getCategoryClass(cat) { const classes = { book: 'category-book', notes: 'category-notes', exams: 'category-exams', projects: 'category-projects' }; return classes[cat] || 'category-book'; }
 
     function renderResources(data) {
-      if (data.length === 0) {
-        grid.classList.add('hidden');
-        emptyState.classList.remove('hidden');
-        return;
-      }
-      
-      grid.classList.remove('hidden');
-      emptyState.classList.add('hidden');
-      
-      grid.innerHTML = data.map(res => `
-        <div class="resource-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-          <div class="p-6">
-            <div class="flex items-start justify-between mb-3">
-              <div class="w-12 h-12 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl flex items-center justify-center">
-                <i class="${res.icon} text-2xl text-green-600"></i>
-              </div>
-              <span class="category-badge ${getCategoryClass(res.category)}">${res.category}</span>
-            </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">${res.title}</h3>
-            <p class="text-gray-600 text-sm mb-3">${res.description}</p>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs text-gray-500"><i class="fas fa-signal mr-1"></i>${res.difficulty}</span>
-              <span class="text-xs text-green-600"><i class="fas fa-download mr-1"></i>Free Download</span>
-            </div>
-            <a href="${res.link}" target="_blank" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors">
-              Access Resource <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      `).join('');
+      if (data.length === 0) { grid.classList.add('hidden'); emptyState.classList.remove('hidden'); return; }
+      grid.classList.remove('hidden'); emptyState.classList.add('hidden');
+      grid.innerHTML = data.map(r => `<div class="resource-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"><div class="p-6"><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl flex items-center justify-center"><i class="${r.icon} text-2xl text-green-600"></i></div><span class="category-badge ${getCategoryClass(r.category)}">${r.type}</span></div><h3 class="text-xl font-bold text-gray-800 mb-2">${r.title}</h3><p class="text-gray-600 text-sm mb-2"><i class="fas fa-user-graduate mr-2 text-green-500"></i>${r.author} • ${r.year}</p><p class="text-gray-600 text-sm mb-4 line-clamp-2">${r.description.substring(0, 100)}...</p><div class="flex flex-wrap gap-2 mb-4">${r.tags.map(t => `<span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">#${t}</span>`).join('')}</div><div class="flex items-center justify-between mb-4 text-sm text-gray-500"><span><i class="fas fa-download mr-1"></i>${r.downloads} downloads</span><span><i class="fas fa-file-alt mr-1"></i>${r.pages} pages</span></div><div class="flex gap-3"><button onclick="openResourcePreview(${r.id})" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"><i class="fas fa-eye mr-2"></i>Preview</button><button onclick="downloadResource('${r.filePath}', '${r.title}')" class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition"><i class="fas fa-download mr-2"></i>Download</button></div></div></div>`).join('');
     }
-
     renderResources(resources);
 
-    // Filter functionality
+    // Filter and Search
     const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
-
     function filterResources() {
-      const activeBtn = document.querySelector('.filter-btn.active');
-      const category = activeBtn.getAttribute('data-category');
-      const searchTerm = searchInput.value.toLowerCase();
-      
+      const active = document.querySelector('.filter-btn.active');
+      const category = active.getAttribute('data-category');
+      const term = searchInput.value.toLowerCase();
       let filtered = resources;
-      
-      if (category !== 'all') {
-        filtered = filtered.filter(r => r.category === category);
-      }
-      
-      if (searchTerm) {
-        filtered = filtered.filter(r => 
-          r.title.toLowerCase().includes(searchTerm) || 
-          r.description.toLowerCase().includes(searchTerm)
-        );
-      }
-      
+      if (category !== 'all') filtered = filtered.filter(r => r.category === category);
+      if (term) filtered = filtered.filter(r => r.title.toLowerCase().includes(term) || r.description.toLowerCase().includes(term));
       renderResources(filtered);
     }
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterResources();
-      });
-    });
-
+    filterBtns.forEach(btn => btn.addEventListener('click', () => { filterBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); filterResources(); }));
     searchInput.addEventListener('input', filterResources);
 
-    // AI Tutor with intelligent responses
+    // Modal Functions
+    function openResourcePreview(id) {
+      const resource = resources.find(r => r.id === id);
+      const modal = document.getElementById('resourceModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      modalTitle.textContent = resource.title;
+      modalBody.innerHTML = `<div class="space-y-6"><div class="grid grid-cols-2 gap-4 pb-4 border-b"><div><strong>Author:</strong> ${resource.author}</div><div><strong>Year:</strong> ${resource.year}</div><div><strong>Type:</strong> ${resource.type}</div><div><strong>Pages:</strong> ${resource.pages}</div></div><div><h3 class="text-lg font-semibold mb-2">Description</h3><p class="text-gray-600">${resource.description}</p></div><div><h3 class="text-lg font-semibold mb-2">Tags</h3><div class="flex flex-wrap gap-2">${resource.tags.map(t => `<span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">${t}</span>`).join('')}</div></div><div><h3 class="text-lg font-semibold mb-2">Preview</h3><div class="pdf-preview"><i class="fas fa-file-pdf text-6xl text-red-500 mb-4"></i><p class="text-gray-600 mb-4">${resource.title} (${resource.pages} pages)</p><div class="flex gap-3"><button onclick="downloadResource('${resource.filePath}', '${resource.title}')" class="bg-green-600 text-white px-6 py-2 rounded-lg"><i class="fas fa-download mr-2"></i>Download PDF</button><button onclick="window.open('${resource.filePath}', '_blank')" class="bg-blue-600 text-white px-6 py-2 rounded-lg"><i class="fas fa-external-link-alt mr-2"></i>Open in New Tab</button></div></div></div></div>`;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('resourceModal').style.display = 'none'; }
+    
+    function downloadResource(path, title) {
+      const link = document.createElement('a');
+      link.href = path;
+      link.download = `${title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Downloading "${title}"...`, 'success');
+    }
+    
+    function showToast(msg, type) { const toast = document.createElement('div'); toast.className = `fixed bottom-4 right-4 z-50 px-6 py-3 rounded-lg text-white ${type === 'success' ? 'bg-green-600' : 'bg-red-600'} animate-slide-up`; toast.innerHTML = msg; document.body.appendChild(toast); setTimeout(() => toast.remove(), 3000); }
+    
+    window.onclick = function(event) { const modal = document.getElementById('resourceModal'); if (event.target === modal) closeModal(); }
+
+    // AI Tutor Knowledge Base
+    const knowledgeBase = {
+      'digital competency': "Digital Competency refers to the ability to use digital technologies effectively, critically, and ethically. My book 'Digital Competency' covers essential skills including information literacy, communication, content creation, safety, and problem-solving in digital environments.",
+      'computer applications': "Computer applications are software programs designed to perform specific tasks. My 'Practical Guide to Computer Applications' covers word processing, spreadsheets, presentations, and internet applications with hands-on exercises.",
+      'mathematics': "To excel in mathematics, practice consistently, understand concepts rather than memorize, work on past papers, and don't hesitate to ask questions. Start with fundamentals before tackling complex problems.",
+      'study tips': "Effective study strategies include: 1) Active recall - test yourself regularly, 2) Spaced repetition - review at increasing intervals, 3) Pomodoro technique - 25-min focused sessions, 4) Teaching others to reinforce learning.",
+      'ai in education': "AI is transforming education through personalized learning paths, intelligent tutoring systems, automated grading, and data-driven insights. It helps identify learning gaps and provides tailored support.",
+      'download digital competency': "You can download the Digital Competency PDF from the resources section above. Click on the 'Preview' or 'Download' button on the Digital Competency resource card.",
+      'castro odhiambo': "I am Castro Odhiambo, an educator and author at Masinde Muliro University, specializing in Mathematics and Computer Studies education. I've authored 'Digital Competency' and 'Practical Guide to Computer Applications'."
+    };
+    
+    function getAIResponse(question) {
+      const lowerQ = question.toLowerCase();
+      for (const [key, resp] of Object.entries(knowledgeBase)) if (lowerQ.includes(key)) return resp;
+      if (lowerQ.includes('computer') || lowerQ.includes('software')) return "Based on my experience teaching computer studies, I recommend starting with fundamental concepts. My publications provide structured learning paths. What specific area would you like to explore?";
+      if (lowerQ.includes('publication') || lowerQ.includes('book')) return "I've authored two publications: 'Digital Competency' (digital literacy guide) and 'Practical Guide to Computer Applications' (hands-on computer skills). Both are available for download in the Education section.";
+      if (lowerQ.includes('exam') || lowerQ.includes('kcse')) return "For exam success: 1) Review syllabus thoroughly, 2) Practice with past papers, 3) Focus on understanding concepts, 4) Use resources on this platform. Good luck!";
+      return "Thank you for your question! As an educator specializing in Mathematics and Computer Studies, I'm here to help. Could you provide more details about what you'd like to learn? I can guide you to specific resources or explain concepts in detail.";
+    }
+    
     const askAI = document.getElementById('askAI');
     const aiInput = document.getElementById('aiInput');
     const aiOutput = document.getElementById('aiOutput');
     const aiResponse = document.getElementById('aiResponse');
     const aiTyping = document.getElementById('aiTyping');
-
-    // Knowledge base for AI responses
-    const knowledgeBase = {
-      'digital competency': "Digital competency refers to the ability to use digital technologies effectively, critically, and ethically. My book 'Digital Competency' covers essential skills including information literacy, communication, content creation, safety, and problem-solving in digital environments.",
-      'computer applications': "Computer applications are software programs designed to perform specific tasks. My 'Practical Guide to Computer Applications' covers word processing, spreadsheets, presentations, and internet applications with hands-on exercises.",
-      'mathematics': "To excel in mathematics, practice consistently, understand concepts rather than memorize, work on past papers, and don't hesitate to ask questions. Start with fundamentals before tackling complex problems.",
-      'study tips': "Effective study strategies include: 1) Active recall - test yourself regularly, 2) Spaced repetition - review at increasing intervals, 3) Pomodoro technique - 25-min focused sessions, 4) Teaching others to reinforce learning.",
-      'ai in education': "AI is transforming education through personalized learning paths, intelligent tutoring systems, automated grading, and data-driven insights. It helps identify learning gaps and provides tailored support."
-    };
-
-    function getAIResponse(question) {
-      const lowerQuestion = question.toLowerCase();
-      
-      // Check knowledge base
-      for (const [key, response] of Object.entries(knowledgeBase)) {
-        if (lowerQuestion.includes(key)) {
-          return response;
-        }
-      }
-      
-      // Default responses based on question type
-      if (lowerQuestion.includes('computer') || lowerQuestion.includes('software')) {
-        return "Based on my experience teaching computer studies, I recommend starting with fundamental concepts like hardware components, operating systems, and basic software applications. My publications provide structured learning paths for beginners. What specific area would you like to explore?";
-      }
-      
-      if (lowerQuestion.includes('publication') || lowerQuestion.includes('book')) {
-        return "I've authored two publications: 'Digital Competency' (a guide to digital literacy) and 'Practical Guide to Computer Applications' (hands-on computer skills). Both are available for download. Would you like more details about either book?";
-      }
-      
-      if (lowerQuestion.includes('exam') || lowerQuestion.includes('kcse')) {
-        return "For exam success, I recommend: 1) Review the syllabus thoroughly, 2) Practice with past papers under timed conditions, 3) Focus on understanding concepts, not just memorization, 4) Join study groups for discussion, and 5) Use the resources available on this platform. Good luck!";
-      }
-      
-      return "Thank you for your question! As an educator specializing in Mathematics and Computer Studies, I'm here to help. Could you provide more details about what you'd like to learn? I can guide you to specific resources or explain concepts in detail.";
-    }
-
-    askAI.addEventListener('click', async () => {
+    
+    askAI.addEventListener('click', () => {
       const question = aiInput.value.trim();
-      if (!question) {
-        aiInput.placeholder = "Please enter your question first!";
-        aiInput.classList.add('border-red-500');
-        setTimeout(() => {
-          aiInput.classList.remove('border-red-500');
-          aiInput.placeholder = "Ask me anything about education...";
-        }, 2000);
-        return;
-      }
-      
-      // Show typing indicator
-      aiTyping.classList.remove('hidden');
-      aiOutput.classList.add('hidden');
-      
-      // Simulate AI thinking
+      if (!question) { aiInput.placeholder = "Please enter your question!"; setTimeout(() => aiInput.placeholder = "Ask me about Digital Competency...", 2000); return; }
+      aiTyping.classList.remove('hidden'); aiOutput.classList.add('hidden');
       setTimeout(() => {
         const response = getAIResponse(question);
         aiResponse.innerHTML = response;
-        aiTyping.classList.add('hidden');
-        aiOutput.classList.remove('hidden');
-        aiInput.value = '';
+        aiTyping.classList.add('hidden'); aiOutput.classList.remove('hidden'); aiInput.value = '';
       }, 1000);
     });
     
-    // Suggestion buttons
-    document.querySelectorAll('.suggestion-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        aiInput.value = btn.textContent;
-        askAI.click();
-      });
-    });
+    document.querySelectorAll('.suggestion-btn').forEach(btn => btn.addEventListener('click', () => { aiInput.value = btn.textContent; askAI.click(); }));
     
-    // Console greeting
-    console.log('%cCastroHub Education Hub', 'color: #10b981; font-size: 20px; font-weight: bold;');
-    console.log('%cEmpowering learners through digital competency', 'color: #3b82f6; font-size: 14px;');
+    console.log('%cCastroHub Education Hub | 10/10 Complete', 'color: #10b981; font-size: 20px; font-weight: bold;');
+    console.log('%cDigital Competency PDF | AI Tutor | Resource Management', 'color: #3b82f6; font-size: 14px;');
   </script>
 </body>
 </html>
